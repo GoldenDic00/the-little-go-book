@@ -2,11 +2,7 @@
 
 ## License
 
-The Little Go Book is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International license. You should not have paid for this book.
-
-You are free to copy, distribute, modify or display the book. However, I ask that you always attribute the book to me, Karl Seguin, and do not use it for commercial purposes.
-
-You can see the full text of the license at:
+The Little Go စာအုပ်သည် Attribution-NonCommercial-ShareAlike 4.0  လိုင်စင်အရ မှတ်တမ်းတင်ထားသည်။ ထိုစာအုပ်အတွက် အခကြေးငွေ ပေးစရာမလို။ သင့်အနေဖြင့် ထိုစာအုပ်ကို ပြန်လည်ဖြန့်ဝေ၊ ပြင်ဆင်၊ ပြသခြင်း ပြုနိုင်သည်။ သို့သော ထိုစာအုပ် မူလစာရေးသူ ဖြစ်သည့် Karl Seguin ကိုပြန်လည် ညွန်းဆိုရမည်ဖြစ်ပြီး စီးပွားဖြစ်သုံးစွဲရန် ခွင့်မပြု။ လိုင်စင်အပြည့်အစုံကို အောက်ပါအတိုင်းဖတ်ရှုနိုင်သည်။
 
 <https://creativecommons.org/licenses/by-nc-sa/4.0/>
 
@@ -90,17 +86,19 @@ Go is a compiled, statically typed language with a C-like syntax and garbage col
 
 ## Compilation
 
-Compilation is the process of translating the source code that you write into a lower level language -- either assembly (as is the case with Go), or some other intermediary language (as with Java and C#).
 
-Compiled languages can be unpleasant to work with because compilation can be slow. It's hard to iterate quickly if you have to spend minutes or hours waiting for code to compile. Compilation speed is one of the major design goals of Go. This is good news for people working on large projects as well as those of us used to a quick feedback cycle offered by interpreted languages.
+Compilation ဆိုသည်မှာ မိမိတို့ရေးသားထားသော source code ကို low level language (ဥပမာ Go တွင် Assembly သို့ပြောင်းလဲပေးပြီး Java နှင့် C# တို့ အခြား language များသို့လည်းကောင်း) သို့ ပြန်၍ပြောင်းလဲသော ဖြစ်စဉ်ကို ဆိုလိုသည်။ 
 
-Compiled languages tend to run faster and the executable can be run without additional dependencies (at least, that's true for languages like C, C++ and Go which compile directly to assembly).
+ပုံမှန်အားဖြင့် Compile လုပ်ရသော language များသည် Compile လုပ်သည့် အချိန် ကြာလေ့ကြာထရှိသဖြင့် အလုပ်လုပ်ရသည် မှာ သာယာချမ်းမြေ့ခြင်းမရှိလှ ၊ Compile လုပ်ပါက မိနစ်ပိုင်းမှ စ၍ နာရီပိုင်း အထိကြာလျှင် တဆင့်ပြီးတဆင့် ရေးသားရန် ခက်ခဲလှပေသည်။ ထို့ကြောင့် Golang ၏ ရည်ရွယ် တည်ဆောက်ပုံ ကိုယ်တိုင်က Compilation ကြာချိန်ကို လျှော့ချနိုင်ရန် အသားပေးထားသည်။ ထိုအချက်သည် Project အကြီးများနှင့် အလုပ်လုပ်ရသော သူများ ၊ Feedback cycle မြန်ဆန်သဖြင့် Interpreted Language များဖြင့် အလုပ်လုပ်ရသူများ အတွက်ပါ အဆင်ပြေပါသည်။ 
+
+Compiled Language များသည် ပုံမှန်အားဖြင့် ပို၍လျင်မြန်ပြီး ၊ Dependencies များမလိုအပ်ပဲ run နိုင်လေ့ရှိသည်။ (အနည်းဆုံး ထိုအချက်သည် C,C++ နှင့် Go ကဲ့သို့သော Assembly သို့ တိုက်ရိုက် Compile လုပ်နိုင်သည့် language များအတွက်မှန်ကန်သည် ဟု ဆိုရမည်။
+
 
 ## Static Typing
 
-Being statically typed means that variables must be of a specific type (int, string, bool, []byte, etc.). This is either achieved by specifying the type when the variable is declared or, in many cases, letting the compiler infer the type (we'll look at examples shortly).
+Static Type ဖြစ်သည့်အတွက် variable တိုင်းသည် type တစ်ခုခု (int, string, bool, []byte စသဖြင့်) တစ်ခုခုပေါ်တွင် ကျရောက်နေမည် ဖြစ်သည်။ သို့သော် Variable တစ်ခုကို type သတ်မှတ်သည်ဖြစ်စေ မဟုတ်ပါက compiler အနေဖြင့် type ကို infer လုပ်သွားမည်ဖြစ်သည်။ (ဥပမာ အနေဖြင့် အောက်တွင် ဖော်ပြသွားပါမည်) ။ 
 
-There's a lot more that can be said about static typing, but I believe it's something better understood by looking at code. If you're used to dynamically typed languages, you might find this cumbersome. You're not wrong, but there are advantages, especially when you pair static typing with compilation. The two are often conflated. It's true that when you have one, you normally have the other but it isn't a hard rule. With a rigid type system, a compiler is able to detect problems beyond mere syntactical mistakes as well as make further optimizations.
+Static typing နှင့်ပတ်သတ်၍ အများအပြား ပြောနိုင်သော်လည်း code ကြည့်ပါက ပို၍ သဘောပေါက်မည် ဖြစ်သည်။ အကယ်၍ သင်သည် Dynamic type language ကိုအသုံးပြုသော နောက်ခံမှ လာပါက အနည်းငယ် အာရုံနောက်မည် ဖြစ်သည်။ သင်တွေးသည်က မမှား သို့သော် အချို့သော အားသာချက်များ အထူးသဖြင့် compile လုပ်ချိန်တွင် တွဲထားသော type များက အားသာချက်ရှိသည်။ ထိုနှစ်ချက်မှာ တွဲလျှက်ရှိပြီး တစ်ခုရှိပါက နောက်တစ်ခု ရှိလေ့ရှိသည်။ သို့သော် golang တွင် အတင်းအကျပ် type သတ်မှတ်ရမည်ဟု စည်းကမ်းဟုမရှိပေ။ ခိုင်မာသော စနစ်တစ်ခုတွင် compiler တစ်ခုအနေဖြင့် စာလုံးပေါင်းမှားသည့် ပြဿနာများကို ကျော်လွန်၍ သိရှိနိုင်စွမ်းရှိမှသာ ပို၍ကောင်းမွန်သော optimization ကိုဆောင်ရွက်နိုင်မည် ဖြစ်သည်။ 
 
 ## C-Like Syntax
 
