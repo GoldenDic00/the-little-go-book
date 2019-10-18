@@ -74,22 +74,27 @@ folder လမ်းကြောင်း `/usr/local` အတွင်းသိ�
 
 
 ## Windows
-Download the latest zip file. If you're on an x64 system, you'll want `go#.#.#.windows-amd64.zip`, where `#.#.#` is the latest version of Go.
 
-Unzip it at a location of your choosing. `c:\Go` is a good choice.
+နောက်ဆုံး zip file ကိုဒေါင်းပါ။ x64 system တွင်ဖြစ်ပါက  `go#.#.#.windows-amd64.zip` ပုံစံဖြင့် file ကိုဒေါင်းပါ။ `#.#.#` သည်နောက်ဆုံး version ကိုညွန်ပြနေပါမည်။ 
 
-Set up two environment variables:
+ထိုနောက် သင့်စိတ်ကြိုက်နေရာတစ်ခုတွင် ဥပမာ `c:\Go` လိုမျိုးနေရာတွင် unzip လိုက်ပါ။ 
 
-  1. `GOPATH` points to your workspace. That might be something like `c:\users\goku\work\go`.
-  2. Add `c:\Go\bin` to your `PATH` environment variable.
+ထိုနောက် environment variable နှစ်ခု သတ်မှတ်ရန်လိုပါလိမ့်မည်။ 
 
-Environment variables can be set through the `Environment Variables` button on the `Advanced` tab of the `System` control panel. Some versions of Windows provide this control panel through the `Advanced System Settings` option inside the `System` control panel.
+  ၁. သင့်၏ workplace ကို `GOPATH` ဖြင့်ညွန်းဆိုပါ။ ဥပမာ `c:\users\goku\work\go`
+  ၂. သင့်၏ unzip လုပ်ထားသောနေရာရှိ binary ကို `PATH` environment variable တွင်ညွန်းဆိုဖို့လိုမည်။ ဥပမာ `c:\Go\bin`
 
-Open a command prompt and type `go version`. You'll hopefully get an output that looks like `go version go1.3.3 windows/amd64`.
+
+Control Panel ထဲရှိ `System` ထဲရှိ `Advanced` Tab ကိုနှိပ်ပါက `Environment Variables` ဟု button ကိုတွေ့ရှိရမည်ဖြစ်ပြီး ထိုမှတဆင့် Environment variables များကိုသတ်မှတ်နိုင်သည်။ Windows တစ်ချို့ version များတွင်မူ Control Panel ထဲရှိ `System` မှ `Advanced System Settings` ဟုသော option အတွင်းတွင်ရှိမည်။  
+
+ထိုနောက် command prompt ကိုဖွင့်၍ `go version` ဟုနှိပ်ပါ။ `go version go1.3.3 windows/amd64` ဟုပုံစံဖြင့် output ကိုမြင်ရပေမည်။
+
 
 # အခန်း (၁) - အခြေခံ
 
-Go is a compiled, statically typed language with a C-like syntax and garbage collection. What does that mean?
+
+Go သည် C နှင့်ဆင်သော Syntax များနှင့် garbarge collection ပါရှိပြီး compile ပြုလုပ်ရသော type အသားပေး language တစ်ခုဖြစ်သည်။ ဆိုလိုသည်မှာ?
+
 
 ## Compilation
 
