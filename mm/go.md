@@ -114,9 +114,11 @@ Static typing နှင့်ပတ်သတ်၍ အများအပြာ�
 
 ## C-Like Syntax
 
-Saying that a language has a C-like syntax means that if you're used to any other C-like languages such as C, C++, Java, JavaScript and C#, then you're going to find Go familiar -- superficially, at least. For example, it means `&&` is used as a boolean AND, `==` is used to compare equality, `{` and `}` start and end a scope, and array indexes start at 0.
+C,C++, Java, Javascript နှင့် C# ကဲ့သို့သော C နှင့် ဆင်သည့် language များကိုအကျွမ်းဝင်ပါက Go ကို C နှင့်ဆင်သည်ကို သတိထားမိမည်ဖြစ်ပြီး လေ့လာရာတွင်လည်း ပို၍ရင်းနှိးပါလိမ့်မည်။ အကြမ်းအားဖြင့်ပေါ့။ ဥပမာ  `&&` က boolena AND ကဲ့သို့ အသုံးပြုပြီး နှစ်ခုကို နှိုင်းယှဉ်ရန် `==` ကိုအသုံးပြုပြီး လက်သည်းကွင်းဖြစ်သည့် `{` နှင့် `}` ကို scope တစ်ခု၏ အစနှင့်အဆုံးကို ပိုင်းခြားရာတွင် အသုံးပြီး Array သည် 0 မှစသည်။
 
-C-like syntax also tends to mean semi-colon terminated lines and parentheses around conditions. Go does away with both of these, though parentheses are still used to control precedence. For example, an `if` statement looks like this:
+
+C နှင့်တူသော syntax ဖြစ်သော်လည်း အခြေအနေများ ဖော်ဲပြသည့် လက်သည်းကွင်း `(` နှင့် `)` တို့နှင့် statement တစ်ခုပြီးတိုင်း semi-colon များမှာ Go တွင် ထည့်သည်ဖြစ်စေ မထည့်သည် ဖြစ်စေ အလုပ်လုပ်သည်။ ဥပမာ
+`if` statment တစ်ခုသည် အောက်ပါအတိုင်းဖြစ်မည် ဖြစ်သည်။
 
 ```go
 if name == "Leto" {
@@ -124,25 +126,26 @@ if name == "Leto" {
 }
 ```
 
-And in more complicated cases, parentheses are still useful:
+ပို၍ ရှုပ်ထွေးလာသော အခြေအနေများတွင်မူ ပိုင်းခြားရန် လက်သည်းကွင်းများသည် အရေးပါဆဲဖြစ်သည်။ 
 
 ```go
 if (name == "Goku" && power > 9000) || (name == "gohan" && power < 4000)  {
   print("super Saiyan")
 }
 ```
+၎င်းတို့မှ အပ Go သည် C# နှင့် Java တို့ဖြင့်နှိုင်းစာလျှင် C နျင့်ပို့၍ နီးစပ်သည်မှာ syntax တွင်မက ရည်ရွယ်ချက်က အစပင်။ လေ့လာရင်းဖြင့် language ၏ ခပ်ပြတ်ပြတ်နှင့် ရိုးရှင်းမှု တဖြည်းဖြည်း ထင်ဟပ်လာသည်က ပို၍ သိသာလာပေမည်။ 
 
-Beyond this, Go is much closer to C than C# or Java - not only in terms of syntax, but in terms of purpose. That's reflected in the terseness and simplicity of the language which will hopefully start to become obvious as you learn it.
 
 ## Garbage Collected
 
-Some variables, when created, have an easy-to-define life. A variable local to a function, for example, disappears when the function exits. In other cases, it isn't so obvious -- at least to a compiler. For example, the lifetime of a variable returned by a function or referenced by other variables and objects can be tricky to determine. Without garbage collection, it's up to developers to free the memory associated with such variables at a point where the developer knows the variable isn't needed. How? In C, you'd literally `free(str);` the variable.
 
-Languages with garbage collectors (e.g., Ruby, Python, Java, JavaScript, C#, Go) are able to keep track of these and free them when they're no longer used. Garbage collection adds overhead, but it also eliminates a number of devastating bugs.
+တချို့ variable များ စတင်တည်ဆောက်ကတည်းက လွယ်ကူသည်။ ဥပမာ function ပြီးဆုံးသွားပါက ပျောက်ကွယ်သွားသော အတွင်းရှိ local variable တစ်ခုကဲ့သို့။ သို့သော တခြားသော ကိစ္စများတွင်မူ အထူးသဖြင့် Compiler အတွက် မရိုးရှင်းပေ။ function တစ်ခုမှ ပြန်လာသော variable တစ်ခု၏ သက်တမ်းသည် တခြားသော variable များနင့် object များ၏ reference လုပ်ထားပုံပေါ်မူတည်၍ ရှုပ်ထွေးလှသည်။ Garabage Collection မရှိပါက developer မှ မည်သည့် variable သည်မည်သည့်နေရာက သုံးထားသည်ကို သိရန်လိုပြီး memory ကို free လုပ်ရန်က ၎င်းတာဝန်ဖြစ်သည်။ C ကဲ့သို့ language တွင်မူ variable ကို `free(str);` ဟု free လုပ်ပေးရန်လိုသည်။
+
+Ruby ၊ Python ၊ Java ၊ Javascript ၊ C# နှင့် GO သိုံသော language များတွင် ၎င်း variable ၏ အခြေအနေများကို စောင့်ကြည့်ပြီး အသုံးမပြုပါက ဖျက်ပစ်သော Garbage Collector များပါရှိပါသည်။ ၎င်းအလုပ်ကိုလုပ်ရသဖြင့် အလုပ်ပိုသော်လည်း ဆိုးရွားလှသည့် bugs များဖြစ်နိုင်ချေကို ရှင်းလင်းနိုင်သည်။ 
 
 ## Go Code များ runခြင်း
 
-Let's start our journey by creating a simple program and learning how to compile and execute it. Open your favorite text editor and write the following code:
+ကျွန်တော်တို့ ခရီးစဉ်ကို ရိုးရှင်းသည် program တစ်ခုစတင်ရေးသားကာ compile လုပ်ရင်း run ကြည့်ခြင်းဖြင့် စတင်လိုက်ရအောင်။ သင့်ကြိုက်သည့် editor ကိုဖွင့်ပြီး အောက်ပါအတိုင်းရေးသားလိုက်ပါ။
 
 ```go
 package main
@@ -160,25 +163,26 @@ func main() {
 go run main.go
 ```
 
-If everything worked, you should see *it's over 9000!*.
+အားလုံးအဆင်ပြေပါက  *it's over 9000!* ဟုစာကိုတွေ့ရမည်ဖြစ်သည်။
 
-But wait, what about the compilation step? `go run` is a handy command that compiles *and* runs your code. It uses a temporary directory to build the program, executes it and then cleans itself up. You can see the location of the temporary file by running:
+ဒါဖြင့်နေပါဦး compile လုပ်တာ ဘယ်ရောက်သွားသလဲ? `go run` ဆိုသည်က compile လုပ်ပြီး run ပေးသော command ဖြစ်သည်။ ၎င်းသည် ယာယီ directory ကိုအသုံးပြု၍ program ကို build လုပ်ပြီး execute လုပ်ပြီးနောက် ခြေရာလက်ရာများပါ ဖျောက်သွားခြင်းဖြစ်သည် ယာယီ file ၏နေရာကို အောက်ပါအတိုင်း ရိုက်ထည့်၍ တွေ့ရှိနိုင်သည်။
 
 ```
 go run --work main.go
 ```
 
-To explicitly compile code, use `go build`:
+Compile သက်သက်ပြုလုပ်လိုပါက `go build` ကိုအသုံးပြုနိုင်သည်။
 
 ```
 go build main.go
 ```
 
-This will generate an executable `main` which you can run. On Linux / OSX, don't forget that you need to prefix the executable with dot-slash, so you need to type `./main`.
+ထိုသို့ဖြင့် run နိုင်မည့် `main` ဟု executable တစ်ခုထုတ်ပေးမည်ဖြစ်သည်။ Linux နှင့် OSX စနစ်များတွင်မူ ရှေ့မှ dot-slash ခံပြီးမှ ခေါ်ရန် မမေ့သင့်ပေ။ ထိုကြောင့် `./main` ဟု ခေါ်ရမည်ဖြစ်သည်။
 
-While developing, you can use either `go run` or `go build`. When you deploy your code however, you'll want to deploy a binary via `go build` and execute that.
+Develop လုပ်နေစဉ်တွင် `go run` သို့မဟုတ် `go build` ကိုကြိုက်နှစ်သက်ရာ အသုံးပြုနိုင်ပြီး မိမိတို့ရေးသားပြီးသော code ကို deploy လုပ်လို့ပါက `go build` ဟု binary ထုတ်ပြီး execute ပြုလုပ်နိုင်သည်။
 
 ### Main
+
 
 Hopefully, the code that we just executed is understandable. We've created a function and printed out a string with the built-in `println` function. Did `go run` know what to execute because there was only a single choice? No. In Go, the entry point to a program has to be a function called `main` within a package `main`.
 
@@ -188,9 +192,9 @@ If you want, you can alter the code and change the package name. Run the code vi
 
 ## Imports
 
-Go has a number of built-in functions, such as `println`, which can be used without reference. We can't get very far though, without making use of Go's standard library and eventually using third-party libraries. In Go, the `import` keyword is used to declare the packages that are used by the code in the file.
+Go တွင် `println` ကဲ့သို့သော built-in functions များစွာပါရှိပြီး အသုံးပြုနိုင်ရန် reference လုပ်စရာမလိုပေ။ သို့သာ Go ၏ standard libtary ကိုသာအသုံးပြုပြီး thirdparty library များကိုရှောင်ရှားပါက ခပ်ဝေးဝေးရောက်နိုင်မည် မဟုတ်ပေ။ ထိုအတွက် Go တွင် အပြင်မှ Package များမှ Code များကို အသုံးပြုလိုပါက `import` keyword ကိုအသုံးပြုနိုင်သည်။
 
-Let's change our program:
+ကျွန်တော်တို့ program ကိုအောက်ပါအတိုင်း ပြောင်းလဲကြည့်လိုက်ပါ။
 
 ```go
 package main
@@ -208,13 +212,13 @@ func main() {
 }
 ```
 
-Which you can run via:
+အောက်ကအတိုင်း run နိုင်ပါသည်။
 
 ```
 go run main.go 9000
 ```
 
-We're now using two of Go's standard packages: `fmt` and `os`. We've also introduced another built-in function `len`. `len` returns the size of a string, or the number of values in a dictionary, or, as we see here, the number of elements in an array. If you're wondering why we expect 2 arguments, it's because the first argument -- at index 0 -- is always the path of the currently running executable. (Change the program to print it out and see for yourself.)
+ယခု ကျွန်တော်တို့ အသုံးပြုနေသည်မှာ Go ၏ standard package များဖြစ်သော် `fmt` နှင့် `os` တို့ဖြစ်သည်။ ထိုအပြင် မူလပါရှိပြီး ဖြစ်သော `len` ဟုသော function ကိုပါ မိတ်ဆက်ပေးလိုက်သည်။ `len` သည် string တစ်ခု၏ size ကိုသော်လည်းကောင်း dictionary ဖြစ်ပါက ပါဝင်သော value အရေအတွက်ကို လည်း ယခုကဲ့သို့သော array ဖြစ်ပါက ပါဝင်သော element အရေအတွက်ကို ဖော်ပြပေးသည်။ အဘယ်ကြောင့် သင့်အနေဖြင့် argument (၂)ခုကို မျှော်လင့်ထားသနည်းဟု ဆိုပါက index 0 တွင်ရှိသည့် ပထမ argument သည် လက်ရှိ run နေသော executable ၏ path အနေဖြင့် ပါရှိမည်ဖြစ်သည်။ (program ကို print ထုတ်မည့် value ပြောင်းလဲခြင်းဖြင့် ကိုယ်တိုင် စမ်းသပ်နိုင်သည်။)
 
 You've probably noticed we prefix the function name with the package, e.g., `fmt.Println`. This is different from many other languages. We'll learn more about packages in later chapters. For now, knowing how to import and use a package is a good start.
 
