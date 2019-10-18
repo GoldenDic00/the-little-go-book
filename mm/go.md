@@ -1,33 +1,34 @@
-# About This Book
+# စာအုပ်နှင့်ပတ်သတ်၍ 
 
-## License
+## လိုင်စင်
 
 The Little Go စာအုပ်သည် Attribution-NonCommercial-ShareAlike 4.0  လိုင်စင်အရ မှတ်တမ်းတင်ထားသည်။ ထိုစာအုပ်အတွက် အခကြေးငွေ ပေးစရာမလို။ သင့်အနေဖြင့် ထိုစာအုပ်ကို ပြန်လည်ဖြန့်ဝေ၊ ပြင်ဆင်၊ ပြသခြင်း ပြုနိုင်သည်။ သို့သော ထိုစာအုပ် မူလစာရေးသူ ဖြစ်သည့် Karl Seguin ကိုပြန်လည် ညွန်းဆိုရမည်ဖြစ်ပြီး စီးပွားဖြစ်သုံးစွဲရန် ခွင့်မပြု။ လိုင်စင်အပြည့်အစုံကို အောက်ပါအတိုင်းဖတ်ရှုနိုင်သည်။
 
 <https://creativecommons.org/licenses/by-nc-sa/4.0/>
 
-## Latest Version
+## နောက်ဆုံး Version
 
-The latest source of this book is available at:
+ယခုစာအုပ်၏ နောက်ဆုံး version ကိုအောက်ဖော်ပြပါလင့်တွင် ဖတ်ရှုနိုင်ပါသည်။
 <https://github.com/karlseguin/the-little-go-book>
 
-# Introduction
+# အစပျိုး
 
-I've always had a love-hate relationship when it comes to learning new languages. On the one hand, languages are so fundamental to what we do, that even small changes can have measurable impact. That *aha* moment when something clicks can have a lasting effect on how you program and can redefine your expectations of other languages. On the downside, language design is fairly incremental. Learning new keywords, type system, coding style as well as new libraries, communities and paradigms is a lot of work that seems hard to justify. Compared to everything else we have to learn, new languages often feel like a poor investment of our time.
 
-That said, we *have* to move forward. We *have* to be willing to take incremental steps because, again, languages are the foundation of what we do. Though the changes are often incremental, they tend to have a wide scope and they impact productivity, readability, performance, testability, dependency management, error handling, documentation, profiling, communities, standard libraries, and so on. Is there a positive way to say *death by a thousand cuts*?
+Language အသစ်တစ်ခုသင်တိုင်း ကျွန်တော်အတွက် စိတ်နှစ်ခွဖြစ်ရပါတယ်။ တဖက်မှာ language တွေဟာ ကျွန်တော်တို့ နေ့စဉ်လုပ်နေတာရဲ့ အခြေခံဖြစ်ပြီးတော့ အပြောင်းအလဲ အသေးလေးတစ်ခုပင် ထိရောက်မှု အများကြီးရှိနိုင်ပါတယ်။ တခုခုကို နှိပ်လိုက်ပါက သင့် program ကိုသက်ရောက်စေနိုင်သည့် ရလဒ်ကပင် *ဟာကနဲ* ဖြစ်နိုင်ပြီး သင့်အနေဖြင့် အခြား language များ၏ အမြင်ကိုပြန်၍ ပြောင်းလဲစေနိုင်သည်။ တဖက်ကပြန်ကြည့်ပါက language  များသည် ဆင့်ကဲ့ design လုပ်ထားသည်ဖြစ်၍ ဘာသာစကား အသစ် တစ်ခုကို လေ့လာပါက Keyword အသစ် ၊ type system နှင့် coding style များမှ အစ library အသစ်များ ၊ အဖွဲ့အစည်းအသစ်များနှင့် paradigms အသစ်များကို လေ့လာရခြင်းသည် အင်မတန်ပင် အလုပ်ရှုပ်သည်က မငြင်းသာ။ တခြားအရာများနှင့် နှိုင်းယှဉ်ပါက language အသစ်ကို လေ့လာခြင်းသည် အချိန်ကို အကျိုးရှိစွာ အသုံးချသည်ကော ဟုတ်ပေပါ့မလား ဟု သံသယဝင်မိလေသည်။
 
-That leaves us with an important question: **why Go?** For me, there are two compelling reasons. The first is that it's a relatively simple language with a relatively simple standard library. In a lot of ways, the incremental nature of Go is to simplify some of the complexity we've seen being added to languages over the last couple of decades. The other reason is that for many developers, it will complement your existing arsenal.
+သို့ပင်သော်ညား ကျွန်တော်တို့သည် *ရှေ့ကိုဆက်တိုး* ရမည်ဖြစ်သည်။ language များသည် ကျွန်တော်တို့ လုပ်ဆောင်သည့် အရာများ၏ အခြေခံဖြစ်သဖြင့် ကျွန်တော်တို့ အနေဖြင့် *ခြေလှမ်းတစ်လှမ်းချင်း* ဖြစ်စေ လှမ်းရမည် ဖြစ်သည်။ အပြောင်းအလဲများမှာ တဆင့်ချင်းစီဖြစ်သော်လည်း  productivity ၊ Readability ၊ Performance ၊ Testability ၊ Dependency Management ၊  Error Handling ၊ Documentation ၊ Profiling ၊ Communities နှင့် Standard Libraries များမှာ ကျယ်ပြန့်ပြီး ထိရောက်မှုမှာလည်း ကွာခြားလှပေသည်။ *ဓားချက်တစ်ထောင်ဖြင့်* အခုတ်ခံရသည်ကို အကောင်း ဘယ်လိုပြောရမှန်းပင် မသိပေ။
 
-Go was built as a system language (e.g., operating systems, device drivers) and thus aimed at C and C++ developers. According to the Go team, and which is certainly true of me, application developers, not system developers, have become the primary Go users. Why? I can't speak authoritatively for system developers, but for those of us building websites, services, desktop applications and the like, it partially comes down to the emerging need for a class of systems that sit somewhere in between low-level system applications and higher-level applications.
+ထိုနေရာတွင် မေးစရာ ပေါ်လာသည်က အဘယ်ကြောင့် *Go* ကိုရွှေးချယ်ခဲ့သနည်း။ ကျွန်တော်အတွက်တော့ ဖြေစရာနှစ်ခုရှိသည်။ ပထမတစ်ခုက ရိုးရိုးရှင်းရှင်း standard libraries များနှင့် ရိုးရိုးရှင်းရှင်း language တစ်ခုကြောင့်ဖြစ်သည်။ ထိုကြောင့် ထပ်ဆင့်တိုးတက်သွားသော Go ၏ သဘာဝကြောင့် ကျွန်တော်တို့ တခြား language များတွင် တွေ့ကြုံနေရသည့် အရှုပ်ထုပ်များကို ရှင်းလင်းစေနိုင်သည်။ နောက်တစ်ခုမှာ တခြား developer များအနေဖြင့် မိမိတို့တည်ရှိပြီးသော အရည်အချင်းများအနက် ပေါင်းစပ်အသုံးချနိုင်သည်။
 
-Maybe it's a messaging, caching, computational-heavy data analysis, command line interface, logging or monitoring. I don't know what label to give it, but over the course of my career, as systems continue to grow in complexity and as concurrency frequently measures in the tens of thousands, there's clearly been a growing need for custom infrastructure-type systems. You *can* build such systems with Ruby or Python or something else (and many people do), but these types of systems can benefit from a more rigid type system and greater performance. Similarly, you *can* use Go to build websites (and many people do), but I still prefer, by a wide margin, the expressiveness of Node or Ruby for such systems.
+Go မှာ system language (ဥပမာ operation system များ၊ device driver များ တည်ဆောက်ရန်) အနေဖြင့်ဖွဲ့စည်းထားပြီး C နှင့် C++ developer များအတွက် ရည်ရွယ်ထားသော်လည်းလက်တွေ့တွင် ကျွန်တော်လို application developer များမှာ အဓိက Go ကိုအသုံးပြုသူ အများစုဖြစ်နေသည်။ ဘာဖြစ်လို့ ဆိုသည်ကို system developers မဟုတ်သဖြင့် မယ်မယ်ရရ မပြောနိုင်သော်လည်း ကျွန်တော်တို့လို့ website တည်ဆောက်သူများ ၊ Service နှင့် desktop application တည်ဆောက်သူများအတွက်မူ high-level နှင့် Low-level application များ အကြား ပေါင်းကူတံတားတစ်ခု သဖွယ်ဖြစ်နေသည်။
 
-There are other areas where Go excels. For example, there are no dependencies when running a compiled Go program. You don't have to worry if your users have Ruby or the JVM installed, and if so, what version. For this reason, Go is becoming increasingly popular as a language for command-line interface programs and other types of utility programs you need to distribute (e.g., a log collector).
+Messaging ၊ Caching ၊ နှင့် အချက်အလက်အမြောက်အများ အသုံးပြု၍ တွက်ချက်ရသည်များ ၊ Command Line Interface များ ၊ Logging ၊ Monitoring နှင့် မည်သို့မည်ပုံ ခေါင်းစဉ်တပ်ရမှန်းမသိသော အချို့သော အလုပ်များအတွက် အချိန်ကြာလာသည်နှင့်အမျှ ပို၍ရှုပ်ထွေးလာပြီး တပြိုင်နက် အမြောက်အများ ထောင်နှင့်သောင်းနှင့်ချီ၍ တိုင်းတာလာရသည့်အခါ မိမိတို့လိုအပ်သလို Infrastructure ကိုပြုပြင်ပြောင်းလဲနိုင်ရန် လိုအပ်လာသည်။ ထိုသို့သော စနစ်များကို လူအများစု အသုံးပြုသည့် Ruby သို့မဟုတ် Python ကဲ့သို့ Language များ အသုံးပြု၍ရေးသားနိုင်သော်လည်း တင်းကျပ်သော Type စနစ်ကို အသုံးပြုသော Language များအသုံးပြုပါက အကျိုးဖြစ်ထွန်းသလို Performance လည်းပို၍ ကောင်းပေသည်။ ထိုနည်းတူ Go ကိုအသုံးပြု၍ website များ *ရေးသားနိုင်သော်လည်း* ထိုသို့သော စနစ်များကို များသောအားဖြင့် ပို၍ ဖြန့်ကျက်ရလွယ်သည့်  Node သို့မဟုတ် Ruby ကိုပို၍ သဘောကျမိသည်။
 
-Put plainly, learning Go is an efficient use of your time. You won't have to spend long hours learning or even mastering Go, and you'll end up with something practical from your effort.
+Go အားသာသည့် တခြားအပိုင်းများလည်း ရှိသေးပေသည်။ ဥပမာ Compile လုပ်ထားသော Go Program တစ်ခုအတွက် dependency များမလိုခြင်း။ သင့်အနေဖြင့် user များ Ruby သို့မဟုတ် JVM သွင်းထားခြင်း ရှိမရှိ ၊ ရှိလျှင်ပင် မည်သည့် version ကိုသွင်းထားသနည်း စဉ်းစားရန်မလို။ ထိုကြောင့် Go သည် Command line အတွက်နှင့် distribute လုပ်ရန်လိုသည့် utlity program များ (ဥပမာ Log Collector လိုမျိုး) အတွက် တဖြည်းဖြည်း လူကြိုက်များလာသည်။ 
 
-## A Note from the Author
+အချုပ်အားဖြင့်ပြောရလျှင် Go ကိုသင်ယူခြင်းသည် သင့်အချိန်ကို အကျိုးရှိစွာ အသုံးချခြင်း ပင်ဖြစ်သည်။ သင့်အနေဖြင့် နာရီပေါင်းများစွာ အချိန်ကုန်ပြီး Go ကိုကျွမ်းကျင်ရန် လုပ်စရာမလိုပဲ သိသလောက်နဲ့ပင် လက်တွေ့အသုံးချနိုင်သည်။
+
+## စာရေးသူမှ အမှာစာ
 
 I've hesitated writing this book for a couple reasons. The first is that Go's own documentation, in particular [Effective Go](https://golang.org/doc/effective_go.html), is solid.
 
@@ -35,11 +36,11 @@ The other is my discomfort at writing a book about a language. When I wrote The 
 
 As I think about the paragraphs and chapters that lay ahead, I know that I won't be able to make those same assumptions. How much time do you spend talking about interfaces knowing that for some, the concept will be new, while others won't need much more than *Go has interfaces*? Ultimately, I take comfort in knowing that you'll let me know if some parts are too shallow or others too detailed. Consider that the price of this book.
 
-# Getting Started
+# စတင်ခြင်း
 
-If you're looking to play a little with Go, you should check out the [Go Playground](https://play.golang.org/) which lets you run code online without having to install anything. This is also the most common way to share Go code when seeking help in [Go's discussion forum](https://groups.google.com/forum/#!forum/golang-nuts) and places like StackOverflow.
+သင့်အနေဖြင့် Go နှင့်ရင်းနှီးလိုပါက ဘာမှ install လုပ်ရန်မလိုပဲ [Go Playground](https://play.golang.org/) တွင်စမ်းသပ်နိုင်သည်။ ထိုအပြင် Go Code မှာကို မျှဝေလေ့လာနိုင်သော [Go's discussion forum](https://groups.google.com/forum/#!forum/golang-nuts) တွင် အကူအညီတောင်းနိုင်ပြီး stackoverflow တွင်လည်း မေးလိုရာမေးနိုင်သည်။ 
 
-Installing Go is straightforward. You can install it from source, but I suggest you use one of the pre-compiled binaries. When you [go to the download page](https://golang.org/dl/), you'll see installers for various platforms. Let's avoid these and learn how to set up Go ourselves. As you'll see, it isn't hard.
+Go ကို Install လုပ်ရသည်မှာ ခပ်ရိုးရိုးပင်။ Source မှဖြစ်စေ install လုပ်နိုင်သောလည်း compiled လုပ်ပြီးသား binary ကိုအသုံးပြုရန် အကြုံပေးလိုသည်။ [Go Download Page](https://golang.org/dl/) ကိုသွားပါက Platform မျိုးစုံအတွက် Installer များကိုတွေ့ရမည်ဖြစ်သည်။ ၎င်းတို့ကို ခဏဘေးဖယ်ပြီး Go ကို မည်သို့ setup လုပ်ရန် ကိုယ်ဖာသာကိုယ် လေ့လာကြပါစို့။ သင်တွေ့သည့် အတိုင်း သိပ်မခက်လှပါ။ 
 
 Except for simple examples, Go is designed to work when your code is inside a workspace. The workspace is a folder composed of `bin`, `pkg` and `src` subfolders. You might be tempted to force Go to follow your own style - don't.
 
@@ -80,7 +81,7 @@ Environment variables can be set through the `Environment Variables` button on t
 
 Open a command prompt and type `go version`. You'll hopefully get an output that looks like `go version go1.3.3 windows/amd64`.
 
-# Chapter 1 - The Basics
+# အခန်း (၁) - အခြေခံ
 
 Go is a compiled, statically typed language with a C-like syntax and garbage collection. What does that mean?
 
@@ -128,7 +129,7 @@ Some variables, when created, have an easy-to-define life. A variable local to a
 
 Languages with garbage collectors (e.g., Ruby, Python, Java, JavaScript, C#, Go) are able to keep track of these and free them when they're no longer used. Garbage collection adds overhead, but it also eliminates a number of devastating bugs.
 
-## Running Go Code
+## Go Code များ runခြင်း
 
 Let's start our journey by creating a simple program and learning how to compile and execute it. Open your favorite text editor and write the following code:
 
@@ -140,11 +141,9 @@ func main() {
 }
 ```
 
-Save the file as `main.go`. For now, you can save it anywhere you want; we don't need to live inside Go's workspace for trivial examples.
+`main.go` ဟု save လိုက်ပါ။ လက်တလောတွင်တော့ သင့်အနေဖြင့် save ချင်သည့်နေရာတွင် save နိုင်သည်။ Go workplace အတွင်းဖြစ်ရန်မလိုပေ။ ထိုနောက် shell/command prompt ကိုဖွင့်၍ save ထားသည့် နေရာကိုသွားလိုက်ပါ။ ကျွန်တော်အတွက်ကတော့ `cd ~/code` ဟုရိုက်ရုံဖြင့် ရောက်သွားသည်။
 
-Next, open a shell/command prompt and change the directory to where you saved the file. For me, that means typing `cd ~/code`.
-
-Finally, run the program by entering:
+နောက်ဆုံးတွင် အောက်က အတိုင်း ရိုက်ထည့်ပြီး program ကို run နိုင်သည်။
 
 ```
 go run main.go
@@ -234,7 +233,7 @@ godoc -http=:6060
 
 and pointing your browser to `http://localhost:6060`
 
-## Variables and Declarations
+## Variables နှင့်ကြေညာခြင်းများ
 
 It'd be nice to begin and end our look at variables by saying *you declare and assign to a variable by doing x = 4.* Unfortunately, things are more complicated in Go. We'll begin our conversation by looking at simple examples. Then, in the next chapter, we'll expand this when we look at creating and using structures. Still, it'll probably take some time before you truly feel comfortable with it.
 
@@ -333,7 +332,7 @@ won't compile because `name` is declared but not used. Like unused imports it'll
 
 There's more to learn about declaration and assignments. For now, remember that you'll use `var NAME TYPE` when declaring a variable to its zero value, `NAME := VALUE` when declaring and assigning a value, and `NAME = VALUE` when assigning to a previously declared variable.
 
-## Function Declarations
+## Function ကြေညာခြင်းများ
 
 This is a good time to point out that functions can return multiple values. Let's look at three functions: one with no return value, one with one return value, and one with two return values.
 
@@ -386,7 +385,7 @@ If you're coming from a dynamic language, the complexity around types and declar
 
 If you're coming from a statically typed language, you're probably feeling comfortable with Go. Inferred types and multiple return values are nice (though certainly not exclusive to Go). Hopefully as we learn more, you'll appreciate the clean and terse syntax.
 
-# Chapter 2 - Structures
+# အခန်း (၂) - Structure များ
 
 Go isn't an object-oriented (OO) language like C++, Java, Ruby and C#. It doesn't have objects nor inheritance and thus, doesn't have the many concepts associated with OO such as polymorphism and overloading.
 
@@ -705,7 +704,7 @@ Again, these are all pretty subtle cases. Unless you're iterating over thousands
 
 From a practical point of view, this chapter introduced structures, how to make an instance of a structure a receiver of a function, and added pointers to our existing knowledge of Go's type system. The following chapters will build on what we know about structures as well as the inner workings that we've explored.
 
-# Chapter 3 - Maps, Arrays and Slices
+# အခန်း (၃) - Maps ၊ Arrays နှင့် Slices
 
 So far we've seen a number of simple types and structures. It's now time to look at arrays, slices and maps.
 
@@ -1041,7 +1040,7 @@ Arrays and maps in Go work much like they do in other languages. If you're used 
 
 There are edge cases that we haven't covered, but you're not likely to run into them. And, if you do, hopefully the foundation we've built here will let you understand what's going on.
 
-# Chapter 4 - Code Organization and Interfaces
+# အခန်း (၄) - Code အစီအစဉ်ချခြင်းနှင့် Interface များ
 
 It's now time to look at how to organize our code.
 
@@ -1932,7 +1931,7 @@ Goroutines effectively abstract what's needed to run concurrent code. Channels h
 
 Having said that, I still make extensive use of the various synchronization primitives found in the `sync` and `sync/atomic` packages. I think it's important to be comfortable with both. I encourage you to first focus on channels, but when you see a simple example that needs a short-lived lock, consider using a mutex or read-write mutex.
 
-# Conclusion
+# နိဒါန်း
 
 I recently heard Go described as a *boring* language. Boring because it's easy to learn, easy to write and, most importantly, easy to read. Perhaps, I did this reality a disservice. We *did* spend three chapters talking about types and how to declare variables after all.
 
