@@ -184,11 +184,13 @@ Develop လုပ်နေစဉ်တွင် `go run` သို့မဟု�
 ### Main
 
 
-Hopefully, the code that we just executed is understandable. We've created a function and printed out a string with the built-in `println` function. Did `go run` know what to execute because there was only a single choice? No. In Go, the entry point to a program has to be a function called `main` within a package `main`.
 
-We'll talk more about packages in a later chapter. For now, while we focus on understanding the basics of Go, we'll always write our code within the `main` package.
+အပေါ်မှာ ရေးထားသော Code ကိုနားလည်မည် ဟုထင်ပါသည်။ function တစ်ခုတည်ဆောက်ပြီး `println` ဟုသော မူလပထမ ပါလာသည် function ကိုအသုံးချ၍ ရေးသားဖော်ပြလိုက်ခြင်းဖြစ်သည်။ Go ထို function ကိုအလိုအလျောက်သိသည်ဟု သင်ထင်ပါသလား? မဟုတ်ပါ တကယ်တော့ Go အတွက် program တစ်ခုတိုင်း၏ စစချင်း run ရန် entry point မှာ `main` package အတွင်းရှိ `main` function ဖြစ်သည်။
 
-If you want, you can alter the code and change the package name. Run the code via `go run` and you should get an error. Then, change the name back to `main` but use a different function name. You should see a different error message. Try making those same changes but use `go build` instead. Notice that the code compiles, there's just no entry point to run it. This is perfectly normal when you are, for example, building a library.
+Package များအကြောင်းနှင့်ပတ်သတ်၍ နောက်ပိုင်း အခန်းများတွင် အသေးစိတ် ထပ်၍ပြောသွားမည် ဖြစ်ပြီး ယခုတွင်မူ `main` package အတွင်းတွင်ရေးသားသည့် အခြေခံကိုနားလည်ရန် အဓိကထားရှင်းပြသွားမည်ဖြစ်သည်။ 
+
+သင့်အနေဖြင့် စိတ်ကြိုက် code နှင့် package name ကိုပြောင်းလဲပြီး `go run` ဟု run လိုက်ပါက error တက်မည်ဖြစ်သည်။ ထိုနောက် `main` ဟုပြန်ပြောင်းပြီး တခြား function အမည်ကို အသုံးပြုပါကလည်း တခြား error တက်ဦးမည် ဖြစ်သည်။ အပေါ်ကဲ့သို့ပြောင်းလဲပြီး `go build` ဟုရိုက်ထည့်လိုက်ပါ။ ထိုအချိန်တွင် compile လုပ်မည်ဖြစ်သော်လည်း entry point မရှိသဖြင့် ဘာမှ run မည်မဟုတ်ပေ။ library တစ်ခုကိုတည်ဆောက်ပါက ထိုကဲ့သို့ အခြေအနေမျိုးသည် ပုံမှန်ပင်ဖြစ်သည်။
+
 
 ## Imports
 
@@ -220,9 +222,10 @@ go run main.go 9000
 
 ယခု ကျွန်တော်တို့ အသုံးပြုနေသည်မှာ Go ၏ standard package များဖြစ်သော် `fmt` နှင့် `os` တို့ဖြစ်သည်။ ထိုအပြင် မူလပါရှိပြီး ဖြစ်သော `len` ဟုသော function ကိုပါ မိတ်ဆက်ပေးလိုက်သည်။ `len` သည် string တစ်ခု၏ size ကိုသော်လည်းကောင်း dictionary ဖြစ်ပါက ပါဝင်သော value အရေအတွက်ကို လည်း ယခုကဲ့သို့သော array ဖြစ်ပါက ပါဝင်သော element အရေအတွက်ကို ဖော်ပြပေးသည်။ အဘယ်ကြောင့် သင့်အနေဖြင့် argument (၂)ခုကို မျှော်လင့်ထားသနည်းဟု ဆိုပါက index 0 တွင်ရှိသည့် ပထမ argument သည် လက်ရှိ run နေသော executable ၏ path အနေဖြင့် ပါရှိမည်ဖြစ်သည်။ (program ကို print ထုတ်မည့် value ပြောင်းလဲခြင်းဖြင့် ကိုယ်တိုင် စမ်းသပ်နိုင်သည်။)
 
-You've probably noticed we prefix the function name with the package, e.g., `fmt.Println`. This is different from many other languages. We'll learn more about packages in later chapters. For now, knowing how to import and use a package is a good start.
+package ၏ အမည်များကို function အမည်များ၏ ရှေ့တွင် prefix အနေဖြင့် သုံးနေခြင်း (ဥပမာ `fmt.Println` ) ကို သတိထားမိမည် ဖြစ်သည်။ ၎င်းသည် တခြား language များနှင့် အဓိက ကွာခြားချက်ဖြစ်ကာ အသေးစိတ်ကို နောက်ပိုင်း အခန်းများတွင် ရှင်းပြသွားပါမည်။ အခုတွင်မူ package တစ်ခုကို import လုပ်တက်ပြီး အသုံးပြုတက်ပါက အစကောင်းဟု ဆိုရမည်။ 
 
-Go is strict about importing packages. It will not compile if you import a package but don't use it. Try to run the following:
+Package များ import လုပ်ရာတွင် Go သည် အလွန်တင်းကျပ်ပါသည်။ package တစ်ခုကို import ပြီး အသုံးမပြုပါက compile လုပ်နိုင်မည် မဟုတ်။ အောက်က အတိုင်း run ကြည့်ပါ။
+
 
 ```go
 package main
@@ -236,25 +239,25 @@ func main() {
 }
 ```
 
-You should get two errors about `fmt` and `os` being imported and not used. Can this get annoying? Absolutely. Over time, you'll get used to it (it'll still be annoying though). Go is strict about this because unused imports can slow compilation; admittedly a problem most of us don't have to this degree.
 
-Another thing to note is that Go's standard library is well documented. You can head over to <https://golang.org/pkg/fmt/#Println> to learn more about the `Println` function that we used. You can click on that section header and see the source code. Also, scroll to the top to learn more about Go's formatting capabilities.
+`fmt` နှင့် `os` နှစ်ခုကို import လုပ်ထားပြီး အသုံးမပြုသောကြောင့် error နှစ်ခုတက်လိမ့်မည်ဖြစ်သည်။ အာရုံမနောက်ချေဘူးလား။ မှန်ပါသည်။ သို့သော် အချိန်ကြာလာသည်နင့်အမျှ အာရုံနောက်သောလည်း ရေးသာကျလာမည် ဖြစ်သည်။ တော်တော်များများ ကိုယ်တိုင်ကိုယ်ကျ ကြုံချင်မှကြုံရသောလည်း အသုံးမပြုသော import များသည် program ကိုနှေးစေသောကြောင့် Go တွင် တင်းကျပ်ထားခြင်းဖြစ်သည်။ 
 
-If you're ever stuck without internet access, you can get the documentation running locally via:
+မှတ်သားရန် နောက်တစ်ခုမှာ Go ၏ standard library သည်ရှာဖွေရန် အချက်အလက်စုံလင်လှသည်။ <https://golang.org/pkg/fmt/#Println> ကိုသွား၍ ကျွန်တော်တို့ အသုံးပြုသည့် `Println` အကြောင်းကိုသာမက ၎င်းကို click နှိပ်၍ မည်သို့မည်ပုံရေးသားထားသည်ကိုပါ ဖတ်ရှုနိုင်သည်။ ထိုနောက် အပေါ်ဘက်သို့ scroll ပြုလုပ်၍ Go ၏ format လုပ်နိုင်စွမ်းကိုပါ လေ့လာနိုင်မည်ဖြစ်သည်။ 
+
+အင်တာနက်မရပါက Documentation ကို offline အနေဖြင့် အောက်ပါအတိုင်း run နိုင်မည်ဖြစ်သည်။
 
 ```
 godoc -http=:6060
 ```
 
-and pointing your browser to `http://localhost:6060`
+ထိုနောက် browser ပေါ်တွင် `http://localhost:6060` ဟု url ကိုခေါ်ကြည့်ပါ။
 
 ## Variables နှင့်ကြေညာခြင်းများ
 
-It'd be nice to begin and end our look at variables by saying *you declare and assign to a variable by doing x = 4.* Unfortunately, things are more complicated in Go. We'll begin our conversation by looking at simple examples. Then, in the next chapter, we'll expand this when we look at creating and using structures. Still, it'll probably take some time before you truly feel comfortable with it.
+ဒီစာအုပ်မှာ *ဒီလိုမျိုး x=4 ဟု variable ကြေညာပြီး assign လုပ်လိုက်* ဟုများသာလွယ်လျှင် အလွန်ကောင်းမည်။ သို့သော် Go တွင်ထိုကိစ္စမှာ အနည်းငယ်ရှုပ်ထွေးသည်ဟု ဆိုရမည်။ မည်သို့မည်ပုံဆိုသည်ကို အောက်မှ ဥပမာများကို ဖတ်ရှုပြီးသိနိုင်ပါသည်။ နောက်အခန်းတွင်မူ Structure များတည်ဆောက်အသုံးပြုမှု အပိုင်းကိုပါ ရေးသားသွားမည်ဖြစ်သည်။ သို့ပင်သော်ညား မိမိနှင့်ရင်းနှီးသွားရန် အချိန်တစ်ခုလိုအပ်ပါလိမ့်မည်။
 
-You might be thinking *Woah! What can be so complicated about this?* Let's start looking at some examples.
+သင့်အနေဖြင့် *ဘာလို့ ဒီလောက်တောင် ရှုပ်ထွေးတာလဲ* ဟုထင်ကောင်းထင်လိမ့်မည်။ ယခုတော့ ဥပမာ အနေဖြင့်ကြည့်ကြည့်ပါ။ Go တွင် အရိုးရှင်းဆုံး variable ကြေညာခြင်းနှင့်သတ်မှတ်ခြင်းသည် အောက်ပါအတိုင်းဖြစ်သည်။ 
 
-The most explicit way to deal with variable declaration and assignment in Go is also the most verbose:
 
 ```go
 package main
@@ -270,19 +273,21 @@ func main() {
 }
 ```
 
-Here, we declare a variable `power` of type `int`. By default, Go assigns a zero value to variables. Integers are assigned `0`, booleans `false`, strings `""` and so on. Next, we assign `9000` to our `power` variable. We can merge the first two lines:
+
+၎င်းတွင် `power` ဟုသော variable ကို `int` အမျိုးအစားအဖြစ်သတ်မှတ်လိုက်သည်။ မူလအတိုင်းဆိုပါက go တွင် variable များကို နိတ္ထ တန်ဖိုးများ သတ်မှတ်လေ့ရှိသည်။ Integer ဆိုပါက `0` ၊ boolean ဆိုပါက `false` ၊ strings ဆိုပါက `""` စသဖြင့်စသဖြင့်။ ထိုကြောင့် နောက်တစ်ကြောင်းတွင် `power` ဟုသော variable တွင် တန်ဖိုး `9000` ကိုသတ်မှတ်လိုက်ခြင်းဖြစ်သည်။ ထိုနှစ်ကြောင်းကို တစ်ကြောင်းထဲ အဖြစ် အောက်ပါ အတိုင်းရေးသားနိုင်သည်။ 
 
 ```go
 var power int = 9000
 ```
 
-Still, that's a lot of typing. Go has a handy short variable declaration operator, `:=`, which can infer the type:
+သို့ပင်သော်ညား စာအများကြီးရိုက်နေရသေးသည်။ Go အပေါ်ကဲ့သို့သော ကြေညာသတ်မှတ်ချက်အတွက် type ကို infer ပြုလုပ်ပေးသော အတိုကောက် `:=`operator ရှိပါသည်။
+
 
 ```go
 power := 9000
 ```
 
-This is handy, and it works just as well with functions:
+အတော်ပင် အသုံးဝင်ပြီး function များဖြင့်လည်း အသုံးပြုနိုင်သည်။
 
 ```go
 func main() {
@@ -294,7 +299,8 @@ func getPower() int {
 }
 ```
 
-It's important that you remember that `:=` is used to declare the variable as well as assign a value to it. Why? Because a variable can't be declared twice (not in the same scope anyway). If you try to run the following, you'll get an error.
+သတိပြုရမည်မှာ `:=` သည် assign ပြုလုပ်ရုံသာမက declare ပြုလုပ်ရာတွင်လည်းပါဝင်သည်။ ထိုကြောင့် variable တစ်ခုကို နှစ်ခါမကြေညာနိုင်သဖြင့် အောက်ပါအတိုင်း ရေးပါက error တက်မည်ဖြစ်သည်။
+
 
 ```go
 func main() {
@@ -308,9 +314,9 @@ func main() {
 }
 ```
 
-The compiler will complain with *no new variables on left side of :=*. This means that when we first declare a variable, we use `:=` but on subsequent assignment, we use the assignment operator `=`. This makes a lot of sense, but it can be tricky for your muscle memory to remember when to switch between the two.
+*no new variables on left side of :=* ဟု compiler ကအချက်ပေးမည်ဖြစ်သည်။ ဆိုလိုသည်မှာ ပထမတခါ variable ကြေညာပါက `:=` ကိုသုံးနိုင်ပြီး ဒုတိယတစ်ခေါက်တွင်မူ `=` ကိုသာသုံးရမည်ဖြစ်သည်။ မှန်သည်ကမှန်သော်လည်း အကျင့်ပါနေသဖြင့် မည်သည်ကို သုံးရမည် စဉ်းစားရသည်မှာ နည်းနည်းတော့ တိုင်ပတ်သည်။
 
-If you read the error message closely, you'll notice that *variables* is plural. That's because Go lets you assign multiple variables (using either `=` or `:=`):
+အပေါ်က error ကိုသေချာဖတ်ကြည့်ပါက *variables*  ဟုသော အများကိန်းကို ညွန်းဆိုထားသည်ကိုတွေ့ရမည်။ အဘယ်ကြောင့်ဆိုသော go တွင် variable များစွာကို `=` နှင့် `:=` ကိုအသုံးပြုနိုင်သည်။
 
 
 ```go
@@ -320,7 +326,8 @@ func main() {
 }
 ```
 
-As long as one of the variables is new, `:=` can be used. Consider:
+variable များအနက် တစ်ခုက အသစ်ဖြစ်ပါက `:=` ကိုအသုံးပြုနိုင်သည်။ ဥပမာ
+
 
 ```go
 func main() {
@@ -332,9 +339,9 @@ func main() {
 }
 ```
 
-Although `power` is being used twice with `:=`, the compiler won't complain the second time we use it, it'll see that the other variable, `name`, is a new variable and allow `:=`. However, you can't change the type of `power`. It was declared (implicitly) as an integer and thus, can only be assigned integers.
+`power` သည်နှစ်ခါသုံးထားသော်လည်း ဒုတိယတစ်ခါတွက် compiler မှ error မတက်ချေ။ အဘယ်ကြောင့်ဆိုသော `name` variable မှာမူ အသစ်ဖြစ်သောကြောင့် ခွင့်လွတ်ထားခြင်းဖြစ်သည်။ သို့သော် `power` ၏ type ကိုမူ ပြောင်းလဲခွင့်မပေးပေ။ integer ဟုကြေညာထားသောကြောင့် integer တန်ဖိုးသာ သတ်မှတ်ခွင့်ပေးမည်ဖြစ်သည်။
 
-For now, the last thing to know is that, like imports, Go won't let you have unused variables. For example,
+လောလောဆယ် နောက်ဆုံးတစ်ခုအနေဖြင့် သိထားသင့်သည်က import ကဲ့သို့ပင် Go အတွင် အသုံးမပြုသော variable များကိုကြေညာခွင့်မပေးချေ။ ဥပမာ
 
 ```go
 func main() {
@@ -343,13 +350,15 @@ func main() {
 }
 ```
 
-won't compile because `name` is declared but not used. Like unused imports it'll cause some frustration, but overall I think it helps with code cleanliness and readability.
+တွင် `name` variable သည် ကြေညာထားပြီး အသုံးမပြုသောကြောင့် compile ပြုလုပ်မည်မဟုတ်။ import ကဲ့သို့ပင်အာရုံနောက်သောလည်း Code ၏ cleaniess နှင့် readability ကိုအထောက်အကူပြုပါသည်။
 
-There's more to learn about declaration and assignments. For now, remember that you'll use `var NAME TYPE` when declaring a variable to its zero value, `NAME := VALUE` when declaring and assigning a value, and `NAME = VALUE` when assigning to a previously declared variable.
+ကြေညာခြင်းနှင့် သတ်မှတ်ခြင်းအတွက် သင်ယူရန် ကျန်ရှိသေးသော်လည်း ယခုတွင် သင်မှတ်ထားရန်လိုသည်မှာ နတ္တိတန်ဖိုး အတွက် `var NAME TYPE` ဟု အသုံးပြုနိုင်ပြီး `NAME := VALUE` မှာ နှစ်ခုလုံးကို တပေါင်းတည်းပြုလုပ်ကာ ကြေညာပြီးသော variable များအတွက်သာ `NAME = VALUE` ဟုသုံးနိုင်သည်။
+
 
 ## Function ကြေညာခြင်းများ
 
-This is a good time to point out that functions can return multiple values. Let's look at three functions: one with no return value, one with one return value, and one with two return values.
+Go တွင် function များသည် တခုထက်ပိုသော variable များကို return ပြန်နိုင်သည်။ အောက်က ဥပမာထဲရှိ function များဖြစ်သည့် return မပါသော ၊ return value တစ်ခုဖြင့် ၊ return value နှစ်ခုဖြင့် function ၃ခုကိုကြည့်ကြည့်ပါ။
+
 
 ```go
 func log(message string) {
@@ -362,7 +371,7 @@ func power(name string) (int, bool) {
 }
 ```
 
-We'd use the last one like so:
+နောက်ဆုံးတစ်ခုကို အောက်ပါအတိုင်းခေါ်နိုင်သည်။
 
 ```go
 value, exists := power("goku")
@@ -371,7 +380,8 @@ if exists == false {
 }
 ```
 
-Sometimes, you only care about one of the return values. In these cases, you assign the other values to `_`:
+တခါတရံ သင့်အနေဖြင့် return value တစ်ခုကိုသာ လိုချင်သည့်အနေအထားမျိုးရှိပါက မလိုအပ်သော တစ်ခုကို `_` ဟု assign ပြုလုပ်နိုင်သည်။
+
 
 ```go
 _, exists := power("goku")
@@ -380,9 +390,9 @@ if exists == false {
 }
 ```
 
-This is more than a convention. `_`, the blank identifier, is special in that the return value isn't actually assigned. This lets you use `_` over and over again regardless of the returned type.
+`_` သည် ဗလာ identifier ဖြစ်ပြီး return value မယူရန် အထူးတည်ဆောက်ထားသဖြင့် ကြိမ်ဖန်များစွာ `_` ကိုအသုံးပြုနိုင်သည်။
 
-Finally, there's something else that you're likely to run into with function declarations. If parameters share the same type, we can use a shorter syntax:
+နောက်ဆုံးတွင် function ကြေညာခြင်းနှင့်ပတ်သတ်၍ အောက်ပါအတိုင်းပုံစံမျိုးမြင်တွေ့နိုင်သည်။ ပါဝင်သော parameter များသည် အမျိုးအစားတူညီပါက အတိုကောက် ပုံစံဖြင့် အသုံးပြုနိုင်သည်။
 
 ```go
 func add(a, b int) int {
@@ -390,7 +400,7 @@ func add(a, b int) int {
 }
 ```
 
-Being able to return multiple values is something you'll use often. You'll also frequently use `_` to discard a value. Named return values and the slightly less verbose parameter declaration aren't that common. Still, you'll run into all of these sooner than later so it's important to know about them.
+value များစွာပြန်ခြင်းနှင့် `_` ကိုအသုံးပြုရခြင်းသည် Go တွင်မကြာခဏကြုံတွေ့ရမည့် အရာများဖြစ်သည်။ return value များကို အမည်ပေးခြင်း နှင့် အနည်းငယ်လျော့ရဲသော parameter declaration များကိုမူ သိပ်ကြုံရမည် မဟုတ်။ သို့သော် အနှေးနှင့်အမြန်ကြုံရမည်ဖြစ်၍ သိထားရန်လိုသည်။
 
 ## Before You Continue
 
