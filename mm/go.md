@@ -402,21 +402,25 @@ func add(a, b int) int {
 
 value များစွာပြန်ခြင်းနှင့် `_` ကိုအသုံးပြုရခြင်းသည် Go တွင်မကြာခဏကြုံတွေ့ရမည့် အရာများဖြစ်သည်။ return value များကို အမည်ပေးခြင်း နှင့် အနည်းငယ်လျော့ရဲသော parameter declaration များကိုမူ သိပ်ကြုံရမည် မဟုတ်။ သို့သော် အနှေးနှင့်အမြန်ကြုံရမည်ဖြစ်၍ သိထားရန်လိုသည်။
 
-## Before You Continue
+## နောက်အခန်း မဖတ်ခင်
 
-We looked at a number of small individual pieces and it probably feels disjointed at this point. We'll slowly build larger examples and hopefully, the pieces will start to come together.
+အခု ကြုံရသော အချက်များသည် သေးငယ်ပြီး အဆက်အစပ်မရှိဖြစ်ကောင်း ဖြစ်သော်လည်း တဖြည်းဖြည်းနှင့်ပို၍ ကြီးမားသော ဥပမာ များကို တည်ဆောက်၍ တစ်ခုနှင့်တစ်ခု ဆက်စပ်မိမည်ဟု မျှော်လင့်မိပါသည်။
 
-If you're coming from a dynamic language, the complexity around types and declarations might seem like a step backwards. I don't disagree with you. For some systems, dynamic languages are categorically more productive.
+dynamic language ရေးသားသော နောက်ခံမှလာခဲ့ပါက type များအကြားရှုပ်ထွေးမှုနှင့် ကြေညာခြင်းများသည် အနည်းငယ် အဟန့်အတားဖြစ်မည်ကို မငြင်းလို။ တချို့ system များအတွက် dynamic language များသည် အလုပ်ပိုဖြစ်လေ့ရှိသည်။
 
-If you're coming from a statically typed language, you're probably feeling comfortable with Go. Inferred types and multiple return values are nice (though certainly not exclusive to Go). Hopefully as we learn more, you'll appreciate the clean and terse syntax.
+Static Type Language နောက်ခံမှ လာခဲ့သည် ဖြစ်သော သင့်အနေဖြင့် Go ကိုအသုံးပြုရသည်မှာ အဆင်ပြေပါလိမ့်မည်။ 
+Go တစ်ခုတည်းတွင် ပါသည် မဟုတ်သော်လည်း type infer လုပ်၍ရခြင်းနှင့် return value အများပေးလို့ရချင်သည် မိုက်သည် ဟုဆိုရမည်။ သင်ယူနေရင်း သေသပ်လှပ သည့် syntax ပုံစကို ပို၍သဘောကျလာမိ ဟု မျှော်လင့်မိသည်။
+
 
 # အခန်း (၂) - Structure များ
 
-Go isn't an object-oriented (OO) language like C++, Java, Ruby and C#. It doesn't have objects nor inheritance and thus, doesn't have the many concepts associated with OO such as polymorphism and overloading.
 
-What Go does have are structures, which can be associated with methods. Go also supports a simple but effective form of composition. Overall, it results in simpler code, but there'll be occasions where you'll miss some of what OO has to offer. (It's worth pointing out that *composition over inheritance* is an old battle cry and Go is the first language I've used that takes a firm stand on the issue.)
+Go သည် C++ ၊ Java ၊ Ruby နှင့် C# ကဲ့သို့ object-oriented (OO) language တစ်ခုမဟုတ်ပေ။ ၎င်းတွင် object ကော inheritance တို့မပါဝင်သဖြင့် OO နှင့်တွဲဖက်ပါရှိသော polymorphism နှင့် overloading concept များပါရှိမည် မဟုတ်ချေ။
 
-Although Go doesn't do OO like you may be used to, you'll notice a lot of similarities between the definition of a structure and that of a class. A simple example is the following `Saiyan` structure:
+Go တွင်ရှိသည်မှာ method များနှင့် ၎င်းတို့နှင့် တွဲစပ်နိုင်သော structure များသာရှိသည်။  ထိုအပြင် ရိုးရှင်းသောလည်း အလုပ်ဖြစ်သည် composition လည်းပါရှိသည်။ ရလဒ်အနေဖြင့် ပို၍ ရိုးရှင်းသော code များ ရေးသားနိုင်မည် ဖြစ်သော်လည်း OO တွင်ပါသည့်များကို တမ်းတကောင်းတမ်းတမိမည် ဖြစ်သည်။ အရင်ကတည်းက အကြီးအကျယ် အငြင်းပွားကြသည့် *composition over inheritance* အကြောင်းရှိသော်လည်း Go သည် ကျွန်တော်အသုံးပြုသော language များအနက် ပထမတစ်ခုကို အသားပေးသော langauage ဖြစ်သည်။
+
+Go သည် သင်ကျွမ်းဝင်နေသော OO ကဲ့သို့ မဟုတ်သော်လည်း structure နှင့် class ကြေညာမှုများသည် ဆင်တူနေကို သတိထားမိမည် ဖြစ်သည်။ ၎င်းကို အောက်ပါ  `Saiyan` structure တွင်တွေ့ရှိနိုင်ပါသည်။
+
 
 ```go
 type Saiyan struct {
@@ -425,13 +429,15 @@ type Saiyan struct {
 }
 ```
 
-We'll soon see how to add a method to this structure, much like you'd have methods as part of a class. Before we do that, we have to dive back into declarations.
+ထိုနောက် ၎င်း structure ကို Class ကဲ့သို့ အသုံးပြုနိုင်အောင် method ဖြင့်မည်သို့ ချိတ်ဆက်မည် များမကြာမီတွေ့ရမည် ဖြစ်ပြီး ယခုတွင် declaration ဘက်ကို ပြန်လှည့်ကြပါစို့။
+
 
 ## Declarations and Initializations
 
-When we first looked at variables and declarations, we looked only at built-in types, like integers and strings. Now that we're talking about structures, we need to expand that conversation to include pointers.
+variable နှင့် declaration များကို ပထမလေ့လာမိသလောက်တွေ့ရမည်မှာ မူလသတ်မှတ်ထားသော type များဖြစ်သည့် integers နှင့် string ကိုတွေ့ရမည်ဖြစ်ပြီး ယခု structure များအကြောင်းလေ့လာရာတွင် pointer များအကြောင်းပါ ဆက်စပ်ရှင်းပြရပါမည်။
 
-The simplest way to create a value of our structure is:
+structure တစ်ခုကို အလွယ်ဆုံးတည်ဆောက်နိုင်ရန်နည်းလမ်းမှာ
+
 
 ```go
 goku := Saiyan{
@@ -440,9 +446,8 @@ goku := Saiyan{
 }
 ```
 
-*Note:* The trailing `,` in the above structure is required. Without it, the compiler will give an error. You'll appreciate the required consistency, especially if you've used a language or format that enforces the opposite.
+*သတိပြုရန်* အထက်က ဥပမာတွင် `,`  သည်မပါမဖြစ်ဖြစ်ပြီး မပါက compiler မှ error ပြမည်ဖြစ်သည်။ သင့်အနေဖြင့် ပါလိုက်မပါလိုက်ဖြစ်ပါက ရသော language များနှင့်နှိုင်းစာရင် သဘောကျလိမ့်မည်မဖြစ်သည်။ field အတွင်းရှိ value တစ်ခုမှ မသတ်မှတ်သော်လည်းရသည်။ ထိုကြောင့် အောက်မှ ဥပမာ နှစ်ခုလုံး အလုပ်လုပ်မည် ဖြစ်သည်။
 
-We don't have to set all or even any of the fields. Both of these are valid:
 
 ```go
 goku := Saiyan{}
@@ -453,19 +458,17 @@ goku := Saiyan{Name: "Goku"}
 goku.Power = 9000
 ```
 
-Just like unassigned variables have a zero value, so do fields.
+field များသည်လည်း variable များကဲ့သို့ပင် assign မလုပ်ထားပါက နတ္တိ တန်ဖိုး သတ်မှတ်ထားသည်။
+ထိုအပြင် field name များကို ကျော်၍ declaration order အတိုင်း assgin လုပ်နိုင်သော်လည်း ရှင်းရှင်းလင်းလင်းဖြစ်စေရန် field အနည်းငယ်ဖြစ်မှသာ အောက်ပါအတိုင်း ပြုလုပ်သင့်သည်။
 
-Furthermore, you can skip the field name and rely on the order of the field declarations (though for the sake of clarity, you should only do this for structures with few fields):
 
 ```go
 goku := Saiyan{"Goku", 9000}
 ```
+အပေါ်မှ ဥပမာတွင် `goku` ဟုသော variable ကိုတည်ဆောက်ကာ assign ပြုလုပ်လိုက်ခြင်း ဖြစ်သည်။
+အချိန်တော်တော်များများတွင် ကျွန်တော်တို့၏ variable ကို value ဖြင့်တိုက်ရိုက် ချိတ်ဆက်ခြင်းပြုလုပ်သည်ထက် pointer တစ်ခုအနေဖြင့် ညွန်းဆိုသည်က များသည်။ pointer သည် value တည်ရှိသော memory address ကိုညွန်ပြပေးသည့် location ဖြစ်သည်။ အိမ်နှင့် အိမ်၏တည်နေရာပြသော မြေပုံ မတူညီသကဲ့သို့ပင်။
 
-What all of the above examples do is declare a variable `goku` and assign a value to it.
-
-Many times though, we don't want a variable that is directly associated with our value but rather a variable that has a pointer to our value. A pointer is a memory address; it's the location of where to find the actual value. It's a level of indirection. Loosely, it's the difference between being at a house and having directions to the house.
-
-Why do we want a pointer to the value, rather than the actual value? It comes down to the way Go passes arguments to a function: as copies. Knowing this, what does the following print?
+အဘယ်ကြောင့် တကယ့် value ထက်စာလျှင် value ကိုညွန်ပြပေးသော point ကိုလိုအပ်သနည်း? Go သည် function သို့ argument အနေဖြင့် ပို့လွတ်သောအခါ copy အနေဖြင့်ပို့လွတ်သောကြောင့်ဖြစ်သည်။ ထိုကြောာင့် အောက်က code တွင်မည်သို့ ပေါ်မည်နည်း။
 
 ```go
 func main() {
@@ -479,7 +482,7 @@ func Super(s Saiyan) {
 }
 ```
 
-The answer is 9000, not 19000. Why? Because `Super` made changes to a copy of our original `goku` value and thus, changes made in `Super` weren't reflected in the caller. To make this work as you probably expect, we need to pass a pointer to our value:
+အဖြေမှာ 19000 မဟုတ်ပဲ 9000 ဖြစ်မည်။ `Super` ဟုသော function သည် original `goku` variable မှတန်ဖိုးကိုယူသည်မဟုတ်ပဲ copy ပွားယူသောကြောင့် `Super` မှ လုပ်ဆောင်သည် ၎င်း function ကိုခေါ်သူအတွက် အသက်ဝင်မည်မဟုတ်ပေ။ သင်လိုချင်သည့် အတိုင်းအလုပ်လုပ်စေလိုပါ pointer value ကိုသာ ပို့ပေးရန်လိုသည်။
 
 ```go
 func main() {
@@ -493,11 +496,11 @@ func Super(s *Saiyan) {
 }
 ```
 
-We made two changes. The first is the use of the `&` operator to get the address of our value (it's called the *address of* operator). Next, we changed the type of parameter `Super` expects. It used to expect a value of type `Saiyan` but now expects an address of type `*Saiyan`, where `*X` means *pointer to value of type X*. There's obviously some relation between the types `Saiyan` and `*Saiyan`, but they are two distinct types.
+အပေါ်နှင့်မတူသည်က ပြောင်းလဲမှု နှစ်ခုပြုလုပ်ထားသည်။ ပထမတစ်ခုက `&` ဟု operator ကိုအသုံးပြုကာ value ၏ address ကိုလှမ်းယူလိုက်သည်ဖြစ်သည်။ ထိုနောက် `Super` မှ လက်ခံသော paramater ကိုပြောင်းလဲလိုက်သည်။ မူလ အစတွင် `Saiyan` အမျိုးအစား၏ value ကိုမျှော်လင့်မည်ဖြစ်သော်လည်း ယခုတွင် `*Saiyan` ၏ adress တနည်းအားဖြင့် `*X` ဟုဆိုလိုသည်မှာ *X အမျိုးအစား၏ pointer* ကိုဆိုလိုခြင်းဖြစ်သည်။ `Saiyan` နှင့် `*Saiyan` မှာ သေချာပေါက် ဆက်နွယ်သော်လည်း ကွဲပြားသော type ဖြစ်သည်။
 
-Note that we're still passing a copy of `goku's` value to `Super` it just so happens that `goku's` value has become an address. That copy is the same address as the original, which is what that indirection buys us. Think of it as copying the directions to a restaurant. What you have is a copy, but it still points to the same restaurant as the original.
+သို့သော် `goku` value ကို copy ပြုလုပ်၍ပို့ခြင်းပင်ဖြစ်သော်လည်း `Super` မှလက်ခံရရှိသော value သည် address ဖြစ်သွားသောကြောင့်ဖြစ်သည်။ copy နှင့် မူရင်းသည် address အတူတူပင်ဖြစ်သောကြောင့် မူလတန်ဖိုးတွင် ပြောင်းလဲသွားခြင်းဖြစ်သည်။ ဥပမာ အနေဖြင့် စားသောက်ဆိုင် တစ်ဆိုင် လမ်းကြောင်း ဟု မှတ်ယူနိုင်သည်။ လက်ထဲတွင်ရှိသော value သည်မတူညီသော်လည်း စာသောက်ဆိုင် ၏ နေရာကို ညွန်ပြနေသည်ကတော့ အတူတူပင်ဖြစ်သည်။
 
-We can prove that it's a copy by trying to change where it points to (not something you'd likely want to actually do):
+၎င်းကို pointer နေရာကိုပြောင်းလဲကြည့်ခြင်းဖြင့် copy ပြုလုပ်ကြောင်းသိသာ ထင်ရှားစေနိုင်သည်။ (လက်တွေ့တွင်တော့ သင့်လုပ်လိုသော ပုံစံမျိုးမဟုတ်ပါ) 
 
 ```go
 func main() {
@@ -511,15 +514,18 @@ func Super(s *Saiyan) {
 }
 ```
 
-The above, once again, prints 9000. This is how many languages behave, including Ruby, Python, Java and C#. Go, and to some degree C#, simply make the fact visible.
+အပေါ်မှ ဥပမာတွင် 9000 ကိုသာ print လုပ်မည်ဖြစ်သည်။ ၎င်းသည် Ruby ၊ Python ၊ Java ၊ C# တို့နှင့်အတူတူပင်ဖြစ်ပြီး Go နှင့် C# ၏ အချို့အပိုင်းများတွင်သာ ထိုအချက်သည် သိသာစေနိုင်သည်။
 
-It should also be obvious that copying a pointer is going to be cheaper than copying a complex structure. On a 64-bit machine, a pointer is 64 bits large. If we have a structure with many fields, creating copies can be expensive. The real value of pointers though is that they let you share values. Do we want `Super` to alter a copy of `goku` or alter the shared `goku` value itself?
+point တစ်ခုကို သယ်ယူခြင်းသည် ရှုပ်ထွေးလှသော structure တစ်ခုလုံးကို သယ်ယူခြင်းနှင့် နှိုင်းစာလျှင့် ပို၍ ပေါ့ပါးသည်ဖြစ်သည် ကို သတိပြုရမည်ဖြစ်သည်။ 64bit စက်များတွင် pointer ၏ size သည် 64bit 
+ဖြစ်သည်။ အကယ်၍ fields များစွာပါဝင်သော structure ဖြစ်ပါက copy ပြုလုပ်ခြင်းသည် မသက်သာလှပေ။ 
+pointer မှတဆင့် တကယ်လက်ရှိ value ကိုညွန်းဆို၍ အလုပ်လုပ်နိုင်ပြီ ဖြစ်၍ `Super` function မှ `goku` တစ်ခုလုံးကို copy ပြုလုပ်၍ပို့ ပြောင်းလဲပြီး ပြန်လက်ခံစရာ ကော လိုသေးပါရဲ့လား?
 
-All this isn't to say that you'll always want a pointer. At the end of this chapter, after we've seen a bit more of what we can do with structures, we'll re-examine the pointer-versus-value question.
+သို့သော် အမြဲတမ်း pointer သုံးရမည်ဟု ဆိုလိုခြင်းမဟုတ်ပေ။ ယခု အခန်း၏ အဆုံးသတ်တွင် structure နှင့်ဘာတွေလုပ်နိုင်မည်ကို သိရှိပြီး နောက်တွင်မူ pointer နှင့် value တို့အကြားအားပြိုင်ချက်ကို ထပ်၍ ပြန်ရှုပါဦးမည်။
 
-## Functions on Structures
 
-We can associate a method with a structure:
+## Structure ပေါ်မှ function များ
+
+method နှင့် structure ကိုအောက်ပါအတိုင်း တွဲစပ်နိုင်သည်။
 
 ```go
 type Saiyan struct {
@@ -531,8 +537,8 @@ func (s *Saiyan) Super() {
   s.Power += 10000
 }
 ```
-
-In the above code, we say that the type `*Saiyan` is the **receiver** of the `Super` method. We call `Super` like so:
+အပေါ်က ဥပမာတွင် `*Saiyan` ကို `Super` ၏ လက်ခံရရှိမည့်သူဖြစ်ကြောင်း ကြေညာလိုက်သည်။ ထိုကြောင့် `Super`
+ကိုအောက်ပါ အတိုင်း ခေါ်ယူနိုင်သည်။ 
 
 ```go
 goku := &Saiyan{"Goku", 9001}
@@ -542,7 +548,8 @@ fmt.Println(goku.Power) // will print 19001
 
 ## Constructors
 
-Structures don't have constructors. Instead, you create a function that returns an instance of the desired type (like a factory):
+Structure တွင် constructors များမပါဝင်ပါ။ ၎င်းအစား မိမိတို့လိုချင်သည့်အတိုင်း instance ကို return ပြန်ပေးသော function တစ်ခု တည်ဆောက်နိုင်ပါသည်။ (Factory pattern)
+
 
 ```go
 func NewSaiyan(name string, power int) *Saiyan {
@@ -553,9 +560,8 @@ func NewSaiyan(name string, power int) *Saiyan {
 }
 ```
 
-This pattern rubs a lot of developers the wrong way. On the one hand, it's a pretty slight syntactical change; on the other, it does feel a little less compartmentalized.
+ထို pattern သည် developer အတော်များများ အကြား စကားပြောစရာဖြစ်လာသည်။ တဖက်က ကြည့်ပါ စာသားပြောင်းလဲမှု အနည်းငယ် ကိုတွေးစရာရှိသောလည်း တဖက်တွင် ပို၍ စည်းစနစ်မကျ သလို မှတ်ယူကြသည်။ Factory တွင် pointer မပါသောလည်း ရပါသည်။
 
-Our factory doesn't have to return a pointer; this is absolutely valid:
 
 ```go
 func NewSaiyan(name string, power int) Saiyan {
@@ -568,7 +574,7 @@ func NewSaiyan(name string, power int) Saiyan {
 
 ## New
 
-Despite the lack of constructors, Go does have a built-in `new` function which is used to allocate the memory required by a type. The result of `new(X)` is the same as `&X{}`:
+Contructor မရှိသောလည်း type များအတိုင်း memory တွင် သတ်မှတ်နေရာယူရန် Go တွင် built-in function ဖြစ်သော `new` ပါရှိသည်။ `new(X)` သည် `&X{}` နှင့်အတူတူပင်ဖြစ်သည်။
 
 ```go
 goku := new(Saiyan)
@@ -576,7 +582,7 @@ goku := new(Saiyan)
 goku := &Saiyan{}
 ```
 
-Which you use is up to you, but you'll find that most people prefer the latter whenever they have fields to initialize, since it tends to be easier to read:
+မိမိတို့နှစ်သက်ရာကို အသုံးပြုနိုင်သောလည်း အတော်များများမှာ fields မှာ initialize ပြုလုပ်နိုင်ပြီး ဖတ်ရလွယ်ကူသည့် ဒုတိယ နည်းလမ်းကို အသုံးများကြသည်။
 
 ```go
 goku := new(Saiyan)
@@ -591,9 +597,12 @@ goku := &Saiyan {
 }
 ```
 
-Whichever approach you choose, if you follow the factory pattern above, you can shield the rest of your code from knowing and worrying about any of the allocation details.
+မည်သည့်နည်းလမ်းကို ရွေးသည်ဖြစ်စေ အပေါ်မှ factory pattern ကိုအသုံးပြုပါက သင့်အနေဖြင့် allocation ပတ်သတ်သော သောကများကို ကာကွယ်ပေးနိုင်သည်။ 
 
-## Fields of a Structure
+
+## Structure တစ်ခု၏ field များ
+
+
 
 In the example that we've seen so far, `Saiyan` has two fields `Name` and `Power` of types `string` and `int`, respectively. Fields can be of any type -- including other structures and types that we haven't explored yet such as arrays, maps, interfaces and functions.
 
@@ -1333,7 +1342,7 @@ The way Go handles visibility of types is straightforward and effective. It's al
 
 Finally, if you're new to interfaces, it might take some time before you get a feel for them. However, the first time you see a function that expects something like `io.Reader`, you'll find yourself thanking the author for not demanding more than he or she needed.
 
-# Chapter 5 - Tidbits
+# အခန်း (၅) - Tidbits
 
 In this chapter, we'll talk about a miscellany of Go's feature which didn't quite fit anywhere else.
 
