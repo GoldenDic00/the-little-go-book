@@ -602,11 +602,9 @@ goku := &Saiyan {
 
 ## Structure တစ်ခု၏ field များ
 
+ဖော်ပြပြီးသော ဥပမာ များအရ `Saiyan` တွင် `Name` နှင့် `Power` ဟုသော `strings` အမျိုးအစားနှင့် `int` အမျိုးအစား field နှစ်ခုရှိသည်ကိုတွေ့ရမည်။ field များသည် structure များ ၊ မပြောရသေးသော array များ၊ map များ interface များ ၊ function များ စသဖြင့် type အမျိုးစုံ ဖြစ်နိုင်သည်။
 
-
-In the example that we've seen so far, `Saiyan` has two fields `Name` and `Power` of types `string` and `int`, respectively. Fields can be of any type -- including other structures and types that we haven't explored yet such as arrays, maps, interfaces and functions.
-
-For example, we could expand our definition of `Saiyan`:
+ဥပမာ `Saiyan` ၏ ဥပမာကို အောက်ပါအတိုင်း ထပ်၍ ဖြန့်ကျက်၍ ရပါသေးသည်။
 
 ```go
 type Saiyan struct {
@@ -615,8 +613,7 @@ type Saiyan struct {
   Father *Saiyan
 }
 ```
-
-which we'd initialize via:
+၎င်းကို initialize လုပ်လိုပါက
 
 ```go
 gohan := &Saiyan{
@@ -632,7 +629,7 @@ gohan := &Saiyan{
 
 ## Composition
 
-Go supports composition, which is the act of including one structure into another. In some languages, this is called a trait or a mixin. Languages that don't have an explicit composition mechanism can always do it the long way. In Java, there's the possibility to extend structures with *inheritance* but, in a scenario where this is not an option, a mixin would be written like this:
+Go တွင် structure တစ်ခုမှ အခြားတစ်ခုသို့ ထည့်သွင်းနိုင်သော composition ပါဝင်သည်။ တချို့ language များတွင် trait သို့မဟုတ် mixin ဟုခေါ်လေ့ရှိသည်။ composition ပြုလုပ်နိုင်ခြင်းမရှိသော language များတွင်မူ ခပ်ဆင်ဆင်ဖြစ်အောင် ပြုလုပ်၍ရသောလည်း လွယ်တော့ မလွယ်ကူလှချေ။ Mixin မရှိသော Java တွင် *inheritance* ကိုအသုံးပြု၍ structure များကို extend ပြုလုပ်ရန် အောက်ပါ အတိုင်းရေးသား၍ရသည်။
 
 ```java
 public class Person {
@@ -654,8 +651,7 @@ public class Saiyan {
   ...
 }
 ```
-
-This can get pretty tedious. Every method of `Person` needs to be duplicated in `Saiyan`. Go avoids this tediousness:
+သို့သော် တခါတရံ အာရုံနောက်လာနိုင်ပေသည်။ `Person` တွင်ရှိသော method တိုင်းသည် `Saiyan` အတွက်ပါ ရှိနေရန် လိုအပ်နေမည်ဖြစ်သည်။ Go တွင် ထိုသို့သော ကိစ္စမျိုးကို အောက်ပါအတိုင်း
 
 ```go
 type Person struct {
@@ -679,7 +675,9 @@ goku := &Saiyan{
 goku.Introduce()
 ```
 
-The `Saiyan` structure has a field of type `*Person`. Because we didn't give it an explicit field name, we can implicitly access the fields and functions of the composed type. However, the Go compiler *did* give it a field name, consider the perfectly valid:
+`Saiyan` structure တွင် `*Person` type ၏ field တစ်ခုပါရှိပြီး field တစ်ခုအနေဖြင့် အမည်ပေးထားခြင်းမရှိသောကြောင့် compose ပြုလုပ်ထားသော type အတွင်းရှိ fields နှင့် method များကို အသုံးပြုနိုင်သည်။ သို့သော် Go compiler အနေဖြင့် field name များ *အလိုအလျောက်* သတ်မှတ်ပေးထားသည်။ 
+ထိုကြောင့် အောက်ပါအတိုင်း လှမ်းခေါ်နိုင်သည်။
+
 
 ```go
 goku := &Saiyan{
@@ -689,15 +687,13 @@ fmt.Println(goku.Name)
 fmt.Println(goku.Person.Name)
 ```
 
-Both of the above will print "Goku".
-
-Is composition better than inheritance? Many people think that it's a more robust way to share code. When using inheritance, your class is tightly coupled to your superclass and you end up focusing on hierarchy rather than behavior.
+အပေါ်မှ နှစ်ခုလုံး "Goku" ဟု print ပြုလုပ်မည်ဖြစ်သည်။ Composition က Inheritance ထက်ပိုကောင်းသလား။ လူအတော်များများကတော့ code ကိုပြန်လည်အသုံးပြုရာတွင် ပို၍ ခိုင်မာသည်ဟု ယူဆကြသည်။ inheritance ကိုအသုံးပြုပါက သင့်၏ class သည် parent class ဖြင့် တင်းကျပ်စွာ ချည်နှောင်ထားသလိုဖြစ်၍ behavior ထက်နိုင်းစာလျှင် hierarchy ဘက်ကို ပို၍ အလေးစိုက်ရဖွယ်ဖြစ်သည်။
 
 ### Overloading
 
-While overloading isn't specific to structures, it's worth addressing. Simply, Go doesn't support overloading. For this reason, you'll see (and write) a lot of functions that look like `Load`, `LoadById`, `LoadByName` and so on.
+Overloading ကို structure များတွ်သာ အသုံးပြုနိုင်သည် မဟုတ်သော်လည်း ၎င်းကိုရှင်းပြရန်လိုအပ်သည်။ Go တွင် overloading ကို support မလုပ်ပါ။ ထိုအတွက်အကြောင့် `Load` ၊ `LoadById` ၊ `LoadByName` စသဖြင့် ပုံစံများကို ရေးရမြင်ရမည် ဖြစ်သည်။
 
-However, because implicit composition is really just a compiler trick, we can "overwrite" the functions of a composed type. For example, our `Saiyan` structure can have its own `Introduce` function:
+သို့သော် တိုက်ရိုက် composition မှာ compiler ၏လှည့်ကွက် တစ်ခုဖြစ်ပြီး function တစ်ခု၏ compose type ကို overwrite ပြုလုပ်၍ရနိုင်သည်။ ဥပမာ `Saiyan` structure တွင်း ၎င်းကိုယ်ပိုင် `Introduce` function ရှိပါက
 
 ```go
 func (s *Saiyan) Introduce() {
@@ -705,7 +701,7 @@ func (s *Saiyan) Introduce() {
 }
 ```
 
-The composed version is always available via `s.Person.Introduce()`.
+composed version အနေဖြင့် `s.Person.Introduce()` ဟု၍လှမ်းခေါ်နိုင်သည်။
 
 ## Pointers versus Values
 
