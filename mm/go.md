@@ -705,19 +705,18 @@ composed version အနေဖြင့် `s.Person.Introduce()` ဟု၍လှ
 
 ## Pointers versus Values
 
-As you write Go code, it's natural to ask yourself *should this be a value, or a pointer to a value?* There are two pieces of good news. First, the answer is the same regardless of which of the following we're talking about:
+Go ကိုရေးနေရင်း *value သုံးရမလား pointer သုံးရမလား* ဆိုတာ ဇဝေဇဝါဖြစ်တဲ့သူတွေ အတွက် သတင်းကောင်းနှစ်ခုရှိပါတယ်။ ပထမ တစ်ခုကတော့ အောက်ပါ အခြေအနေများအတွက် ဘယ်ဟာသုံးသုံးအတူတူပါပဲ။
 
-* A local variable assignment
-* Field in a structure
-* Return value from a function
-* Parameters to a function
-* The receiver of a method
+* local variable သတ်မှတ်ခြင်း
+* structure ထဲမှ field 
+* function တစ်ခုမှ return ပြန်သည့်တန်ဖိုး
+* function တစ်ခုသို့ parameter
+* method တစ်ခုသို့ လက်ခံရယူခြင်း
 
-Secondly, if you aren't sure, use a pointer.
+ဒုတိယ တစ်ခုအနေနဲ့ကတော့ မသေချာရင် pointer သာသုံးပါ။
+မြင်ခဲ့သည့်အတိုင်း value ကို pass ခြင်းဖြင့် data ကို immutable ပြုလုပ်ရာတွင် ကောင်းမွန်သလို တခါတလေကြရင် ထိုအခြေအနေမျိုးလိုအပ်မည်ဖြစ်သောလည်း များသောအားဖြင့် မလိုလှပေ။
 
-As we already saw, passing values is a great way to make data immutable (changes that a function makes to it won't be reflected in the calling code). Sometimes, this is the behavior that you'll want but more often, it won't be.
-
-Even if you don't intend to change the data, consider the cost of creating a copy of large structures. Conversely, you might have small structures, say:
+data ကိုပြောင်းလဲလိုခြင်းမရှိသောလည်း large structure တစ်ခုကို copy ပြုလုပ်ပါက ကျသင့်သည့်တန်ဖိုးကို စဉ်းစားသင့်ပါသည်။ ထိုနည်းတူ အောက်ပါကဲ့သို့သော သေးငယ် structure များအတွက်မူ
 
 ```go
 type Point struct {
@@ -725,14 +724,13 @@ type Point struct {
   Y int
 }
 ```
+copy လုပ်သောအခါ ကုန်သည့်တန်ဖိုးထက်နှိုင်းစာလျင် `x` နှင့် `y` တို့ကို တိုက်ရိုက် access ပြုလုပ်နိုင်ခြင်းက ပို၍ အားသာပါလိမ့်မည်။
 
-In such cases, the cost of copying the structure is probably offset by being able to access `X` and `Y` directly, without any indirection.
+ထပ်၍ ပြောရပါလျင် ၎င်းတို့သည် သိမ်မွေ့သော ပြဿနာဖြစ်သည်။ သင့်အနေဖြင့် ထိုသို့ကဲ့သို့ ထောင်သောင်းချီသော point လုပ်စရာမလိုပါက ကွဲပြားခြားနားချက်ကို သတိထားမိမည် မဟုတ်ပေ။
 
-Again, these are all pretty subtle cases. Unless you're iterating over thousands or possibly tens of thousands of such points, you wouldn't notice a difference.
+## နောက်အခန်း မဖတ်ခင်
 
-## Before You Continue
-
-From a practical point of view, this chapter introduced structures, how to make an instance of a structure a receiver of a function, and added pointers to our existing knowledge of Go's type system. The following chapters will build on what we know about structures as well as the inner workings that we've explored.
+ယခုအခန်းတွင် structure များအကြောင်း မိတ်ဆက်ပေးခဲ့ပြီး function တစ်ခုလက်ခံနိုင်သော structure တစ်ခု မည်သို့ တည်ဆောက်မည်နည်း ၊ Go ၏ type စနစ်တွင်ပါဝင်သည့် pointer များနှင့်ပတ်သတ်၍ ထပ်ဆင့်လေ့လာပြီးဖြစ်၍ နောက် အခန်းတွင်မူ stucture များအချင်းချင်း မည်သို့အလုပ်လုပ်သည်ကို ဆက်၍လေ့လာသွားမည်ဖြစ်သည်။
 
 # အခန်း (၃) - Maps ၊ Arrays နှင့် Slices
 
@@ -1064,7 +1062,7 @@ Many developers think that passing `b` to, or returning it from, a function is g
 
 Where you will see a difference is when you modify the values of a slice or map. At this point, the same logic that we saw in Chapter 2 applies. So the decision on whether to define an array of pointers versus an array of values comes down to how you use the individual values, not how you use the array or map itself.
 
-## Before You Continue
+## နောက်အခန်း မဖတ်ခင်
 
 Arrays and maps in Go work much like they do in other languages. If you're used to dynamic arrays, there might be a small adjustment, but `append` should solve most of your discomfort. If we peek beyond the superficial syntax of arrays, we find slices. Slices are powerful and they have a surprisingly large impact on the clarity of your code.
 
@@ -1330,7 +1328,7 @@ Interfaces can also participate in composition. And, interfaces themselves can b
 
 Finally, interfaces are commonly used to avoid cyclical imports. Since they don't have implementations, they'll have limited dependencies.
 
-## Before You Continue
+## နောက်အခန်း မဖတ်ခင်
 
 Ultimately, how you structure your code around Go's workspace is something that you'll only feel comfortable with after you've written a couple of non-trivial projects. What's most important for you to remember is the tight relationship between package names and your directory structure (not just within a project, but within the entire workspace).
 
@@ -1571,7 +1569,7 @@ func process(adder Add) int {
 
 Using functions like this can help decouple code from specific implementations much like we achieve with interfaces.
 
-## Before You Continue
+## နောက်အခန်း မဖတ်ခင်
 
 We looked at various aspects of programming with Go. Most notably, we saw how error handling behaves and how to release resources such as connections and open files. Many people dislike Go's approach to error handling. It can feel like a step backwards. Sometimes, I agree. Yet, I also find that it results in code that's easier to follow. `defer` is an unusual but practical approach to resource management. In fact, it isn't tied to resource management only. You can use `defer` for any purpose, such as logging when a function exits.
 
@@ -1953,7 +1951,7 @@ for {
 }
 ```
 
-## Before You Continue
+## နောက်အခန်း မဖတ်ခင်
 
 If you're new to the world of concurrent programming, it might all seem rather overwhelming. It categorically demands considerably more attention and care. Go aims to make it easier.
 
