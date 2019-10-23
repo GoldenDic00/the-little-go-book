@@ -797,7 +797,7 @@ func main() {
 }
 ```
 
-Crash ဖြစ်ပါလိမ့်မည်။ အဘယ်ကြောင့်ဆိုသော် slice ၏ အရှည်မှာ 0 ဖြစ်သောကြောင့်ဖြစ်သည်။ ၎င်း၏ လက်အောက်ခံ array မှာ ဆယ်ခုရှိမည်ဖြစ်သော်လည်း  ထို element များကိုခေါ်ယူအသုံးပြုနိုင်ရန် slice ကို တိုးချဲ့မှရမည်။ slice ကို ချဲ့နိုင်မည့် နည်းလမ်း တစ်ခုမှာ `append` ကိုအသုံးပြုခြင်းဖြစ်သည်။
+Crash ဖြစ်ပါလိမ့်မည်။ အဘယ်ကြောင့်ဆိုသော် slice ၏ အရှည်မှာ 0 ဖြစ်သောကြောင့်ဖြစ်သည်။ ၎င်း၏ လက်အောက်ခံ array မှာ ဆယ်ခုရှိမည်ဖြစ်သော်လည်း  ထို element များကိုခေါ်ယူအသုံးပြုနိုင်ရန် slice ကိုတိုးချဲ့မှရမည်။ slice ကို ချဲ့နိုင်မည့် နည်းလမ်း တစ်ခုမှာ `append` ကိုအသုံးပြုခြင်းဖြစ်သည်။
 
 ```go
 func main() {
@@ -807,7 +807,9 @@ func main() {
 }
 ```
 
-But that changes the intent of our original code. Appending to a slice of length 0 will set the first element. For whatever reason, our crashing code wanted to set the element at index 7. To do this, we can re-slice our slice:
+
+သို့သော် ထိုသို့ပြောင်းလိုက်ခြင်းဖြင့် မူလ code ၏ရည်ရွယ်ချက် ပါပြောင်းသွားမည်ဖြစ်ပြီး အရှည် 0 ရှိသော slice ၏ နောက်မှ ထပ်ထည့်သည်ထက် အခန်း နံပါတ် (၇) တွင်ထည့်လိုသည်ဖြစ်၍ slice ကိုထပ်၍ ပိုင်းနိုင်ပါသည်။
+
 
 ```go
 func main() {
@@ -818,9 +820,10 @@ func main() {
 }
 ```
 
-How large can we resize a slice? Up to its capacity which, in this case, is 10. You might be thinking *this doesn't actually solve the fixed-length issue of arrays.* It turns out that `append` is pretty special. If the underlying array is full, it will create a new larger array and copy the values over (this is exactly how dynamic arrays work in PHP, Python, Ruby, JavaScript, ...). This is why, in the example above that used `append`, we had to re-assign the value returned by `append` to our `scores` variable: `append` might have created a new value if the original had no more space.
+slice တစ်ခုကို ဘယ်လောက်ပြန်၍ resize လုပ်နိုင်ပါသလဲ။ ယခုကိစ္စတွင် တစ်ဆယ် ဖြစ်သည်။ သင့်အနေဖြင့် ယခုအတိုင်းလုပ်ခြင်းဖြင့် *array များကဲ့သို့ အသေဖြစ်နေသည့် ပြဿနာမှာ သိပ်ပြီးမထူး* ဟု ထင်ကောင်ထင်လိမ့်မည်။ `append` တွင်ထူးခြားသည်က array ပြည့်နေပါက ပို၍ကြီးမားသော array တစ်ခုတည်ဆောက်ပြီး value များကိုပါ သယ်ဆောင်ပေးမည်ဖြစ်သည်။ (၎င်းပုံစံ PHP ၊ Python ၊ Ruby ၊ Javascript တွင် dynamic array များ အလုပ်လုပ်ပုံနှင့် အတူတူပင်ဖြစ်သည်။ ) ထို့ကြောင့် `append` မှ ပြန်လာသော တန်ဖိုးကို လက်ခံနိုင်ပြီး assign ပြန်လုပ်ပေးနိုင်သည်။ `score` variable တွင်ရှိသော array မှာ original မှနေရာမရှိတော့ပါက copy ကူးယူထားသော အသစ်တန်ဖိုးဖြစ်သည်။ 
 
-If I told you that Go grew arrays with a 2x algorithm, can you guess what the following will output?
+အကယ်၍ Go ၏ array များသည် ဆတူတိုးသွားသည်ဆိုပါက အောက်ပါ code သည် မည်သို့ဖော်ပြမည်နည်း?
+
 
 ```go
 func main() {
@@ -840,10 +843,8 @@ func main() {
   }
 }
 ```
+ပထမဆုံး `score` ၏ သိမ်းဆည်းနိုင်သော ပမာဏသည် ငါးခုဖြစ်မည်။ နှစ်ဆယ့်ငါးခုကို သိမ်းဆည်နိုင်ရန် ဆယ်ခု ၊ အခုနှစ်ဆယ် နှင့် နောက်ဆုံး အခု လေးဆယ် အထိ ဆတူ တိုးသွားမည်ဖြစ်သည်။ နောက်ဆုံး ဥပမာ အနေဖြင့် အောက်က code ကိုကြည့်ပါ။
 
-The initial capacity of `scores` is 5. In order to hold 25 values, it'll have to be expanded 3 times with a capacity of 10, 20 and finally 40.
-
-As a final example, consider:
 
 ```go
 func main() {
@@ -853,9 +854,9 @@ func main() {
 }
 ```
 
-Here, the output is going to be `[0, 0, 0, 0, 0, 9332]`. Maybe you thought it would be `[9332, 0, 0, 0, 0]`? To a human, that might seem logical. To a compiler, you're telling it to append a value to a slice that already holds 5 values.
+`[0, 0, 0, 0, 0, 9332]` ဟုထွက်မည်ဖြစ်သည်။ သင့်အနေဖြင့်  `[9332, 0, 0, 0, 0]` ဟုလိုချင်ကောင်းလိုချင်လိမ့်မည်။ လူအတွက်တော့ ဟုတ်ကောင်းဟုတ်မည်ဖြစ်သော်လည်း တန်ဖိုးများရှိပြီးသော slice အတွက် compile သည်ထိုသို့ ပြုမူပါလိမ့်မည်။
 
-Ultimately, there are four common ways to initialize a slice:
+slice တစ်ခုကိုတည်ဆောက်ရန် နည်းလမ်းလေးမျိုးရှိသည်။
 
 ```go
 names := []string{"leto", "jessica", "paul"}
@@ -864,9 +865,9 @@ var names []string
 scores := make([]int, 0, 20)
 ```
 
-When do you use which? The first one shouldn't need much of an explanation. You use this when you know the values that you want in the array ahead of time.
+ဘယ်အချိန်မှာ ဘယ်ဟာကိုသုံးရမလဲ? ပထမတစ်ခုအနေဖြင့် သိပ်ရှင်းရန်မလိုပါ။ value များကိုကြိုသိချိန်တွင်သုံးနိုင်သည်။
 
-The second one is useful when you'll be writing into specific indexes of a slice. For example:
+ဒုတိယနည်းလမ်း ကို index များကို တန်ဖိုးထည့်သွင်းရာအသုံးပြုနိုင်သည်။ ဥပမာ
 
 ```go
 func extractPowers(saiyans []*Saiyan) []int {
@@ -878,11 +879,12 @@ func extractPowers(saiyans []*Saiyan) []int {
 }
 ```
 
-The third version is a nil slice and is used in conjunction with `append`, when the number of elements is unknown.
+တတိယ အမျိုးအစားကိုမူ element မည်မျှပါဝင်သည်ကို မသိလောက်သည့် အနေအထားတွင်  နတ္တိတန်ဖိုးများချည်းသာပါဝင်သည့် slice ကိုတည်ဆောက်ပြီး `append` ဖြင့်ဖြည့်သွားမည့် ပုံစံဖြင့်သုံးသည်။
 
-The last version lets us specify an initial capacity; useful if we have a general idea of how many elements we'll need.
+နောက်ဆုံး အမျိုးအစားကိုမူ အကြမ်းအားဖြင့် element မည်မျှရှိသည်ကို မှန်းဆနိုင်ပါက မူလတန်ဖိုး ထည့်သွင်းရာတွင် အသုံးဝင်သည်။
 
-Even when you know the size, `append` can be used. It's largely a matter of preference:
+ပမာဏကို သိသည့်အခါတွင်လည်း `append` ကိုအသုံးပြုနိုင်သည်။ မိမိတို့ နှစ်သက်ရာပုံစံသာ ကွဲလေ၏။
+
 
 ```go
 func extractPowers(saiyans []*Saiyan) []int {
@@ -894,7 +896,9 @@ func extractPowers(saiyans []*Saiyan) []int {
 }
 ```
 
-Slices as wrappers to arrays is a powerful concept. Many languages have the concept of slicing an array. Both JavaScript and Ruby arrays have a `slice` method. You can also get a slice in Ruby by using `[START..END]` or in Python via `[START:END]`. However, in these languages, a slice is actually a new array with the values of the original copied over. If we take Ruby, what's the output of the following?
+Slice သည် array များ အပေါ်မှ ဖုံးအုပ်ထားသော အလွှာတစ်ခုဖြစ်ပြီး အလွန်အသုံးဝင်သည်။ Language တော်တော်များများတွင် array ကိုပိုင်းဖြတ်သည့် concept များပါရှိသည်။ Javascript နှင် Ruby တွင် array များသည် `slice` method ပါရှိသည်။ Ruby တွင် `[START..END]` ဟုသော်လည်းကောင်း Python တွင် `[START:END]`
+ဟုလည်းကောင်း အသုံးပြု၍ ပိုင်းဖြတ်နိုင်သည်။ သို့သော် ထို language များတွင် slice သည် မူလတန်ဖိုးများ ကူးယူထားသော array အသစ်တစ်ခုသာဖြစ်သည်။ Ruby တွင် အောက်ပါ code ၏ ရလဒ်မှာ ဘာဖြစ်မည်နည်း။
+
 
 ```ruby
 scores = [1,2,3,4,5]
@@ -902,8 +906,8 @@ slice = scores[2..4]
 slice[0] = 999
 puts scores
 ```
+အဖြေမှာ `[1, 2, 3, 4, 5]` ဖြစ်မည်။ အဘယ်ကြောင့်ဆိုသော် `slice` သည် array အသစ်အနေဖြင့် copy ကူးသွား၍ ဖြစ်သည်။ Go မှာထိုကဲ့သို့ပြုလုပ်ပါက
 
-The answer is `[1, 2, 3, 4, 5]`. That's because `slice` is a completely new array with copies of values. Now, consider the Go equivalent:
 
 ```go
 scores := []int{1,2,3,4,5}
@@ -912,7 +916,11 @@ slice[0] = 999
 fmt.Println(scores)
 ```
 
-The output is `[1, 2, 999, 4, 5]`.
+အဖြေမှာ  `[1, 2, 999, 4, 5]` ဖြစ်မည်။
+
+
+ထိုပြောင်းလဲခြင်းက ကုဒ်ရေးသည့်ပုံစံပါ ပြောင်းလဲသွားသည်။ ဥပမာ function များသို့ parameter ပို့သောအခါ။ javascript တွင် string တစ်ခု၏ အက္ခရာ ငါးခု ကျော်ပြီး နေရာကို လိုပါက (slice သည် string များတွင်လည်း အလုပ်လုပ်သည်) 
+
 
 This changes how you code. For example, a number of functions take a position parameter. In JavaScript, if we want to find the first space in a string (yes, slices work on strings too!) after the first five characters, we'd write:
 
@@ -921,20 +929,22 @@ haystack = "the spice must flow";
 console.log(haystack.indexOf(" ", 5));
 ```
 
-In Go, we leverage slices:
+Go တွင် slice ကိုအောက်ပါ အတိုင်းသုံးနိုင်သည်။
+
 
 ```go
 strings.Index(haystack[5:], " ")
 ```
 
-We can see from the above example, that `[X:]` is shorthand for *from X to the end* while `[:X]` is shorthand for *from the start to X*. Unlike other languages, Go doesn't support negative values. If we want all of the values of a slice except the last, we do:
+
+အထက်ဖော်ပြပါ ဥပမာများမှ  `[X:]` သည် *X မှစ၍ အဆုံးထိ* ဟု အဓိပ္ပါယ်ရပြီး `[:X]` သည် *အစမှ X အထိသို့* ဟု အဓိပ္ပါယ် သက်ရောက်သည်။ တခြား language များနှင့်ကွာခြားသည်က Go တွင် အနုတ်ကိန်းများကို support မလုပ်ချေ။ အကယ့်၍ နောက်ဆုံးတစ်ခုလွဲ၍ ကျန်သော် value များကို အလိုရှိပါက အောက်ပါအတိုင်းရေးရသည်။
 
 ```go
 scores := []int{1, 2, 3, 4, 5}
 scores = scores[:len(scores)-1]
 ```
 
-The above is the start of an efficient way to remove a value from an unsorted slice:
+အပေါ်မှ ဥပမာသည် unsorted slice များ value များကို ဖယ်ထုတ်ရာတွင် အသက်သာဆုံး နည်းလမ်းဖြစ်သည်။
 
 ```go
 func main() {
@@ -952,7 +962,9 @@ func removeAtIndex(source []int, index int) []int {
 }
 ```
 
-Finally, now that we know about slices, we can look at another commonly used built-in function: `copy`. `copy` is one of those functions that highlights how slices change the way we code. Normally, a method that copies values from one array to another has 5 parameters: `source`, `sourceStart`, `count`, `destination` and `destinationStart`. With slices, we only need two:
+နောက်ဆုံးတွင် slice များအကြောင်း သိရှိပြီး ဖြစ်၍ မူလကတည်းက ပါဝင်သော function တစ်ခုဖြစ်သည့် `copy` ကိုကြည့်ပါစို့။ `copy` သည် slice များကြောင့် ကုဒ်ရေးရပုံ အပြောင်းအလဲကို မီးမောင်းထိုးပြနိုင်သည့် ဥပမာ တစ်ခုဖြစ်သည်။ ပုံမှန်အားဖြင့် array တစ်ခုမှ နောက်တစ်ခုသို့ copy ပြုလုပ်ရန် parameter ငါးခုလိုအပ်သည်။ ၎င်းတို့မှာ `source` ၊ `sourceStart`၊ `count` ၊ `destination` နှင့် `destinationStart` တို့ဖြစ်သည်။
+Slice ကိုအသုံးပြုပါက နှစ်ခုသာလိုအပ်သည်။
+
 
 ```go
 import (
@@ -974,13 +986,15 @@ func main() {
 }
 ```
 
-Take some time and play with the above code. Try variations. See what happens if you change copy to something like `copy(worst[2:4], scores[:5])`, or what if you try to copy more or less than `5` values into `worst`?
+
+အချိန်ခဏယူ၍ အထက်ပါ code ကိုနားလည်အောင် ကြည့်ပါ။ တစ်ချို့ အပိုင်းများကို ပြောင်းလဲကြည့်ပါ။ copy ကို `copy(worst[2:4], scores[:5])` ပြောင်းကြည့်ပါက ဘာဖြစ်မည်နည်း။ value ငါးခုထက် နည်းသော တန်ဖိုးများကို `worst` သို့ ကူးကြည့်ပါက ဘာဖြစ်မည်နည်း။
 
 ## Maps
 
-Maps in Go are what other languages call hashtables or dictionaries. They work as you expect: you define a key and value, and can get, set and delete values from it.
+Go တွင်ပါရှိသော Map သည် အခြား language များတွင် hashtable သို့မဟုတ် dictionary ဟုခေါ်လေ့ရှိပြီး အလုပ်လုပ်ပုံမှာ အတူတူပင်ဖြစ်သည်။ key value မှာ သတ်မှတ် ၊ ခေါ်ဆို ၊ ဖျက်ပစ်ရာတွင် အသုံးပြုသည်။
 
-Maps, like slices, are created with the `make` function. Let's look at an example:
+Maps များသည် slice ကဲ့သို့ပင် `make` function ကိုအသုံးပြုနိုင်သည်။ အောက်က ဥပမာကို ကြည့်ကြည့်ပါ။
+
 
 ```go
 func main() {
