@@ -734,26 +734,24 @@ copy လုပ်သောအခါ ကုန်သည့်တန်ဖို�
 
 # အခန်း (၃) - Maps ၊ Arrays နှင့် Slices
 
-So far we've seen a number of simple types and structures. It's now time to look at arrays, slices and maps.
+အခုထက်ထိတော့ ပုံမှန် type နဲ့ structure များအကြောင်းလေ့လာပြီးနောက် ဒီအခန်းမှာတော့ array များ slice များနှင့် map များအကြောင်းကို ရှင်းပြသွားမှာဖြစ်ပါတယ်။
 
 ## Arrays
 
-If you come from Python, Ruby, Perl, JavaScript or PHP (and more), you're probably used to programming with *dynamic arrays*. These are arrays that resize themselves as data is added to them. In Go, like many other languages, arrays are fixed. Declaring an array requires that we specify the size, and once the size is specified, it cannot grow:
+Python ၊ Ruby ၊ Perl ၊ Javascript တို့ PHP ကဲ့သို့သော language များကိုလေ့လာခဲ့ပါက *dynamic array* များနှင့် ရင်းနှီးနေမည်ဖြစ်သည်။ ထို array များသည် data များထည့်သွင်းသည်နှင့်အမျှ ပြန်လည် ချိန်ညှိပေးသည်။ Go တွင်မူ အပေါ်မှ အပ အခြား language များကဲ့သို့ array မှာ အသေဖြစ်သည်။ array ကိုကြေညာသည်နှင့် ဆိုဒ်မှာ အသေဖြစ်ပြီး တိုး၍မရတော့ပေ။
 
 ```go
 var scores [10]int
 scores[0] = 339
 ```
 
-The above array can hold up to 10 scores using indexes `scores[0]` through `scores[9]`. Attempts to access an out of range index in the array will result in a compiler or runtime error.
-
-We can initialize the array with values:
+အထက်တွင်ဖော်ပြထားသော array တွင် `score[0]` မှ `score[9]` အထိ index ဆယ်ခုစာ ထည့်သွင်းနိုင်သည်။ ထိုမှအပ အခြား index များကိုခေါ်ပါက compiler သို့မဟုတ် runtime error တက်လိမ့်မည်။ Array ကို value များပါတပါတည်း အောက်ပါအတိုင်း ကြေညာနိုင်သည်။
 
 ```go
 scores := [4]int{9001, 9333, 212, 33}
 ```
 
-We can use `len` to get the length of the array. `range` can be used to iterate over it:
+`len` ကိုအသုံးပြု၍ array ၏ အရှည်ကိုသိနိုင်သလို `range` ကိုအသုံးပြု၍ loop ပတ်နိုင်သည်။
 
 ```go
 for index, value := range scores {
@@ -761,31 +759,35 @@ for index, value := range scores {
 }
 ```
 
-Arrays are efficient but rigid. We often don't know the number of elements we'll be dealing with upfront. For this, we turn to slices.
+Array မှာ အလွန်အသုံးဝင်သောလည်း တင်းကျပ်သည်။ ပုံမှန်အားဖြင့် မိမိတို့ လိုအပ်သည့် element အရေအတွက်ကို မသိရှိနိုင်ချိန်တွင် Array အစား Slice ကိုအသုံးပြုသည်။ 
+
 
 ## Slices
 
-In Go, you rarely, if ever, use arrays directly. Instead, you use slices. A slice is a lightweight structure that wraps and represents a portion of an array. There are a few ways to create a slice, and we'll go over when to use which later on. The first is a slight variation on how we created an array:
+Go တွင် array ကိုတိုက်ရိုက် အသုံးပြုရသည်က ရှားသည်။ ထိုအစား slice ကိုအသုံးပြုကြသည်။ slice သည် array ပုံစံအတိုင်း ဖော်ပြနိုင်သည့် structure တစ်ခုဖြစ်သည်။ slice ကိုတည်ဆောက်နိုင်ရန် နည်းလမ်းမှာ တစ်ခုထက်မကရှိပြီး မည့်သည်အချိန်တွင် သုံးရမည်ကို နောက်တွင် ဆက်ပြောပါမည်။ ရှေးဦးစွာ ဖန်တီးသည့် နည်းလမ်းကွဲများ ကိုအရင် ရှင်းပြပါမည်။
+
 
 ```go
 scores := []int{1,4,293,4,9}
 ```
 
-Unlike the array declaration, our slice isn't declared with a length within the square brackets. To understand how the two are different, let's see another way to create a slice, using `make`:
+Array နှင့်မတူသည်က လေးထောင့်ကွင်းထဲ ၎င်း၏ အရှည်ကို မသတ်မှတ်ပေးရပါ။ ကွဲပြားခြားနားသည်ကို သိနိုင်ရင် slice ကိုဖန်တီးနိုင်သည့် နောက်တစ်မျိုးဖြစ်သည့် `make` ကိုအသုံးပြုကြပါစို့။
 
 ```go
 scores := make([]int, 10)
 ```
 
-We use `make` instead of `new` because there's more to creating a slice than just allocating the memory (which is what `new` does). Specifically, we have to allocate the memory for the underlying array and also initialize the slice.  In the above, we initialize a slice with a length of 10 and a capacity of 10. The length is the size of the slice, the capacity is the size of the underlying array. Using `make` we can specify the two separately:
+`new` အစား `make` ကိုအသုံးပြုရသည့်အကြောင်းမှာ memory တွင် နေရာယူခြင်း သက်သက်သာမဟုတ်ပဲ slice တစ်ခုကို အမှန်တကယ် ဖန်တီးလိုက်ခြင်းကြောင့်ဖြစ်သည်။ ထိုကြောင့် array အတွက် memory နေရာယူရုံသာမက slice အတွက်ပါ ကြေညာလိုက်ခြင်းဖြစ်သည်။ အပေါ်မှ ဥပမာတွင် slice ၏ အရှည်မှာ တစ်ဆယ် ဖြစ်ပြီးထည့်သွင်းနိုင်စွမ်းမှာလည်း ဆယ်ခုဖြစ်သည်။ ထိုနှစ်ခုမှာ မတူညီပါ။ `make` ကိုအသုံးပြု၍ ၎င်းနှစ်ခုကို သီးခြားစီ ထည့်သွင်းနိုင်သည်။
 
 ```go
 scores := make([]int, 0, 10)
 ```
 
-This creates a slice with a length of 0 but with a capacity of 10. (If you're paying attention, you'll note that `make` and `len` *are* overloaded. Go is a language that, to the frustration of some, makes use of features which aren't exposed for developers to use.)
 
-To better understand the interplay between length and capacity, let's look at some examples:
+၎င်းတွင် slice ၏ အရှည်မှာ သုညဖြစ်ပြီး ထည့်သွင်းနိုင်စွမ်းမှာ တစ်ဆယ်ဖြစ်သည်။ သတိထားကြည့်ပါက `make` နှင့် `len` များသည် overload ပြုလုပ်ထားသည်ကို သတိထားမိမည်ဖြစ်သည်။ Go သည် developer များအသုံးပြုနိုင်အောင် ထုတ်မပေးသောလည်း language designer များက အသုံးပြုနေသည်ကိုတွေ့နေရသောကြောင့် တချို့မှာ အမြင်မကြည်ကြပေ။
+
+
+အရှည်နှင့် ထည့်သွင်းနိုင်စွမ်းကို ကွဲပြားစေရန် အောက်ပါ ဥပမာကိုကြည့်ပါ။
 
 ```go
 func main() {
@@ -795,7 +797,7 @@ func main() {
 }
 ```
 
-Our first example crashes. Why? Because our slice has a length of 0. Yes, the underlying array has 10 elements, but we need to explicitly expand our slice in order to access those elements. One way to expand a slice is via `append`:
+Crash ဖြစ်ပါလိမ့်မည်။ အဘယ်ကြောင့်ဆိုသော် slice ၏ အရှည်မှာ 0 ဖြစ်သောကြောင့်ဖြစ်သည်။ ၎င်း၏ လက်အောက်ခံ array မှာ ဆယ်ခုရှိမည်ဖြစ်သော်လည်း  ထို element များကိုခေါ်ယူအသုံးပြုနိုင်ရန် slice ကို တိုးချဲ့မှရမည်။ slice ကို ချဲ့နိုင်မည့် နည်းလမ်း တစ်ခုမှာ `append` ကိုအသုံးပြုခြင်းဖြစ်သည်။
 
 ```go
 func main() {
