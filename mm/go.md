@@ -1008,7 +1008,7 @@ func main() {
 }
 ```
 
-To get the number of keys, we use `len`. To remove a value based on its key, we use `delete`:
+key အရေအတွက်ကိုသိလိုပါက `len` ကိုအသုံးပြုနိုင်ပြီး key တစ်ခုကိုဖျက်လိုပါက `delete` ကိုအသုံးပြုနိုင်သည်။
 
 ```go
 // returns 1
@@ -1017,16 +1017,15 @@ total := len(lookup)
 // has no return, can be called on a non-existing key
 delete(lookup, "goku")
 ```
-
-Maps grow dynamically. However, we can supply a second argument to `make` to set an initial size:
+Map သည် အကန့်အသတ်မရှိသောလည်း သတ်မှတ်လိုပါက  `make` ကိုအသုံးပြုနိုင်သည်။
 
 ```go
 lookup := make(map[string]int, 100)
 ```
 
-If you have some idea of how many keys your map will have, defining an initial size can help with performance.
+Map တွင် key မည်မျှရှိလောက်မည်ကို ခန့်မှန်းနိုင်ပါက size သတ်မှတ်ခြင်းဖြင့် performance ပိုကောင်းလာမည်ဖြစ်သည်။
 
-When you need a map as a field of a structure, you define it as:
+structure တစ်ခု၏ field အနေဖြင့်သတ်မှတ်လိုပါက အောက်ပါအတိုင်း ကြေညာနိုင်သည်။
 
 ```go
 type Saiyan struct {
@@ -1035,7 +1034,7 @@ type Saiyan struct {
 }
 ```
 
-One way to initialize the above is via:
+အပေါ်မှ ကြေညာထားသည်ကို အောက်ပါအတိုင်း ခေါ်ယူအသုံးပြုနိင်သည်။
 
 ```go
 goku := &Saiyan{
@@ -1044,8 +1043,7 @@ goku := &Saiyan{
 }
 goku.Friends["krillin"] = ... //todo load or create Krillin
 ```
-
-There's yet another way to declare and initialize values in Go. Like `make`, this approach is specific to maps and arrays. We can declare as a composite literal:
+Array များနည်းတူ Go တွင် map များကို `make` ကိုအသုံးပြုနိုင်သလို literal အနေဖြင့်လည်း ကြေညာသတ်မှတ်နိုင်သည်။ 
 
 ```go
 lookup := map[string]int{
@@ -1053,20 +1051,18 @@ lookup := map[string]int{
   "gohan": 2044,
 }
 ```
-
-We can iterate over a map using a `for` loop combined with the `range` keyword:
+ထိုနည်းတူ `for` loop များတွင်လည်း `range` ကိုအသုံးပြုနိုင်သည်။
 
 ```go
 for key, value := range lookup {
   ...
 }
 ```
-
-Iteration over maps isn't ordered. Each iteration over a lookup will return the key value pair in a random order.
+Map အတွင်းရှိ iteration များသည် စီထားသည် မဟုတ်ပဲ random အလိုက် key value pair များကြလာမည်ဖြစ်သည်။
 
 ## Pointers versus Values
 
-We finished Chapter 2 by looking at whether you should assign and pass pointers or values. We'll now have this same conversation with respect to array and map values. Which of these should you use?
+အခန်း (၂) တွင် pointer နှင့် value များကွဲပြားချက်ကို လေ့လာပြီးဖြစ်သည်။ ယခု array နှင့် map များအပေါ်တွင် ဆက်၍လေ့လာစရာရှိပါသေးသည်။ အောက်ပါ ပုံစံနှစ်ခု အနက် မည်သည်ကို ပို၍ အသုံးပြုသင့်သနည်း။
 
 ```go
 a := make([]Saiyan, 10)
@@ -1074,31 +1070,35 @@ a := make([]Saiyan, 10)
 b := make([]*Saiyan, 10)
 ```
 
-Many developers think that passing `b` to, or returning it from, a function is going to be more efficient. However, what's being passed/returned is a copy of the slice, which itself is a reference. So with respect to passing/returning the slice itself, there's no difference.
+developer အတော်များများသည် `b` သည်ပို၍ efficient ဖြစ်မည်ဟုထင်ကြလိမ့်မည်။ သို့သော် return ပြန်လာသော value သည် reference ဖြစ်စေကာမူ slice ၏ copy လုပ်ထားသော value ပင်ဖြစ်ဦးမည်။ ထိုကြောင့် slice ကို pass နှင့် return ပြန်ရာတွင် ကွာခြားမှုမရှိပါ။
 
-Where you will see a difference is when you modify the values of a slice or map. At this point, the same logic that we saw in Chapter 2 applies. So the decision on whether to define an array of pointers versus an array of values comes down to how you use the individual values, not how you use the array or map itself.
+သို့သော် slice သို့မဟုတ် map ၏ value များကို ပြင်ပါက ကွာခြားချက်များကိုတွေ့ရမည်ဖြစ်သည်။ ထိုအချိန်တွင်မူ အခန်း (၂) တွင်ပြောသကဲ့သို့ ဖြစ်သည်။ ထိုကြောင့် array နှင့် map တို့၏ pointer နင့် value ကွာခြားချက်သည် ၎င်းတို့၏ value များအသုံးပြုပုံကိုသာ အဓိက မူတည်နေမည်ဖြစ်သည်။
+
 
 ## နောက်အခန်း မဖတ်ခင်
 
-Arrays and maps in Go work much like they do in other languages. If you're used to dynamic arrays, there might be a small adjustment, but `append` should solve most of your discomfort. If we peek beyond the superficial syntax of arrays, we find slices. Slices are powerful and they have a surprisingly large impact on the clarity of your code.
 
-There are edge cases that we haven't covered, but you're not likely to run into them. And, if you do, hopefully the foundation we've built here will let you understand what's going on.
+Go ၏ Array နှင့် Map တို့သည် အခြား language များနှင့်အတူတူပင်ဖြစ်သည်။ dyanmic array များနှင့် အသားကျနေပါက အနည်းငယ်ပြောင်းလဲမည် ဖြစ်သော်လည်း `append` ကိုအသုံးပြုခြင်းဖြင့် အဆင်မပြေမှု အတော်များများ ဖြေရှင်းနိုင်သည်။ Array များကို ကျော်လွန်ပါက slice များကိုတွေ့နိုင်မည်ဖြစ်ပြီး slice များသည် အလွန် အစွမ်းထက်ပြီး သင့် code ၏ ရိုရှင်းမှုကို ထိန်းသိမ်းပေးပါသည်။
+
+သို့သော် အစွန်းထွက်နေသော ကိစ္စတချို့ကိုမူ ဒီစာအုပ်တွင် ထည့်သွင်းထားခြင်းမရှိပါ။ သင့်အနေဖြင့်လည်း ကြုံနိုင်ရန် ခဲယဉ်းသဖြင့် ဖြစ်သည်။ အကယ်၍ ကြုံခဲ့ပါက ယခု အခြေခံများကို အသုံးပြု၍ ဖြေရှင်းနိုင်မည် ဟုယုံကြည်ပါသည်။ 
+
 
 # အခန်း (၄) - Code အစီအစဉ်ချခြင်းနှင့် Interface များ
 
-It's now time to look at how to organize our code.
+ယခု အခန်းတွင် Code များကို မည်သို့ နေရာချထားမည်ကို လေ့လာပါမည်။
 
 ## Packages
 
-To keep more complicated libraries and systems organized, we need to learn about packages. In Go, package names follow the directory structure of your Go workspace. If we were building a shopping system, we'd probably start with a package name "shopping" and put our source files in `$GOPATH/src/shopping/`.
+ရှုပ်ထွေးလှသော library များ၊ system များကို အစီအစဉ်ချနိုင်ရန် Packages များအကြောင်း လေ့လာရန်လိုပါသည်။ 
+Go တွင် package name သည် Go Workspace အတွင်းတည်ရှိသည့် folder အမည် ကိုလိုက်နာရ့ါသည်။ အကယ်၍ shopping system တစ်ခုကို တည်ဆောက်ပါက သင့်အနေဖြင့် "shopping" ဟုသော package တစ်ခုဟု အမည်ပေးလိုက်ပြီး file များကို `$GOPATH/src/shopping/` တွင်နေရာချထားရမည် ဖြစ်သည်။
 
-We don't want to put everything inside this folder though. For example, maybe we want to isolate some database logic inside its own folder. To achieve this, we create a subfolder at `$GOPATH/src/shopping/db`. The package name of the files within this subfolder is simply `db`, but to access it from another package, including the `shopping` package, we need to import `shopping/db`.
+အာလုံးကိုတော့ folder တစ်ခုထဲတွင် ထားချင်မည်တော့ မဟုတ်။ ဥပမာ တချို့ သော database logic များကို folder အနေဖြင့် သက်သက် ခွဲထုတ်ရန်လိုအပ်သည်။ ၎င်းအတွက် ထပ်ဆင့် folder တစ်ခုအနေဖြင့်  `$GOPATH/src/shopping/db` ဟုသတ်မှတ်ပေးရန်လိုအပ်သည်။ ထို folder ၏ အမည်သည် `db` ဟုပေးလျှင်ရသော်လည်း တခြား package မှ access လုပ်လိုပါက `shopping` package အတွင်းမှ ဖြစ်၍ `shopping/db` ဟု import လုပ်ရန်လိုသည်။
 
-In other words, when you name a package, via the `package` keyword, you provide a single value, not a complete hierarchy (e.g., "shopping" or "db"). When you import a package, you specify the complete path.
+တနည်းအားဖြင့် package တစ်ခုကို `package` keyword ဖြင့် အမည်ပေးနိုင်သည်။ single value အနေဖြင့် ဥပမာ "shopping" ဝါ "db" ဟု ပေးနိုင်ပြီး import လုပ်ပါက path လမ်းကြောင်းအတိုင်း import လုပ်ရမည်ဖြစ်သည်။
 
-Let's try it. Inside your Go workspace's `src` folder (which we set up in Getting Started of the Introduction), create a new folder called `shopping` and a subfolder within it called `db`.
+စမ်းကြည့်ရအောင်။ Go workplace အတွင်းရှိ `src` folder အတွင်းမှ (ကျွန်တော်တို့ မိတ်ဆက်တုံးက စမ်းထားခဲ့သော နေရာများ ) `shopping` ဟု အမည်ရှိသော folder နှင့် ၎င်းအတွင်းတွင် `db` ဟုအမည်ရှိသော folder တစ်ခုကို တည်ဆောက်လိုက်ပါ။ 
 
-Inside of `shopping/db`, create a file called `db.go` and add the following code:
+`shopping/db` ၏အတွင်းတွင် `db.go` ဟုသော file တစ်ခုကို တည်ဆောက်ပြီး အောက်ပါအတိုင်း ရေးလိုက်ပါ။
 
 ```go
 package db
