@@ -1312,10 +1312,10 @@ type SqlLogger struct { ... }
 type ConsoleLogger struct { ... }
 type FileLogger struct { ... }
 ```
+မူလပုံစံအတိုင်း  implementation အကျအနရေးခြင်းထက်  interface များကိုအသုံးပြုခြင်းဖြင့် Code ကို impact မဖြစ်စေပဲ အလွယ်တကူ ပြင်ဆင် (နှင့် test ပြုလုပ်နိုင်) သည်။
 
-Yet by programming against the interface, rather than these concrete implementations, we can easily change (and test) which we use without any impact to our code.
+ဘယ်လိုအသုံးပြုရမည်နည်း။ အခြားသို့ type များကဲ့သို့ structure တစ်ခု၏ field အနေနဲ့ဖြင့်လည်း ဖြစ်နိုင်သည်။
 
-How would you use one? Just like any other type, it could be a structure's field:
 
 ```go
 type Server struct {
@@ -1323,15 +1323,14 @@ type Server struct {
 }
 ```
 
-or a function parameter (or return value):
+သို့မဟုတ် function parameter တစ်ခု (ဝါ) return value လည်းဖြစ်နိုင်ပါသေးသည်။
 
 ```go
 func process(logger Logger) {
   logger.Log("hello!")
 }
 ```
-
-In a language like C# or Java, we have to be explicit when a class implements an interface:
+C# နှင့် Java ကဲ့သို့သော language များတွင် interface တစ်ခုကို အသုံးပြုလိုပါက Class တစ်ခုအနေဖြင့် မပါမဖြစ်ပါရသည်။
 
 ```go
 public class ConsoleLogger : Logger {
@@ -1341,7 +1340,7 @@ public class ConsoleLogger : Logger {
 }
 ```
 
-In Go, this happens implicitly. If your structure has a function name `Log` with a `string` parameter and no return value, then it can be used as a `Logger`. This cuts down on the verboseness of using interfaces:
+Go တွင်ထိုသို့ မလိုအပ်ပါ။ `string` parameter တစ်ခုလက်ခံပြီး ဘာမှ return မပြန်သော `Log` ဟုသော function တစ်ခုရှိပြီး ၎င်းကို `Logger` အနေဖြင့် အသုံးပြုနိုင်သည်။ ထိုကြောင့် inteface များလည်း အလွန်အသုံးဝင်သည်။
 
 ```go
 type ConsoleLogger struct {}
@@ -1350,27 +1349,29 @@ func (l ConsoleLogger) Log(message string) {
 }
 ```
 
-It also tends to promote small and focused interfaces. The standard library is full of interfaces. The `io` package has a handful of popular ones such as `io.Reader`, `io.Writer`, and `io.Closer`. If you write a function that expects a parameter that you'll only be calling `Close()` on, you absolutely should accept an `io.Closer` rather than whatever concrete type you're using.
+၎င်းတွင် သေးငယ်ပြီး တစ်ခုဆိုတစ်ခု အာရုံစိုက်ထားသော interface များတည်ဆောက်ရန်အားပေးသည်။ standard library တစ်ခုလုံး interface များဖြင့်တည်ဆောက်ထားသည်။ `io` package တွင် နာမည်ကြီး `io.Reader` ၊ `io.Writer` နှင့် `io.Closer` များသည် interface များဖြစ်သည်။ အကယ်၍  `Close()` တစ်ခုတည်းသာ ခေါ်သော function တစ်ခုကိုရေးပါက `io.Closer` ကိုလက်ခံသင့်သည်။ 
 
-Interfaces can also participate in composition. And, interfaces themselves can be composed of other interfaces. For example, `io.ReadCloser` is an interface composed of the `io.Reader` interface as well as the `io.Closer` interface.
+Interface များသည် composition များအဖြစ် ပါဝင်ဆင်နွဲနိုင်သည်။ interface တစ်ခုသည် အခြား interface များပေါင်းစပ်ဖန်တီး ထားသည်လည်းဖြစ်နိုင်သည်။ ဥပမာ `io.ReadCloser` သည် `io.Reader` နှင့် `io.Closer` ပေါင်းစပ်ထားသည့် interface တစ်ခုဖြစ်သည်။
 
-Finally, interfaces are commonly used to avoid cyclical imports. Since they don't have implementations, they'll have limited dependencies.
+နောက်ဆုံးအနေဖြင့် interface များသည် cyclical imports ကိုရှောင်ရှားရာတွင် အသုံးပြုသည်။ implementation မရှိသဖြင့် depenedency အများအစားလိုအပ်ခြင်းမရှိပါ။
 
 ## နောက်အခန်း မဖတ်ခင်
 
-Ultimately, how you structure your code around Go's workspace is something that you'll only feel comfortable with after you've written a couple of non-trivial projects. What's most important for you to remember is the tight relationship between package names and your directory structure (not just within a project, but within the entire workspace).
+အထူးသဖြင့် Go workplace တွင် code ကိုဘယ်လို structure ချရသည့်နည်းလမ်းများသည် project များစွာရေးပြီးမှ ခံစားသိရှိရနိုင်သည်။ package name များနှင့် directory name များအကြား တင်းကျပ်သည့် relationship များသည် အရေးကြီးသည် ဆိုသည့်အချက် အပါအဝင်ဖြစ်သည်။ ( project အတွင်းသာမက workplace တစ်ခုလုံး )
 
-The way Go handles visibility of types is straightforward and effective. It's also consistent. There are a few things we haven't looked at, such as constants and global variables but rest assured, their visibility is determined by the same naming rule.
+Go ၏ type visiiblity သည် ရိုးရှင်းပြီး အလုပ်ဖြစ်သည့် အပြင် တသမတ်တည်းဖြစ်သည်။ အချို့သောအရာများဖြစ်သည့် constant နှင့် global variable များအကြောင်း မပြောထားသောလည်း ၎င်းတို့၏ visiblity သည် naming rule အတူတူပင်ဖြစ်သည်။
 
-Finally, if you're new to interfaces, it might take some time before you get a feel for them. However, the first time you see a function that expects something like `io.Reader`, you'll find yourself thanking the author for not demanding more than he or she needed.
+နောက်ဆုံးတွင် interface များသည် အသစ်ဖြစ်နေပါက ရင်းနှီးရန် အတိုင်းအတာတစ်ခု လိုအပ်သော်လည်း သင့်အနေဖြင့် `io.Reader` ကို လိုအပ်သည့် function တစ်ခုကိုတွေ့ပါက သင့်အနေဖြင့် ၎င်းကိုရေးသားသူသည် တကယ်လို၍ ထည့်ရေးသည်လား ပိုနေလားကို ခွဲခြားသိရှိနိုင်ပါသည်။
 
 # အခန်း (၅) - Tidbits
 
-In this chapter, we'll talk about a miscellany of Go's feature which didn't quite fit anywhere else.
+အခန်းတွင်မူ တခြား မည့်သည့် language နှင့်မတူညီပဲ တမူထူးခြားနေသော Go ၏ feature များအကြောင်းကို ပြောပါမည်။
 
 ## Error Handling
 
-Go's preferred way to deal with errors is through return values, not exceptions. Consider the `strconv.Atoi` function which takes a string and tries to convert it to an integer:
+Go တွင် အထူးပြုလိုသည် error handling မှာ exception များမဟုတ်ပဲ return value များဖြစ်သည်။
+string တစ်ခုကို interger သို့ကူးပြောင်းပေးသည့် `strconv.Atoi` ဆိုပါစို့။
+
 
 ```go
 package main
@@ -1395,7 +1396,7 @@ func main() {
 }
 ```
 
-You can create your own error type; the only requirement is that it fulfills the contract of the built-in `error` interface, which is:
+ကိုယ့် error type တစ်ခု ဖန်တီးနိုင်ပြီး: built-in `error` interface ကိုအခြေခံရန်သာလိုအပ်သည်။
 
 ```go
 type error interface {
