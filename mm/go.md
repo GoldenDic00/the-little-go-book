@@ -1113,10 +1113,10 @@ func LoadItem(id int) *Item {
   }
 }
 ```
+Folder ၏ အမည်သည် package ၏ အမည်နှင့် တူနေသည်ကို သတိထားမိပါလိမ့်မည်။ ဥပမာ အနေနဲ့ဖြစ်၍ database ကို access လုပ်သော code ကိုရေးမနေတော့ပါ။ Code ကို မည်သို့ organize လုပ်ရမည်နည်းဆိုသည့် ဥပမာကိုသာ ပြလိုသောကြောင့် ဖြစ်သည်။
 
-Notice that the name of the package is the same as the name of the folder. Also, obviously, we aren't actually accessing the database. We're just using this as an example to show how to organize code.
+ထိုနောက် `shopping` ဟုသော folder အတွင်းတွင်  `pricecheck.go` ဟုသော file တစ်ခုဆောက်ပြီး အောက်ပါအတိုင်းရေးလိုက်ပါ။
 
-Now, create a file called `pricecheck.go` inside of the main `shopping` folder. Its content is:
 
 ```go
 package shopping
@@ -1134,9 +1134,12 @@ func PriceCheck(itemId int) (float64, bool) {
 }
 ```
 
-It's tempting to think that importing `shopping/db` is somehow special because we're inside the `shopping` package/folder already. In reality, you're importing `$GOPATH/src/shopping/db`, which means you could just as easily import `test/db` so long as you had a package named `db` inside of your workspace's `src/test` folder.
 
-If you're building a package, you don't need anything more than what we've seen. To build an executable, you still need a `main`. The way I prefer to do this is to create a subfolder called `main` inside of `shopping` with a file called `main.go` and the following content:
+`shopping` ဟုသော package/folder အတွင်းတွင်တည်ရှိနေသဖြင့်  `shopping/db` ကို import လုပ်ရမည့်ဟု ထင်ကောင်ထင်လိမ့်မည်။ လက်တွေ့တွင် သင်သည် `$GOPATH/src/shopping/db` ဟု import ပြုလုပ်လိုက်ခြင်းဖြစ်၍ 
+folder အမည် `src/test` ၏ အတွင်းတွင်ရှိသောcode ကို `test/db` ဟု import ဟုပြုလုပ်ရမည်။ 
+
+ယခု သိထားသော အချက်အလက်များဖြင့် Package တစ်ခုကို တည်ဆောက်နိုင်မည် ဖြစ်သည်။ Executable တစ်ခုကို build ပြုလုပ်နိုင်ရန် `main` တစ်ခုလိုအပ်မည်ဖြစ်ပြီး ထိုကြောင့် `shopping` ဟုသော folder အတွင်းမှ `main` ဟု ထပ်ဆင့် folder တစ်ခုတည်ဆောက်ပြီး `main.go` ဟု file တစ်ခုတည်ဆောက်လိုက်ပြီး အောက်ပါအတိုင်းရေးသားနိုင်သည်။
+
 
 ```go
 package main
@@ -1151,7 +1154,7 @@ func main() {
 }
 ```
 
-You can now run your code by going into your `shopping` project and typing:
+ထိုအခါတွင် `shopping` project တွင်းသို့ဝင်၍ အောက်ပါ အတိုင်းရိုက်၍ run နိုင်ပါသည်။
 
 ```
 go run main/main.go
@@ -1159,11 +1162,15 @@ go run main/main.go
 
 ### Cyclical Imports
 
-As you start writing more complex systems, you're bound to run into cyclical imports. This happens when package A imports package B but package B imports package A (either directly or indirectly through another package). This is something the compiler won't allow.
 
-Let's change our shopping structure to cause the error.
+တဖြည်းဖြည်း ရှုပ်ထွေးလာသော စနစ်ကို ရေးသားလာသည်နှင့်အမျှ cyclical imports များနှင့်ကြုံတွေ့မည်ဖြစ်သည်။ Package A မှ Package B ကို Import လုပ်ရင်း Package B မှ Package A ကို Import လုပ်ပါက (တိုက်ရိုက်သော်လည်းကောင်း ၊ သွယ်ဝိုက်၍ နောက် package ပေါ်မှ တဆင့်သို့လည်းကောင်း) ကြုံတွေ့ရမည်ဖြစ်သည်။
+ထိုအခြေအနေမျိုးကို compiler မှာ ခွင့်မပြုပါ။ 
 
-Move the `Item` definition from `shopping/db/db.go` into `shopping/pricecheck.go`. Your `pricecheck.go` file should now look like:
+ကျွန်တော်တို့ရဲ့ shopping structure ကို error တက်အောင် စမ်းကြည့်ရအောင်။
+
+
+`shopping/db/db.go` မှ `Item` ကြေညာထားတာကို `shopping/pricecheck.go` ကိုရွှေ့လိုက်ပါ။ 
+`pricecheck.go`  ကအောက်ပါ အတိုင်းဖြစ်သွားမှာပါ။
 
 ```go
 package shopping
@@ -1185,7 +1192,9 @@ func PriceCheck(itemId int) (float64, bool) {
 }
 ```
 
-If you try to run the code, you'll get a couple of errors from `db/db.go` about `Item` being undefined. This makes sense. `Item` no longer exists in the `db` package; it's been moved to the shopping package. We need to change `shopping/db/db.go` to:
+အဆိုပါ code ကို  run ပါက `db/db.go` မှ  `Item` ကို undefined ဖြစ်ကြောင်းပြပါမည်။ `Item` မှာ `db` package တွင်မရှိတော့ပဲ shopping package တွင် ရောက်သွားသောကြောင့် နည်းလမ်းကျသည် ဟု ဆိုရမည်။ ထိုနောက်
+`shopping/db/db.go` ကို အောက်ပါ အတိုင်းပြင်ရန်လိုသည်။
+
 
 ```go
 package db
@@ -1201,7 +1210,9 @@ func LoadItem(id int) *shopping.Item {
 }
 ```
 
-Now when you try to run the code, you'll get a dreaded *import cycle not allowed* error. We solve this by introducing another package which contains shared structures. Your directory structure should look like:
+
+အထက်ပါ code ကို run ပါက သင်မျှော်လင့်ထားသော *import cycle not allowed* ဟုသည့် error ရလာမည်။ 
+ထိုပြဿနာကို structure shared လုပ်ထားသော package နောက်တစ်ခုတည်ဆောက်ခြင်း ဖြင့် ဖြေရှင်းနိုင်သည်။ သင့်၏ directory structure သည် အောက်ပါ အတိုင်းဖြစ်မည်။ 
 
 ```
 $GOPATH/src
@@ -1215,7 +1226,7 @@ $GOPATH/src
       main.go
 ```
 
-`pricecheck.go` will still import `shopping/db`, but `db.go` will now import `shopping/models` instead of `shopping`, thus breaking the cycle. Since we moved the shared `Item` structure to `shopping/models/item.go`, we need to change `shopping/db/db.go` to reference the `Item` structure from `models` package:
+`pricecheck.go` သည် `shopping/db` ကိုပဲ import လုပ်မည်ဖြစ်သော်လည်း `db.go` သည် `shopping` အစား `shopping/models`  ကို import လုပ်မည်ဖြစ်ဲပြီး တပတ်လည်ခြင်းမှ ရပ်တန့်သွားသည်။ `Item` structure ကို `shopping/models/item.go` ကိုရွှေ့လိုက်သဖြင့်  `models` package မှ `Item` structure ကို reference ပြုလုပ်ရန် `shopping/db/db.go` ကိုပြောင်းရန်လိုမည်။
 
 ```go
 package db
@@ -1231,15 +1242,14 @@ func LoadItem(id int) *models.Item {
 }
 ```
 
-You'll often need to share more than just `models`, so you might have other similar folder named `utilities` and such. The important rule about these shared packages is that they shouldn't import anything from the `shopping` package or any sub-packages. In a few sections, we'll look at interfaces which can help us untangle these types of dependencies.
+တခါတရံ့ `models` များသာမက `utilities` လိုမျိုး ခပ်ဆင်ဆင် folder များကို share ရန်လိုကောင်းလိုလိမ့်မည်။ share ပြုလုပ်ထားသော package များ၏ အဓိက လိုက်နာရမည့် အချက်တစ်ချက်မှာ `shopping` package နှင့် ၎င်း၏ sub-package များမှ import မလုပ်ရပါ။ နောက် အပိုင်းများတွင် ထိုသို့သော dependencies များကို ရှင်းလင်းစေမည့် interface များအကြောင်းကို ရှင်းပြပါမည်။
+
 
 ### Visibility
 
-Go uses a simple rule to define what types and functions are visible outside of a package. If the name of the type or function starts with an uppercase letter, it's visible. If it starts with a lowercase letter, it isn't.
 
-This also applies to structure fields. If a structure field name starts with a lowercase letter, only code within the same package will be able to access them.
-
-For example, if our `items.go` file had a function that looked like:
+Go တွင် Package အပြင်ရှိ type နှင့် function များ၏ visible ဖြစ်မဖြစ်ကို သတ်မှတ်သည့် စံချိန်စံညွန်းတစ်ခုရှိသည်။ function တစ်ခု၏ အမည်သည် uppercase ဖြင့်စပါက visible ဖြစ်ပြီး lowercase ဖြင့်စပါက visible မဖြစ်ပါ။ ၎င်းသည် function များတွင်သာမက structure field များတွင်လည်း အကြုံးဝင်သည်။ field name သည် lower case ∆ဖင့်စပါက package အတွင်းတွင်သာ access လုပ်နိုင်မည်ဖြစ်သည်။
+ဥပမာ `items.go` တွင် အောက်ပါ အတိုင်း function တစ်ခုရှိပါက
 
 ```go
 func NewItem() *Item {
@@ -1247,23 +1257,21 @@ func NewItem() *Item {
 }
 ```
 
-it could be called via `models.NewItem()`. But if the function was named `newItem`, we wouldn't be able to access it from a different package.
+`models.NewItem()` ဟုလှမ်းခေါ်နိုင်မည်ဖြစ်သော်လည်း `newItem` ဟုအမည်ပြောင်းလိုက်ပါက တခြား package မှ လှမ်းခေါ်နိုင်မည် မဟုတ်ပေ။ 
 
-Go ahead and change the name of the various functions, types and fields from the `shopping` code. For example, if you rename the `Item's` `Price` field to `price`, you should get an error.
+`shopping` code မှ function များ၏ အမည်များ ၊ type နှင့် fields တို့ကို ပြောင်းကြည့်ပါဦး။ ဥပမာ  `Item's` ၏ `Price` ကို `price` ဟုပြောင်းလိုက်ပါက error တက်မည်ဖြစ်သည်။
 
 ### Package Management
 
-The `go` command we've been using to `run` and `build` has a `get` subcommand which is used to fetch third-party libraries. `go get` supports various protocols but for this example, we'll be getting a library from Github, meaning, you'll need `git` installed on your computer.
 
-Assuming you already have git installed, from a shell/command prompt, enter:
+`go` command တွင် ကျွန်တော်တို့ အသုံးပြုနေသည့် `run` နှင့် `build` အပြင် `get` ဟုသော third-party library များကို ခေါ်ယူ အသုံးပြုနိုင်သည့် command ပါဝင်သည်။ `go get` သည် protocal အမြောက်အများကို support ပြုလုပ်သော်လည်း ယခု ဥပမာတွင် Github မှာ library ကိုအသုံးပြုမည်ဖြစ်၍ သင့်၏ ကွန်ပျုတာတွင် `git` install ပြုလုပ်ထားရန်လိုမည်။ git install ပြုလုပ်ပြီးပါက shell/command prompt မှ အောက်ပါအတိုင်း ရိုက်လိုက်ပါ။
 
 ```
 go get github.com/mattn/go-sqlite3
 ```
+`go get` သည် remote file များကို fetch လုပ်ပြီး သင့်၏ workplace တွင် သိမ်းထားပေးသည်။ `$GOPATH/src` တွင်ကြည့်လိုက်ပါ။ ကျွန်တော်တို့ တည်ဆောက်ထားသော `shopping` project အပြင် `github.com`  ဟု folder ကိုတွေ့ရမည်ဖြစ်ပြီး အတွင်းတွင် `mattn` ဟု folder တစ်ခု ၊ ၎င်းအထဲတွင် `go-sqlite3` ဟု folder တွေ့ရမည်ဖြစ်သည်။
 
-`go get` fetches the remote files and stores them in your workspace. Go ahead and check your `$GOPATH/src`. In addition to the `shopping` project that we created, you'll now see a `github.com` folder. Within, you'll see a `mattn` folder which contains a `go-sqlite3` folder.
-
-We just talked about how to import packages that live in our workspace. To use our newly gotten `go-sqlite3` package, we'd import it like so:
+package များကို မည်သို့ import ပြုလုပ်ရမည်နည်းဆိုသည်ကို ပြောပြပြီးဖြစ်သည်။ လက်ရှိရထားသော `go-sqlite3` package ကို အသုံးပြုနိုင်ရန် အောက်ပါ အတိုင်း import ပြုလုပ်နိုင်သည်။
 
 ```go
 import (
@@ -1271,21 +1279,24 @@ import (
 )
 ```
 
-I know this looks like a URL but in reality, it'll simply import the `go-sqlite3` package which it expects to find in `$GOPATH/src/github.com/mattn/go-sqlite3`.
+URL နှင့်ဆင်တူသော်လည်း လက်တွေ့တွင် `$GOPATH/src/github.com/mattn/go-sqlite3` တွင်တည်ရှိသော `go-sqlite3` ကို import ပြုလုပ်ခြင်းဖြစ်သည်။
 
 ### Dependency Management
 
-`go get` has a couple of other tricks up its sleeve. If we `go get` within a project, it'll scan all the files, looking for `imports` to third-party libraries and will download them. In a way, our own source code becomes a `Gemfile` or `package.json`.
 
-If you call `go get -u` it'll update the packages (or you can update a specific package via `go get -u FULL_PACKAGE_NAME`).
 
-Eventually, you might find `go get` inadequate. For one thing, there's no way to specify a revision, it always points to the master/head/trunk/default. This is an even larger problem if you have two projects needing different versions of the same library.
+`go get` တွင် အခြား အသုံးပြုနိုင်သည့်နည်းလမ်းများလည်းရှိသေးသည်။ project အတွင်းတွင် `go get` ဟုလှမ်းခေါ်ပါက files များအားလုံးကို scane ပြုလုပ်ပြီး `import` များကိုရှာဖွေပါ third-party library များကိုရှာဖွေပြီး download လုပ်ပေးသည်။ ထိုကြောင့်ဖြင့် `Gemfile` နှင့် `package.json` တို့၏ သဘောနှင့် ဆင်တူသည်ဟု ပြောနိုင်သည်။
 
-To solve this, you can use a third-party dependency management tool. They are still young, but two promising ones are [goop](https://github.com/nitrous-io/goop) and [godep](https://github.com/tools/godep). A more complete list is available at the [go-wiki](https://code.google.com/p/go-wiki/wiki/PackageManagementTools).
+`go get -u` ဟုခေါ်ပါက packages များကို update ပြုလုပ်သွားနိုင်မည်ဖြစ်သည်။ (သို့မဟုတ်ပါက လိုချင်သည့် package တစ်ခုချင်းစီကို `go get -u FULL_PACKAGE_NAME` ဟု update ပြုလုပ်နိုင်သည်။)
+
+တဖြည်းဖြည်းဖြင့် `go get` ကို မလုံလောက်ဟု သိလာမည်ဖြစ်သည်။ တနည်းအားဖြင့် revision အနေဖြင့် သတ်မှတ်နိုင်ခြင်း မရှိပါ။  master/head/trunk/default ကိုသာ အမြဲတမ်း point လုပ်နေမည်ဖြစ်သည်။ 
+အကယ်၍ သင့်တွင် library တစ်ခု၏ မတူညီသော version များကို project နှစ်ခုတွင် အသုံးပြုလိုပါက ပြဿနာရှိပါသည်။
+
+ထိုပြဿနာကိုဖြေရှင်းနိုင်ရန် third-party dependency management tool တစ်ခုခုကို အသုံးပြုနိုင်သည်။ ၎င်းတို့သည် ထုတ်ထားသည်က မကြာသေးသောလည်း အဆင်ပြေလောက်သည့်နှစ်ခုမှာ [goop](https://github.com/nitrous-io/goop) နှင့် [godep](https://github.com/tools/godep) တို့ဖြစ်သည်။ list အပြည့်အစုံကို [go-wiki](https://code.google.com/p/go-wiki/wiki/PackageManagementTools) တွင်တွေ့နိုင်သည်။
 
 ## Interfaces
 
-Interfaces are types that define a contract but not an implementation. Here's an example:
+Interface များသည် contract များကို သတ်မှတ်သော type ဖြစ်ပြီး implementation မပါဝင်ပေ။ ဥပမာ
 
 ```go
 type Logger interface {
@@ -1293,7 +1304,8 @@ type Logger interface {
 }
 ```
 
-You might be wondering what purpose this could possibly serve. Interfaces help decouple your code from specific implementations. For example, we might have various types of loggers:
+သင့်အနေဖြင့် ဘယ်လိုနေရာမှာ အသုံးပြုမလဲ စဉ်းစားနေမည်ဖြစ်သည်။ Interface များသည် implementation များမှ code များကို decouple ပြုလုပ်ရာတွင် အထောက်အကူပြုသည်။ ဥပမာ ကျွန်တော်တို့တွင် အမျိုးအစားစုံလင်သော logger များရှိသည်ဆိုပါစို့။
+
 
 ```go
 type SqlLogger struct { ... }
