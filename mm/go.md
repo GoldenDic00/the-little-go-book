@@ -2,7 +2,7 @@
 
 ## လိုင်စင်
 
-The Little Go စာအုပ်သည် Attribution-NonCommercial-ShareAlike 4.0  လိုင်စင်အရ မှတ်တမ်းတင်ထားသည်။ ထိုစာအုပ်အတွက် အခကြေးငွေ ပေးစရာမလို။ သင့်အနေဖြင့် ထိုစာအုပ်ကို ပြန်လည်ဖြန့်ဝေ၊ ပြင်ဆင်၊ ပြသခြင်း ပြုနိုင်သည်။ သို့သော ထိုစာအုပ် မူလစာရေးသူ ဖြစ်သည့် Karl Seguin ကိုပြန်လည် ညွန်းဆိုရမည်ဖြစ်ပြီး စီးပွားဖြစ်သုံးစွဲရန် ခွင့်မပြု။ လိုင်စင်အပြည့်အစုံကို အောက်ပါအတိုင်းဖတ်ရှုနိုင်သည်။
+The Little Go စာအုပ်သည် Attribution-NonCommercial-ShareAlike 4.0 လိုင်စင်အရ မှတ်တမ်းတင်ထားသဖြင့် ထိုစာအုပ်အတွက် အခကြေးငွေ ပေးစရာမလို၊ ပြန်လည်ဖြန့်ဝေ၊ ပြင်ဆင်၊ ပြသခြင်း ပြုနိုင်သည်။ သို့သော် မူလစာရေးသူ ဖြစ်သည့် Karl Seguin ကိုပြန်လည် ညွန်းဆိုရမည်ဖြစ်ပြီး စီးပွားဖြစ်သုံးစွဲရန် ခွင့်မပြု။ လိုင်စင်အပြည့်အစုံကို အောက်ပါအတိုင်းဖတ်ရှုနိုင်သည်။
 
 <https://creativecommons.org/licenses/by-nc-sa/4.0/>
 
@@ -13,23 +13,21 @@ The Little Go စာအုပ်သည် Attribution-NonCommercial-ShareAlike 4
 
 # အစပျိုး
 
-
-Language အသစ်တစ်ခုသင်တိုင်း ကျွန်တော်အတွက် စိတ်နှစ်ခွဖြစ်ရပါတယ်။ တဖက်မှာ language တွေဟာ ကျွန်တော်တို့ နေ့စဉ်လုပ်နေတာရဲ့ အခြေခံဖြစ်ပြီးတော့ အပြောင်းအလဲ အသေးလေးတစ်ခုပင် ထိရောက်မှု အများကြီးရှိနိုင်ပါတယ်။ တခုခုကို နှိပ်လိုက်ပါက သင့် program ကိုသက်ရောက်စေနိုင်သည့် ရလဒ်ကပင် *ဟာကနဲ* ဖြစ်နိုင်ပြီး သင့်အနေဖြင့် အခြား language များ၏ အမြင်ကိုပြန်၍ ပြောင်းလဲစေနိုင်သည်။ တဖက်ကပြန်ကြည့်ပါက language  များသည် ဆင့်ကဲ့ design လုပ်ထားသည်ဖြစ်၍ ဘာသာစကား အသစ် တစ်ခုကို လေ့လာပါက Keyword အသစ် ၊ type system နှင့် coding style များမှ အစ library အသစ်များ ၊ အဖွဲ့အစည်းအသစ်များနှင့် paradigms အသစ်များကို လေ့လာရခြင်းသည် အင်မတန်ပင် အလုပ်ရှုပ်သည်က မငြင်းသာ။ တခြားအရာများနှင့် နှိုင်းယှဉ်ပါက language အသစ်ကို လေ့လာခြင်းသည် အချိန်ကို အကျိုးရှိစွာ အသုံးချသည်ကော ဟုတ်ပေပါ့မလား ဟု သံသယဝင်မိလေသည်။
+Language အသစ်တစ်ခုသင်တိုင်း ကျွန်တော်အတွက် စိတ်နှစ်ခွဖြစ်ရပါတယ်။ တဖက်မှာ language တွေဟာ နေ့စဉ် လုပ်ငန်းဆောင်တာ များ၏ အခြေခံဖြစ်ပြီး အပြောင်းအလဲ အသေးလေးတစ်ခုပင် ထိရောက်မှု အများကြီးရှိနိုင်ပါတယ်။ တခုခုကို နှိပ်လိုက်ပါက သင့် program ကိုသက်ရောက်စေနိုင်သည့် ရလဒ်ကပင် *ဟာကနဲ* ဖြစ်နိုင်ပြီး language များ၏ အမြင်ကိုပြန်၍ ပြောင်းလဲစေနိုင်သည်။ တဖက်ကပြန်ကြည့်ပါက language  များသည် ဆင့်ကဲ့ design လုပ်ထားသည်ဖြစ်၍ ဘာသာစကား အသစ် တစ်ခုကို လေ့လာသည်နှင့် နှိုင်းစာလျှင် Keyword အသစ် ၊ type system နှင့် coding style များမှ အစ library အသစ်များ ၊ အဖွဲ့အစည်းအသစ်များနှင့် paradigms အသစ်များကို လေ့လာရခြင်းသည် အင်မတန်ပင် အလုပ်ရှုပ်သည်က မငြင်းသာ။ တခြားအရာများနှင့် နှိုင်းယှဉ်ပါက language အသစ်ကို လေ့လာခြင်းသည် အချိန်ကို အကျိုးရှိစွာ အသုံးချသည်ကော ဟုတ်ပေပါ့မလား ဟု သံသယဝင်မိလေသည်။
 
 သို့ပင်သော်ညား ကျွန်တော်တို့သည် *ရှေ့ကိုဆက်တိုး* ရမည်ဖြစ်သည်။ language များသည် ကျွန်တော်တို့ လုပ်ဆောင်သည့် အရာများ၏ အခြေခံဖြစ်သဖြင့် ကျွန်တော်တို့ အနေဖြင့် *ခြေလှမ်းတစ်လှမ်းချင်း* ဖြစ်စေ လှမ်းရမည် ဖြစ်သည်။ အပြောင်းအလဲများမှာ တဆင့်ချင်းစီဖြစ်သော်လည်း  productivity ၊ Readability ၊ Performance ၊ Testability ၊ Dependency Management ၊  Error Handling ၊ Documentation ၊ Profiling ၊ Communities နှင့် Standard Libraries များမှာ ကျယ်ပြန့်ပြီး ထိရောက်မှုမှာလည်း ကွာခြားလှပေသည်။ *ဓားချက်တစ်ထောင်ဖြင့်* အခုတ်ခံရသည်ကို အကောင်း ဘယ်လိုပြောရမှန်းပင် မသိပေ။
 
-ထိုနေရာတွင် မေးစရာ ပေါ်လာသည်က အဘယ်ကြောင့် *Go* ကိုရွှေးချယ်ခဲ့သနည်း။ ကျွန်တော်အတွက်တော့ ဖြေစရာနှစ်ခုရှိသည်။ ပထမတစ်ခုက ရိုးရိုးရှင်းရှင်း standard libraries များနှင့် ရိုးရိုးရှင်းရှင်း language တစ်ခုကြောင့်ဖြစ်သည်။ ထိုကြောင့် ထပ်ဆင့်တိုးတက်သွားသော Go ၏ သဘာဝကြောင့် ကျွန်တော်တို့ တခြား language များတွင် တွေ့ကြုံနေရသည့် အရှုပ်ထုပ်များကို ရှင်းလင်းစေနိုင်သည်။ နောက်တစ်ခုမှာ တခြား developer များအနေဖြင့် မိမိတို့တည်ရှိပြီးသော အရည်အချင်းများအနက် ပေါင်းစပ်အသုံးချနိုင်သည်။
+ထိုနေရာတွင် မေးစရာ ပေါ်လာသည်က အဘယ်ကြောင့် *Go* ကိုရွှေးချယ်ခဲ့သနည်း ဟုမေးပါက ဖြေစရာနှစ်ခုရှိသည်။ Go သည် ရိုးရိုးရှင်းရှင်း standard libraries များနှင့် ရိုးရိုးရှင်းရှင်း language တစ်ခုဖြစ်သည်။ ထပ်ဆင့် တိုးတက်သွားသော ၎င်း၏ သဘာဝကြောင့် ကျွန်တော်တို့ တခြား language များတွင် တွေ့ကြုံနေရသည့် အရှုပ်ထုပ်များ ကို ရှင်းလင်းနိုင်သည်။ နောက်တစ်ခုမှာ တခြား developer များအနေဖြင့် မိမိတို့တည်ရှိပြီးသော အရည်အချင်းများဖြင့် ပေါင်းစပ်အသုံးချနိုင်သည်။
 
-Go မှာ system language (ဥပမာ operation system များ၊ device driver များ တည်ဆောက်ရန်) အနေဖြင့်ဖွဲ့စည်းထားပြီး C နှင့် C++ developer များအတွက် ရည်ရွယ်ထားသော်လည်းလက်တွေ့တွင် ကျွန်တော်လို application developer များမှာ အဓိက Go ကိုအသုံးပြုသူ အများစုဖြစ်နေသည်။ ဘာဖြစ်လို့ ဆိုသည်ကို system developers မဟုတ်သဖြင့် မယ်မယ်ရရ မပြောနိုင်သော်လည်း ကျွန်တော်တို့လို့ website တည်ဆောက်သူများ ၊ Service နှင့် desktop application တည်ဆောက်သူများအတွက်မူ high-level နှင့် Low-level application များ အကြား ပေါင်းကူတံတားတစ်ခု သဖွယ်ဖြစ်နေသည်။
+Go မှာ system language (ဥပမာ operation system များ၊ device driver များ တည်ဆောက်ရန်) အနေဖြင့် ဖွဲ့စည်းထားပြီး C,C++ developer များအတွက် ရည်ရွယ်ထားသော်လည်းလက်တွေ့တွင် application developer များမှာ အဓိက Go ကိုအသုံးပြုသူ အများစုဖြစ်နေသည်။ အဘယ်ကြောင့် ဆိုသည်ကို system developers မဟုတ်သဖြင့် မပြောနိုင် သော်လည်း website ရေးသူများ ၊ Service နှင့် desktop application ရေးသူများအတွက် high-level နှင့် Low-level application များ အကြား ပေါင်းကူတံတားတစ်ခုသဖွယ်ဖြစ်နေသည်။
 
-Messaging ၊ Caching ၊ နှင့် အချက်အလက်အမြောက်အများ အသုံးပြု၍ တွက်ချက်ရသည်များ ၊ Command Line Interface များ ၊ Logging ၊ Monitoring နှင့် မည်သို့မည်ပုံ ခေါင်းစဉ်တပ်ရမှန်းမသိသော အချို့သော အလုပ်များအတွက် အချိန်ကြာလာသည်နှင့်အမျှ ပို၍ရှုပ်ထွေးလာပြီး တပြိုင်နက် အမြောက်အများ ထောင်နှင့်သောင်းနှင့်ချီ၍ တိုင်းတာလာရသည့်အခါ မိမိတို့လိုအပ်သလို Infrastructure ကိုပြုပြင်ပြောင်းလဲနိုင်ရန် လိုအပ်လာသည်။ ထိုသို့သော စနစ်များကို လူအများစု အသုံးပြုသည့် Ruby သို့မဟုတ် Python ကဲ့သို့ Language များ အသုံးပြု၍ရေးသားနိုင်သော်လည်း တင်းကျပ်သော Type စနစ်ကို အသုံးပြုသော Language များအသုံးပြုပါက အကျိုးဖြစ်ထွန်းသလို Performance လည်းပို၍ ကောင်းပေသည်။ ထိုနည်းတူ Go ကိုအသုံးပြု၍ website များ *ရေးသားနိုင်သော်လည်း* ထိုသို့သော စနစ်များကို များသောအားဖြင့် ပို၍ ဖြန့်ကျက်ရလွယ်သည့်  Node သို့မဟုတ် Ruby ကိုပို၍ သဘောကျမိသည်။
+Messaging၊ Caching၊ နှင့် အချက်အလက်အမြောက်အများ အသုံးပြု၍ တွက်ချက်မှုများ ၊ Command Line Interface များ၊ Logging၊ Monitoring နှင့် မည်သို့မည်ပုံ ခေါင်းစဉ်တပ်ရမှန်းမသိသော အချို့သော အလုပ်များအတွက် အချိန်ကြာလာသည်နှင့်အမျှ ပို၍ရှုပ်ထွေးလာပြီး တပြိုင်နက် အမြောက်အများ ထောင်နှင့်သောင်းနှင့်ချီ၍ တိုင်းတာလာရသည့်အခါ မိမိတို့လိုအပ်သလို Infrastructure ကိုပြုပြင်ပြောင်းလဲနိုင်ရန် လိုအပ်လာသည်။ ထိုသို့သော စနစ်များကို လူအများစု အသုံးပြုသည့် Ruby သို့မဟုတ် Python ကဲ့သို့ Language များ အသုံးပြု၍ရေးသားနိုင်သော်လည်း တင်းကျပ်သော Type စနစ်ကို အသုံးပြုသော Language များအသုံးပြုပါက အကျိုးဖြစ်ထွန်းသလို Performance လည်းပို၍ ကောင်းပေသည်။ ထိုနည်းတူ Go ကိုအသုံးပြု၍ website များ *ရေးသားနိုင်သော်လည်း* ထိုသို့သော စနစ်များကို များသောအားဖြင့် ပို၍ ဖြန့်ကျက်ရလွယ်သည့်  Node သို့မဟုတ် Ruby ကိုပို၍ သဘောကျမိသည်။
 
-Go အားသာသည့် တခြားအပိုင်းများလည်း ရှိသေးပေသည်။ ဥပမာ Compile လုပ်ထားသော Go Program တစ်ခုအတွက် dependency များမလိုခြင်း။ သင့်အနေဖြင့် user များ Ruby သို့မဟုတ် JVM သွင်းထားခြင်း ရှိမရှိ ၊ ရှိလျှင်ပင် မည်သည့် version ကိုသွင်းထားသနည်း စဉ်းစားရန်မလို။ ထိုကြောင့် Go သည် Command line အတွက်နှင့် distribute လုပ်ရန်လိုသည့် utlity program များ (ဥပမာ Log Collector လိုမျိုး) အတွက် တဖြည်းဖြည်း လူကြိုက်များလာသည်။ 
+Go အားသာသည့် တခြားအပိုင်းများလည်း ရှိသေးပေသည်။ ဥပမာ Compile လုပ်ထားသော Go Program တစ်ခုအတွက် dependency များမလိုခြင်း။ သင့်အနေဖြင့် user များ Ruby သို့မဟုတ် JVM သွင်းထားခြင်း ရှိမရှိ၊ ရှိလျှင်ပင် မည်သည့် version ကိုသွင်းထားသနည်း စဉ်းစားရန်မလို။ ထိုကြောင့် Go သည် Command line အတွက်နှင့် distribute လုပ်ရန်လိုသည့် utlity program များ (ဥပမာ Log Collector လိုမျိုး) အတွက် တဖြည်းဖြည်း လူကြိုက်များလာသည်။ 
 
 အချုပ်အားဖြင့်ပြောရလျှင် Go ကိုသင်ယူခြင်းသည် သင့်အချိန်ကို အကျိုးရှိစွာ အသုံးချခြင်း ပင်ဖြစ်သည်။ သင့်အနေဖြင့် နာရီပေါင်းများစွာ အချိန်ကုန်ပြီး Go ကိုကျွမ်းကျင်ရန် လုပ်စရာမလိုပဲ သိသလောက်နဲ့ပင် လက်တွေ့အသုံးချနိုင်သည်။
 
 ## စာရေးသူမှ အမှာစာ
-
 
 ဒီစာအုပ်ကို ရေးရန် တွန့်ဆုတ်နေသည့် အကြောင်းအရင်းများစွာ ရှိသည့်အနက် ပထမဆုံးတစ်ခုမှာ Go ၏ Documentation ဖြစ်သော  [Effective Go](https://golang.org/doc/effective_go.html) အတော်ပင် အနှစ်ကျသည်။ 
 
@@ -37,10 +35,9 @@ Go အားသာသည့် တခြားအပိုင်းများ�
 
 စာပိုဒ်နှင့် အခန်းခွဲများအကြောင်း စဉ်းစားရင်း သဘောပေါက်မိသည်က ယခု ကိစ္စတွင်တော့ ၎င်းကဲ့သို့ မှတ်ယူရန် မဖြစ်နိုင်ပေ။ သင့်အတွက် Interface ဆိုသည်မှာ အဘယ်နည်းကို လေ့လာရန် အချိန်မည်မျှယူမည်နည်း ဆိုသည်က အခြားသောသူများအနေဖြင့် *Go တွင် Interface ရှိသည်* ဟု သိထားရုံဖြင့် လုံလောက်သောသူများနှင့်မတူပေ။ နောက်ဆုံးတွင်တော့ တချို့အပိုင်းများ သိပ်အသေးစိတ်နေသော်လည်းကောင်း ၊ လိုအပ်နေသော်လည်းကောင်း စာဖတ်သူအနေဖြင့် အသိပေးနိုင်မည် ဟုမှတ်ယူရင်း ရေးရပါသည်။ ထိုသည့်ကို ထောက်ရှု၍ စာအုပ်၏ အနေအထားကို သဘောပေါက်နိုင်သည်။
 
-
 # စတင်ခြင်း
 
-သင့်အနေဖြင့် Go နှင့်ရင်းနှီးလိုပါက ဘာမှ install လုပ်ရန်မလိုပဲ [Go Playground](https://play.golang.org/) တွင်စမ်းသပ်နိုင်သည်။ ထိုအပြင် Go Code မှာကို မျှဝေလေ့လာနိုင်သော [Go's discussion forum](https://groups.google.com/forum/#!forum/golang-nuts) တွင် အကူအညီတောင်းနိုင်ပြီး stackoverflow တွင်လည်း မေးလိုရာမေးနိုင်သည်။ 
+သင့်အနေဖြင့် Go နှင့်ရင်းနှီးလိုပါက ဘာမှ install လုပ်ရန်မလိုပဲ [Go Playground](https://play.golang.org/) တွင်စမ်းသပ်နိုင်သည်။ ထိုအပြင် Go Code မှာကို မျှဝေလေ့လာနိုင်သော [Go's discussion forum](https://groups.google.com/forum/#!forum/golang-nuts) တွင် အကူအညီတောင်းနိုင်ပြီး stackoverflow တွင်လည်း မေးနိုင်သည်။ 
 
 Go ကို Install လုပ်ရသည်မှာ ခပ်ရိုးရိုးပင်။ Source မှဖြစ်စေ install လုပ်နိုင်သောလည်း compiled လုပ်ပြီးသား binary ကိုအသုံးပြုရန် အကြုံပေးလိုသည်။ [Go Download Page](https://golang.org/dl/) ကိုသွားပါက Platform မျိုးစုံအတွက် Installer များကိုတွေ့ရမည်ဖြစ်သည်။ ၎င်းတို့ကို ခဏဘေးဖယ်ပြီး Go ကို မည်သို့ setup လုပ်ရန် ကိုယ်ဖာသာကိုယ် လေ့လာကြပါစို့။ သင်တွေ့သည့် အတိုင်း သိပ်မခက်လှပါ။ 
 
@@ -50,7 +47,6 @@ Go ကို Install လုပ်ရသည်မှာ ခပ်ရိုးရ�
 
 ထိုကြောင့် `go` folder များတွင် သင့် source code များကို `src` ဟုသော folder အသေးကို အရင်ဦးဆုံးထည့်ရမည်ဖြစ်သည်။ 
 
-
 ## OSX / Linux
 
 ကိုယ့် platform အတွက် ကိုက်ညီသော `tar.gz` ကို download လုပ်ပါ။ OSX အတွက်မူ `go#.#.#.darwin-amd64-osx10.8.tar.gz` ဟုပုံစံဖြင့်ဖြစ်လိမ့်မည်။ နောက်မှ `#.#.#` Go ၏ နောက်ဆုံး version နံပါတ်များဖြစ်မည်။
@@ -58,7 +54,6 @@ Go ကို Install လုပ်ရသည်မှာ ခပ်ရိုးရ�
 folder လမ်းကြောင်း `/usr/local` အတွင်းသို့  `tar -C /usr/local -xzf go#.#.#.darwin-amd64-osx10.8.tar.gz`. ဟုရိုက်ထည့်ပြီး ဖြေချလိုက်ပါ။
 
 ထိုနောက် environment variable နှစ်ခု သတ်မှတ်ရန်လိုပါလိမ့်မည်။ 
-
 
   ၁. သင့်၏ workplace ကို `GOPATH` ဖြင့်ညွန်းဆိုပါ။ ကျွန်တော်အတွက်တော့ `$HOME/code/go` ဆိုရင်ရပါပြီ။
   ၂. ထိုနောက် Go ၏ binary ကို `PATH` ၏ နောက်ဆုံးတွင် ထည့်ဖြည့်ပေးရန်လိုမည်။ 
@@ -72,7 +67,6 @@ folder လမ်းကြောင်း `/usr/local` အတွင်းသိ�
 
 `go version` ဟုရိုက်ထည့်ပြီး မိမိတို့ အသုံးပြုနေသော version ကို `go version go1.3.3 darwin/amd64`  နမူနာပုံစံအတိုင်းတွေ့ရှိနိုင်သည်။
 
-
 ## Windows
 
 နောက်ဆုံး zip file ကိုဒေါင်းပါ။ x64 system တွင်ဖြစ်ပါက  `go#.#.#.windows-amd64.zip` ပုံစံဖြင့် file ကိုဒေါင်းပါ။ `#.#.#` သည်နောက်ဆုံး version ကိုညွန်ပြနေပါမည်။ 
@@ -84,27 +78,21 @@ folder လမ်းကြောင်း `/usr/local` အတွင်းသိ�
   ၁. သင့်၏ workplace ကို `GOPATH` ဖြင့်ညွန်းဆိုပါ။ ဥပမာ `c:\users\goku\work\go`
   ၂. သင့်၏ unzip လုပ်ထားသောနေရာရှိ binary ကို `PATH` environment variable တွင်ညွန်းဆိုဖို့လိုမည်။ ဥပမာ `c:\Go\bin`
 
-
 Control Panel ထဲရှိ `System` ထဲရှိ `Advanced` Tab ကိုနှိပ်ပါက `Environment Variables` ဟု button ကိုတွေ့ရှိရမည်ဖြစ်ပြီး ထိုမှတဆင့် Environment variables များကိုသတ်မှတ်နိုင်သည်။ Windows တစ်ချို့ version များတွင်မူ Control Panel ထဲရှိ `System` မှ `Advanced System Settings` ဟုသော option အတွင်းတွင်ရှိမည်။  
 
 ထိုနောက် command prompt ကိုဖွင့်၍ `go version` ဟုနှိပ်ပါ။ `go version go1.3.3 windows/amd64` ဟုပုံစံဖြင့် output ကိုမြင်ရပေမည်။
 
-
 # အခန်း (၁) - အခြေခံ
-
 
 Go သည် C နှင့်ဆင်သော Syntax များနှင့် garbarge collection ပါရှိပြီး compile ပြုလုပ်ရသော type အသားပေး language တစ်ခုဖြစ်သည်။ ဆိုလိုသည်မှာ?
 
-
 ## Compilation
 
-
-Compilation ဆိုသည်မှာ မိမိတို့ရေးသားထားသော source code ကို low level language (ဥပမာ Go တွင် Assembly သို့ပြောင်းလဲပေးပြီး Java နှင့် C# တို့ အခြား language များသို့လည်းကောင်း) သို့ ပြန်၍ပြောင်းလဲသော ဖြစ်စဉ်ကို ဆိုလိုသည်။ 
+Compilation ဆိုသည်မှာ မိမိတို့ရေးသားထားသော source code ကို low level language (ဥပမာ Go တွင် Assembly သို့ပြောင်းလဲပေးပြီး Java နှင့် C# တို့တွင် byte code) သို့ ပြန်၍ပြောင်းလဲသော ဖြစ်စဉ်ကို ဆိုလိုသည်။ 
 
 ပုံမှန်အားဖြင့် Compile လုပ်ရသော language များသည် Compile လုပ်သည့် အချိန် ကြာလေ့ကြာထရှိသဖြင့် အလုပ်လုပ်ရသည် မှာ သာယာချမ်းမြေ့ခြင်းမရှိလှ ၊ Compile လုပ်ပါက မိနစ်ပိုင်းမှ စ၍ နာရီပိုင်း အထိကြာလျှင် တဆင့်ပြီးတဆင့် ရေးသားရန် ခက်ခဲလှပေသည်။ ထို့ကြောင့် Golang ၏ ရည်ရွယ် တည်ဆောက်ပုံ ကိုယ်တိုင်က Compilation ကြာချိန်ကို လျှော့ချနိုင်ရန် အသားပေးထားသည်။ ထိုအချက်သည် Project အကြီးများနှင့် အလုပ်လုပ်ရသော သူများ ၊ Feedback cycle မြန်ဆန်သဖြင့် Interpreted Language များဖြင့် အလုပ်လုပ်ရသူများ အတွက်ပါ အဆင်ပြေပါသည်။ 
 
-Compiled Language များသည် ပုံမှန်အားဖြင့် ပို၍လျင်မြန်ပြီး ၊ Dependencies များမလိုအပ်ပဲ run နိုင်လေ့ရှိသည်။ (အနည်းဆုံး ထိုအချက်သည် C,C++ နှင့် Go ကဲ့သို့သော Assembly သို့ တိုက်ရိုက် Compile လုပ်နိုင်သည့် language များအတွက်မှန်ကန်သည် ဟု ဆိုရမည်။
-
+Compiled Language များသည် ပုံမှန်အားဖြင့် ပို၍လျင်မြန်ပြီး ၊ Dependencies များမလိုအပ်ပဲ run နိုင်လေ့ရှိသည်။ (အနည်းဆုံး ထိုအချက်သည် C,C++ နှင့် Go ကဲ့သို့သော Assembly သို့ တိုက်ရိုက် Compile လုပ်နိုင်သည့် language များအတွက်မှန်ကန်သည် ဟု ဆိုရမည်။)
 
 ## Static Typing
 
@@ -114,11 +102,10 @@ Static typing နှင့်ပတ်သတ်၍ အများအပြာ�
 
 ## C-Like Syntax
 
-C,C++, Java, Javascript နှင့် C# ကဲ့သို့သော C နှင့် ဆင်သည့် language များကိုအကျွမ်းဝင်ပါက Go ကို C နှင့်ဆင်သည်ကို သတိထားမိမည်ဖြစ်ပြီး လေ့လာရာတွင်လည်း ပို၍ရင်းနှိးပါလိမ့်မည်။ အကြမ်းအားဖြင့်ပေါ့။ ဥပမာ  `&&` က boolena AND ကဲ့သို့ အသုံးပြုပြီး နှစ်ခုကို နှိုင်းယှဉ်ရန် `==` ကိုအသုံးပြုပြီး လက်သည်းကွင်းဖြစ်သည့် `{` နှင့် `}` ကို scope တစ်ခု၏ အစနှင့်အဆုံးကို ပိုင်းခြားရာတွင် အသုံးပြီး Array သည် 0 မှစသည်။
+C,C++, Java, Javascript နှင့် C# ကဲ့သို့သော C နှင့် ဆင်သည့် language များကိုအကျွမ်းဝင်ပါက Go ကို C နှင့်ဆင်သည်ကို သတိထားမိမည်ဖြစ်ပြီး ယေဘူယျအားဖြင့် လေ့လာရာတွင်လည်း ပို၍ရင်းနှိးပါလိမ့်မည်။ ဥပမာ  `&&` က boolena AND ကဲ့သို့ အသုံးပြုပြီး နှစ်ခုကို နှိုင်းယှဉ်ရန် `==` ကိုအသုံးပြုပြီး လက်သည်းကွင်းဖြစ်သည့် `{` နှင့် `}` ကို scope တစ်ခု၏ အစနှင့်အဆုံးကို ပိုင်းခြားရာတွင် အသုံးပြီး Array သည် 0 မှစသည်။
 
-
-C နှင့်တူသော syntax ဖြစ်သော်လည်း အခြေအနေများ ဖော်ဲပြသည့် လက်သည်းကွင်း `(` နှင့် `)` တို့နှင့် statement တစ်ခုပြီးတိုင်း semi-colon များမှာ Go တွင် ထည့်သည်ဖြစ်စေ မထည့်သည် ဖြစ်စေ အလုပ်လုပ်သည်။ ဥပမာ
-`if` statment တစ်ခုသည် အောက်ပါအတိုင်းဖြစ်မည် ဖြစ်သည်။
+C နှင့်တူသော syntax ဖြစ်သော်လည်း အခြေအနေများ ဖော်ဲပြသည့် လက်သည်းကွင်း `(` နှင့် `)` တို့နှင့် statement တစ်ခုပြီးတိုင်း semi-colon များမှာ Go တွင် ထည့်သည်ဖြစ်စေ မထည့်သည် ဖြစ်စေ အလုပ်လုပ်သည်။ 
+ဥပမာ `if` statment တစ်ခုသည် အောက်ပါအတိုင်းဖြစ်မည် ဖြစ်သည်။
 
 ```go
 if name == "Leto" {
@@ -133,11 +120,10 @@ if (name == "Goku" && power > 9000) || (name == "gohan" && power < 4000)  {
   print("super Saiyan")
 }
 ```
-၎င်းတို့မှ အပ Go သည် C# နှင့် Java တို့ဖြင့်နှိုင်းစာလျှင် C နျင့်ပို့၍ နီးစပ်သည်မှာ syntax တွင်မက ရည်ရွယ်ချက်က အစပင်။ လေ့လာရင်းဖြင့် language ၏ ခပ်ပြတ်ပြတ်နှင့် ရိုးရှင်းမှု တဖြည်းဖြည်း ထင်ဟပ်လာသည်က ပို၍ သိသာလာပေမည်။ 
 
+၎င်းတို့မှ အပ Go သည် C# နှင့် Java တို့ဖြင့်နှိုင်းစာလျှင် C နျင့်ပို့၍ နီးစပ်သည်မှာ syntax တွင်မက ရည်ရွယ်ချက်က အစပင်။ လေ့လာရင်းဖြင့် language ၏ ပြတ်သားမှုနှင့် ရိုးရှင်းမှု တဖြည်းဖြည်း ထင်ဟပ်လာမည်။
 
 ## Garbage Collected
-
 
 တချို့ variable များ စတင်တည်ဆောက်ကတည်းက လွယ်ကူသည်။ ဥပမာ function ပြီးဆုံးသွားပါက ပျောက်ကွယ်သွားသော အတွင်းရှိ local variable တစ်ခုကဲ့သို့။ သို့သော တခြားသော ကိစ္စများတွင်မူ အထူးသဖြင့် Compiler အတွက် မရိုးရှင်းပေ။ function တစ်ခုမှ ပြန်လာသော variable တစ်ခု၏ သက်တမ်းသည် တခြားသော variable များနင့် object များ၏ reference လုပ်ထားပုံပေါ်မူတည်၍ ရှုပ်ထွေးလှသည်။ Garabage Collection မရှိပါက developer မှ မည်သည့် variable သည်မည်သည့်နေရာက သုံးထားသည်ကို သိရန်လိုပြီး memory ကို free လုပ်ရန်က ၎င်းတာဝန်ဖြစ်သည်။ C ကဲ့သို့ language တွင်မူ variable ကို `free(str);` ဟု free လုပ်ပေးရန်လိုသည်။
 
@@ -183,20 +169,15 @@ Develop လုပ်နေစဉ်တွင် `go run` သို့မဟု�
 
 ### Main
 
-
-
 အပေါ်မှာ ရေးထားသော Code ကိုနားလည်မည် ဟုထင်ပါသည်။ function တစ်ခုတည်ဆောက်ပြီး `println` ဟုသော မူလပထမ ပါလာသည် function ကိုအသုံးချ၍ ရေးသားဖော်ပြလိုက်ခြင်းဖြစ်သည်။ Go ထို function ကိုအလိုအလျောက်သိသည်ဟု သင်ထင်ပါသလား? မဟုတ်ပါ တကယ်တော့ Go အတွက် program တစ်ခုတိုင်း၏ စစချင်း run ရန် entry point မှာ `main` package အတွင်းရှိ `main` function ဖြစ်သည်။
 
 Package များအကြောင်းနှင့်ပတ်သတ်၍ နောက်ပိုင်း အခန်းများတွင် အသေးစိတ် ထပ်၍ပြောသွားမည် ဖြစ်ပြီး ယခုတွင်မူ `main` package အတွင်းတွင်ရေးသားသည့် အခြေခံကိုနားလည်ရန် အဓိကထားရှင်းပြသွားမည်ဖြစ်သည်။ 
 
 သင့်အနေဖြင့် စိတ်ကြိုက် code နှင့် package name ကိုပြောင်းလဲပြီး `go run` ဟု run လိုက်ပါက error တက်မည်ဖြစ်သည်။ ထိုနောက် `main` ဟုပြန်ပြောင်းပြီး တခြား function အမည်ကို အသုံးပြုပါကလည်း တခြား error တက်ဦးမည် ဖြစ်သည်။ အပေါ်ကဲ့သို့ပြောင်းလဲပြီး `go build` ဟုရိုက်ထည့်လိုက်ပါ။ ထိုအချိန်တွင် compile လုပ်မည်ဖြစ်သော်လည်း entry point မရှိသဖြင့် ဘာမှ run မည်မဟုတ်ပေ။ library တစ်ခုကိုတည်ဆောက်ပါက ထိုကဲ့သို့ အခြေအနေမျိုးသည် ပုံမှန်ပင်ဖြစ်သည်။
 
-
 ## Imports
 
-Go တွင် `println` ကဲ့သို့သော built-in functions များစွာပါရှိပြီး အသုံးပြုနိုင်ရန် reference လုပ်စရာမလိုပေ။ သို့သာ Go ၏ standard libtary ကိုသာအသုံးပြုပြီး thirdparty library များကိုရှောင်ရှားပါက ခပ်ဝေးဝေးရောက်နိုင်မည် မဟုတ်ပေ။ ထိုအတွက် Go တွင် အပြင်မှ Package များမှ Code များကို အသုံးပြုလိုပါက `import` keyword ကိုအသုံးပြုနိုင်သည်။
-
-ကျွန်တော်တို့ program ကိုအောက်ပါအတိုင်း ပြောင်းလဲကြည့်လိုက်ပါ။
+Go တွင် `println` ကဲ့သို့သော built-in functions များစွာပါရှိပြီး အသုံးပြုနိုင်ရန် reference လုပ်စရာမလိုပေ။ သို့သာ Go ၏ standard libtary ကိုသာအသုံးပြုပြီး thirdparty library များကိုရှောင်ရှားပါက ခပ်ဝေးဝေးရောက်နိုင်မည် မဟုတ်ပေ။ ထိုအတွက် Go တွင် အပြင်မှ Package များမှ Code များကို အသုံးပြုလိုပါက `import` keyword ကိုအသုံးပြုနိုင်သည်။ program ကိုအောက်ပါအတိုင်း ပြောင်းလဲကြည့်လိုက်ပါ။
 
 ```go
 package main
@@ -213,19 +194,17 @@ func main() {
   fmt.Println("It's over", os.Args[1])
 }
 ```
-
 အောက်ကအတိုင်း run နိုင်ပါသည်။
 
 ```
 go run main.go 9000
 ```
 
-ယခု ကျွန်တော်တို့ အသုံးပြုနေသည်မှာ Go ၏ standard package များဖြစ်သော် `fmt` နှင့် `os` တို့ဖြစ်သည်။ ထိုအပြင် မူလပါရှိပြီး ဖြစ်သော `len` ဟုသော function ကိုပါ မိတ်ဆက်ပေးလိုက်သည်။ `len` သည် string တစ်ခု၏ size ကိုသော်လည်းကောင်း dictionary ဖြစ်ပါက ပါဝင်သော value အရေအတွက်ကို လည်း ယခုကဲ့သို့သော array ဖြစ်ပါက ပါဝင်သော element အရေအတွက်ကို ဖော်ပြပေးသည်။ အဘယ်ကြောင့် သင့်အနေဖြင့် argument (၂)ခုကို မျှော်လင့်ထားသနည်းဟု ဆိုပါက index 0 တွင်ရှိသည့် ပထမ argument သည် လက်ရှိ run နေသော executable ၏ path အနေဖြင့် ပါရှိမည်ဖြစ်သည်။ (program ကို print ထုတ်မည့် value ပြောင်းလဲခြင်းဖြင့် ကိုယ်တိုင် စမ်းသပ်နိုင်သည်။)
+ယခုအသုံးပြုနေသည်မှာ Go ၏ standard package များဖြစ်သော် `fmt` နှင့် `os` တို့ဖြစ်သည်။ ထိုအပြင် မူလပါရှိပြီး ဖြစ်သော `len` ဟုသော function ကိုပါ မိတ်ဆက်ပေးလိုက်သည်။ `len` သည် string တစ်ခု၏ size ကိုသော်လည်းကောင်း dictionary ဖြစ်ပါက ပါဝင်သော value အရေအတွက်ကို လည်း ယခုကဲ့သို့သော array ဖြစ်ပါက ပါဝင်သော element အရေအတွက်ကို ဖော်ပြပေးသည်။ အဘယ်ကြောင့် သင့်အနေဖြင့် argument (၂)ခုကို မျှော်လင့်ထားသနည်းဟု ဆိုပါက index 0 တွင်ရှိသည့် ပထမ argument သည် လက်ရှိ run နေသော executable ၏ path အနေဖြင့် ပါရှိမည်ဖြစ်သည်။ (program ကို print ထုတ်မည့် value ပြောင်းလဲခြင်းဖြင့် ကိုယ်တိုင် စမ်းသပ်နိုင်သည်။)
 
 package ၏ အမည်များကို function အမည်များ၏ ရှေ့တွင် prefix အနေဖြင့် သုံးနေခြင်း (ဥပမာ `fmt.Println` ) ကို သတိထားမိမည် ဖြစ်သည်။ ၎င်းသည် တခြား language များနှင့် အဓိက ကွာခြားချက်ဖြစ်ကာ အသေးစိတ်ကို နောက်ပိုင်း အခန်းများတွင် ရှင်းပြသွားပါမည်။ အခုတွင်မူ package တစ်ခုကို import လုပ်တက်ပြီး အသုံးပြုတက်ပါက အစကောင်းဟု ဆိုရမည်။ 
 
 Package များ import လုပ်ရာတွင် Go သည် အလွန်တင်းကျပ်ပါသည်။ package တစ်ခုကို import ပြီး အသုံးမပြုပါက compile လုပ်နိုင်မည် မဟုတ်။ အောက်က အတိုင်း run ကြည့်ပါ။
-
 
 ```go
 package main
@@ -238,7 +217,6 @@ import (
 func main() {
 }
 ```
-
 
 `fmt` နှင့် `os` နှစ်ခုကို import လုပ်ထားပြီး အသုံးမပြုသောကြောင့် error နှစ်ခုတက်လိမ့်မည်ဖြစ်သည်။ အာရုံမနောက်ချေဘူးလား။ မှန်ပါသည်။ သို့သော် အချိန်ကြာလာသည်နင့်အမျှ အာရုံနောက်သောလည်း ရေးသာကျလာမည် ဖြစ်သည်။ တော်တော်များများ ကိုယ်တိုင်ကိုယ်ကျ ကြုံချင်မှကြုံရသောလည်း အသုံးမပြုသော import များသည် program ကိုနှေးစေသောကြောင့် Go တွင် တင်းကျပ်ထားခြင်းဖြစ်သည်။ 
 
@@ -258,7 +236,6 @@ godoc -http=:6060
 
 သင့်အနေဖြင့် *ဘာလို့ ဒီလောက်တောင် ရှုပ်ထွေးတာလဲ* ဟုထင်ကောင်းထင်လိမ့်မည်။ ယခုတော့ ဥပမာ အနေဖြင့်ကြည့်ကြည့်ပါ။ Go တွင် အရိုးရှင်းဆုံး variable ကြေညာခြင်းနှင့်သတ်မှတ်ခြင်းသည် အောက်ပါအတိုင်းဖြစ်သည်။ 
 
-
 ```go
 package main
 
@@ -273,7 +250,6 @@ func main() {
 }
 ```
 
-
 ၎င်းတွင် `power` ဟုသော variable ကို `int` အမျိုးအစားအဖြစ်သတ်မှတ်လိုက်သည်။ မူလအတိုင်းဆိုပါက go တွင် variable များကို နိတ္ထ တန်ဖိုးများ သတ်မှတ်လေ့ရှိသည်။ Integer ဆိုပါက `0` ၊ boolean ဆိုပါက `false` ၊ strings ဆိုပါက `""` စသဖြင့်စသဖြင့်။ ထိုကြောင့် နောက်တစ်ကြောင်းတွင် `power` ဟုသော variable တွင် တန်ဖိုး `9000` ကိုသတ်မှတ်လိုက်ခြင်းဖြစ်သည်။ ထိုနှစ်ကြောင်းကို တစ်ကြောင်းထဲ အဖြစ် အောက်ပါ အတိုင်းရေးသားနိုင်သည်။ 
 
 ```go
@@ -281,7 +257,6 @@ var power int = 9000
 ```
 
 သို့ပင်သော်ညား စာအများကြီးရိုက်နေရသေးသည်။ Go အပေါ်ကဲ့သို့သော ကြေညာသတ်မှတ်ချက်အတွက် type ကို infer ပြုလုပ်ပေးသော အတိုကောက် `:=`operator ရှိပါသည်။
-
 
 ```go
 power := 9000
@@ -301,7 +276,6 @@ func getPower() int {
 
 သတိပြုရမည်မှာ `:=` သည် assign ပြုလုပ်ရုံသာမက declare ပြုလုပ်ရာတွင်လည်းပါဝင်သည်။ ထိုကြောင့် variable တစ်ခုကို နှစ်ခါမကြေညာနိုင်သဖြင့် အောက်ပါအတိုင်း ရေးပါက error တက်မည်ဖြစ်သည်။
 
-
 ```go
 func main() {
   power := 9000
@@ -318,7 +292,6 @@ func main() {
 
 အပေါ်က error ကိုသေချာဖတ်ကြည့်ပါက *variables*  ဟုသော အများကိန်းကို ညွန်းဆိုထားသည်ကိုတွေ့ရမည်။ အဘယ်ကြောင့်ဆိုသော go တွင် variable များစွာကို `=` နှင့် `:=` ကိုအသုံးပြုနိုင်သည်။
 
-
 ```go
 func main() {
   name, power := "Goku", 9000
@@ -327,7 +300,6 @@ func main() {
 ```
 
 variable များအနက် တစ်ခုက အသစ်ဖြစ်ပါက `:=` ကိုအသုံးပြုနိုင်သည်။ ဥပမာ
-
 
 ```go
 func main() {
@@ -353,7 +325,6 @@ func main() {
 တွင် `name` variable သည် ကြေညာထားပြီး အသုံးမပြုသောကြောင့် compile ပြုလုပ်မည်မဟုတ်။ import ကဲ့သို့ပင်အာရုံနောက်သောလည်း Code ၏ cleaniess နှင့် readability ကိုအထောက်အကူပြုပါသည်။
 
 ကြေညာခြင်းနှင့် သတ်မှတ်ခြင်းအတွက် သင်ယူရန် ကျန်ရှိသေးသော်လည်း ယခုတွင် သင်မှတ်ထားရန်လိုသည်မှာ နတ္တိတန်ဖိုး အတွက် `var NAME TYPE` ဟု အသုံးပြုနိုင်ပြီး `NAME := VALUE` မှာ နှစ်ခုလုံးကို တပေါင်းတည်းပြုလုပ်ကာ ကြေညာပြီးသော variable များအတွက်သာ `NAME = VALUE` ဟုသုံးနိုင်သည်။
-
 
 ## Function ကြေညာခြင်းများ
 
@@ -915,9 +886,7 @@ slice := scores[2:4]
 slice[0] = 999
 fmt.Println(scores)
 ```
-
 အဖြေမှာ  `[1, 2, 999, 4, 5]` ဖြစ်မည်။
-
 
 ထိုပြောင်းလဲခြင်းက ကုဒ်ရေးသည့်ပုံစံပါ ပြောင်းလဲသွားသည်။ ဥပမာ function များသို့ parameter ပို့သောအခါ။ javascript တွင် string တစ်ခု၏ အက္ခရာ ငါးခု ကျော်ပြီး နေရာကို လိုပါက (slice သည် string များတွင်လည်း အလုပ်လုပ်သည်) 
 
@@ -928,14 +897,11 @@ This changes how you code. For example, a number of functions take a position pa
 haystack = "the spice must flow";
 console.log(haystack.indexOf(" ", 5));
 ```
-
 Go တွင် slice ကိုအောက်ပါ အတိုင်းသုံးနိုင်သည်။
-
 
 ```go
 strings.Index(haystack[5:], " ")
 ```
-
 
 အထက်ဖော်ပြပါ ဥပမာများမှ  `[X:]` သည် *X မှစ၍ အဆုံးထိ* ဟု အဓိပ္ပါယ်ရပြီး `[:X]` သည် *အစမှ X အထိသို့* ဟု အဓိပ္ပါယ် သက်ရောက်သည်။ တခြား language များနှင့်ကွာခြားသည်က Go တွင် အနုတ်ကိန်းများကို support မလုပ်ချေ။ အကယ့်၍ နောက်ဆုံးတစ်ခုလွဲ၍ ကျန်သော် value များကို အလိုရှိပါက အောက်ပါအတိုင်းရေးရသည်။
 
@@ -1074,9 +1040,7 @@ developer အတော်များများသည် `b` သည်ပိ�
 
 သို့သော် slice သို့မဟုတ် map ၏ value များကို ပြင်ပါက ကွာခြားချက်များကိုတွေ့ရမည်ဖြစ်သည်။ ထိုအချိန်တွင်မူ အခန်း (၂) တွင်ပြောသကဲ့သို့ ဖြစ်သည်။ ထိုကြောင့် array နှင့် map တို့၏ pointer နင့် value ကွာခြားချက်သည် ၎င်းတို့၏ value များအသုံးပြုပုံကိုသာ အဓိက မူတည်နေမည်ဖြစ်သည်။
 
-
 ## နောက်အခန်း မဖတ်ခင်
-
 
 Go ၏ Array နှင့် Map တို့သည် အခြား language များနှင့်အတူတူပင်ဖြစ်သည်။ dyanmic array များနှင့် အသားကျနေပါက အနည်းငယ်ပြောင်းလဲမည် ဖြစ်သော်လည်း `append` ကိုအသုံးပြုခြင်းဖြင့် အဆင်မပြေမှု အတော်များများ ဖြေရှင်းနိုင်သည်။ Array များကို ကျော်လွန်ပါက slice များကိုတွေ့နိုင်မည်ဖြစ်ပြီး slice များသည် အလွန် အစွမ်းထက်ပြီး သင့် code ၏ ရိုရှင်းမှုကို ထိန်းသိမ်းပေးပါသည်။
 
@@ -1159,9 +1123,7 @@ func main() {
 ```
 go run main/main.go
 ```
-
 ### Cyclical Imports
-
 
 တဖြည်းဖြည်း ရှုပ်ထွေးလာသော စနစ်ကို ရေးသားလာသည်နှင့်အမျှ cyclical imports များနှင့်ကြုံတွေ့မည်ဖြစ်သည်။ Package A မှ Package B ကို Import လုပ်ရင်း Package B မှ Package A ကို Import လုပ်ပါက (တိုက်ရိုက်သော်လည်းကောင်း ၊ သွယ်ဝိုက်၍ နောက် package ပေါ်မှ တဆင့်သို့လည်းကောင်း) ကြုံတွေ့ရမည်ဖြစ်သည်။
 ထိုအခြေအနေမျိုးကို compiler မှာ ခွင့်မပြုပါ။ 
@@ -1244,9 +1206,7 @@ func LoadItem(id int) *models.Item {
 
 တခါတရံ့ `models` များသာမက `utilities` လိုမျိုး ခပ်ဆင်ဆင် folder များကို share ရန်လိုကောင်းလိုလိမ့်မည်။ share ပြုလုပ်ထားသော package များ၏ အဓိက လိုက်နာရမည့် အချက်တစ်ချက်မှာ `shopping` package နှင့် ၎င်း၏ sub-package များမှ import မလုပ်ရပါ။ နောက် အပိုင်းများတွင် ထိုသို့သော dependencies များကို ရှင်းလင်းစေမည့် interface များအကြောင်းကို ရှင်းပြပါမည်။
 
-
 ### Visibility
-
 
 Go တွင် Package အပြင်ရှိ type နှင့် function များ၏ visible ဖြစ်မဖြစ်ကို သတ်မှတ်သည့် စံချိန်စံညွန်းတစ်ခုရှိသည်။ function တစ်ခု၏ အမည်သည် uppercase ဖြင့်စပါက visible ဖြစ်ပြီး lowercase ဖြင့်စပါက visible မဖြစ်ပါ။ ၎င်းသည် function များတွင်သာမက structure field များတွင်လည်း အကြုံးဝင်သည်။ field name သည် lower case ∆ဖင့်စပါက package အတွင်းတွင်သာ access လုပ်နိုင်မည်ဖြစ်သည်။
 ဥပမာ `items.go` တွင် အောက်ပါ အတိုင်း function တစ်ခုရှိပါက
@@ -1262,7 +1222,6 @@ func NewItem() *Item {
 `shopping` code မှ function များ၏ အမည်များ ၊ type နှင့် fields တို့ကို ပြောင်းကြည့်ပါဦး။ ဥပမာ  `Item's` ၏ `Price` ကို `price` ဟုပြောင်းလိုက်ပါက error တက်မည်ဖြစ်သည်။
 
 ### Package Management
-
 
 `go` command တွင် ကျွန်တော်တို့ အသုံးပြုနေသည့် `run` နှင့် `build` အပြင် `get` ဟုသော third-party library များကို ခေါ်ယူ အသုံးပြုနိုင်သည့် command ပါဝင်သည်။ `go get` သည် protocal အမြောက်အများကို support ပြုလုပ်သော်လည်း ယခု ဥပမာတွင် Github မှာ library ကိုအသုံးပြုမည်ဖြစ်၍ သင့်၏ ကွန်ပျုတာတွင် `git` install ပြုလုပ်ထားရန်လိုမည်။ git install ပြုလုပ်ပြီးပါက shell/command prompt မှ အောက်ပါအတိုင်း ရိုက်လိုက်ပါ။
 
@@ -1282,7 +1241,6 @@ import (
 URL နှင့်ဆင်တူသော်လည်း လက်တွေ့တွင် `$GOPATH/src/github.com/mattn/go-sqlite3` တွင်တည်ရှိသော `go-sqlite3` ကို import ပြုလုပ်ခြင်းဖြစ်သည်။
 
 ### Dependency Management
-
 
 
 `go get` တွင် အခြား အသုံးပြုနိုင်သည့်နည်းလမ်းများလည်းရှိသေးသည်။ project အတွင်းတွင် `go get` ဟုလှမ်းခေါ်ပါက files များအားလုံးကို scane ပြုလုပ်ပြီး `import` များကိုရှာဖွေပါ third-party library များကိုရှာဖွေပြီး download လုပ်ပေးသည်။ ထိုကြောင့်ဖြင့် `Gemfile` နှင့် `package.json` တို့၏ သဘောနှင့် ဆင်တူသည်ဟု ပြောနိုင်သည်။
@@ -1403,8 +1361,8 @@ type error interface {
   Error() string
 }
 ```
+ပုံမှန်အားဖြင့် `errors` package ကို import ပြုလုပ်ပြီး function `အသစ်` ရေးသားခြင်းဖြင့် မိမိတို့ဖာသာ error များပြုလုပ်နိုင်သည်။
 
-More commonly, we can create our own errors by importing the `errors` package and using it in the `New` function:
 
 ```go
 import (
@@ -1421,13 +1379,13 @@ func process(count int) error {
 }
 ```
 
-There's a common pattern in Go's standard library of using error variables. For example, the `io` package has an `EOF` variable which is defined as:
+Go ၏ standard library တွင် error variable များအသုံးပြုခြင်း သုံးလေသုံးထရှိသော pattern တစ်ခုဖြစ်သည်။ ဥပမာ `io` package တွင်ရှိသည့် `EOF` variable ကိုအောက်ပါ အတိုင်းဖန်တီးနိုင်သည်။
 
 ```go
 var EOF = errors.New("EOF")
 ```
+၎င်းသည် function ၏ပြင်ပတွင် ဖန်တီးထားသော package variable ဖြစ်ပြီး ပထမစာလုံးသည် အကြီးဖြစ်သောကြောင့် အခြား package များမှလည်း access ပြုလုပ်နိုင်သည်။ အခြားသော function များမှ ၎င်း error ကို return ပြန်နိုင်သည်။ ဥပမာ ကျွန်တော်တို့ file တစ်ခုကို read သောအခါဖြစ်စေ STDIN ဖြစ်စေ ယခု error ကိုအသုံးပြုနိုင်သည်။ အသုံးပြုသူအနေဖြင့် ထို singleton ပုံစံကို အသုံးချနိုင်သည်။
 
-This is a package variable (it's defined outside of a function) which is publicly accessible (upper-case first letter). Various functions can return this error, say when we're reading from a file or STDIN. If it makes contextual sense, you should use this error, too. As consumers, we can use this singleton:
 
 ```go
 package main
@@ -1446,11 +1404,13 @@ func main() {
 }
 ```
 
-As a final note, Go does have `panic` and `recover` functions. `panic` is like throwing an exception while `recover` is like `catch`; they are rarely used.
+နောက်ဆုံးအနေဖြင့် Go တွင် `panic` နှင့် `recover` ကဲ့သို့သော function များလည်းရှိသည်။ `panic` သည် exception throw ပြုလုပ်ခြင်းဖြင့် ဆင်တူပြီး `recover` မှာ `catch` နှင့်ဆင်တူသည်။ သို့သော်လည်း အသုံးနည်းပါသည်။
+
 
 ## Defer
 
-Even though Go has a garbage collector, some resources require that we explicitly release them. For example, we need to `Close()` files after we're done with them. This sort of code is always dangerous. For one thing, as we're writing a function, it's easy to forget to `Close` something that we declared 10 lines up. For another, a function might have multiple return points. Go's solution is the `defer` keyword:
+Go တွင် garbage collector ပါဝင်သော်လည်း အချို့သော resource များမှ ကိုယ်တိုင် release လုပ်ပေးရန်လိုသည်။ ဥပမာ files များကို process လုပ်ပြီးပါက `Close()` ပြုလုပ်ရန်လိုသည်။ 
+ထိုကဲ့သို့ Code များ အမြဲအားဖြင့် အန္တရာယ်များလေ့ရှိသည်။ Code ဆယ်ကြောင်းခန့်ရေးပြီးပါက `Close` ပြုလုပ်ရန် မေ့သည်က ဖြစ်ကောင်းဖြစ်နိုင်သည်။ ထို့အပြင် function များအတွက် return point ပေါင်းများစွာ လိုအပ်သည်လည်း ဖြစ်နိုင်သည်။ ထိုအတွက်ကြောင့် go တွင် `defer` keyword ကိုအသုံးပြုသည်။
 
 ```go
 package main
@@ -1471,25 +1431,25 @@ func main() {
 }
 ```
 
-If you try to run the above code, you'll probably get an error (the file doesn't exist). The point is to show how `defer` works. Whatever you `defer` will be executed after the enclosing function (in this case `main()`) returns, even if it does so violently. This lets you release resources near where it’s initialized and takes care of multiple return points.
+အပေါ်မှ code ကို run ပါက error တက်ပါလိမ့်မည်။ (file မရှိသဖြင့်) ၎င်းသည် `defer` ၏ အလုပ်လုပ်သည့် ဥပမာ ပုံစံဖြစ်သည်။ function ၏ နောက်ဆုံး လိုင်းကို execute လုပ်ပြီးပါက `defer` သည်စတင်အလုပ်လုပ်ပါလိမ့်မည်။ ဆိုးဆိုးရွားရွား error တက်သည်ကို ကြုံတွေ့သည်တိုင် defer သည် resource များကို release လုပ်ရာတွင် အသုံးပြုနိုင်သည်။ ထိုကြောင့် return points များကို handle လုပ်ရာတွင် အာရုံစိုက်နိုင်သည်။
 
 ## go fmt
 
-Most programs written in Go follow the same formatting rules, namely, a tab is used to indent and braces go on the same line as their statement.
+Go တွင် program အများစုသည် တူညီသော formatting rule ကိုသာလိုက်နာသည်။ ဥပမာ tab ကို indent အနေဖြင့် အသုံးပြုပြီး brace များသည် statment နှင့်တကြောင်းတည်း တည်ရှိသည်။
 
-I know, you have your own style and you want to stick to it. That's what I did for a long time, but I'm glad I eventually gave in. A big reason for this is the `go fmt` command. It's easy to use and authoritative (so no one argues over meaningless preferences).
+သင့်တွင် သင် ရေးနေကြပုံစံ အတိုင်းသာ ရေးလိုမည်။ နားလည်ပါသည်။ ကျွန်တော်လည်း ထိုကဲ့သို ရေးနေသည် အချိန်အတော်ကြာပြီး နောက်ဆုံးတွင် လက်လျော့လိုက်သည်။ အဓိက အကြောင်းအရင်းမှာ `go fmt` ကြောင့်ဖြစ်သည်။ ၎င်းသည် အလွန်အသုံးပြုရလွယ်ကူပြီး စိတ်ချရသည်။ (ဆိုတော့ ဘယ် preference ကပိုကောင်းသလဲ ဆိုတာ ငြင်းရန်မလိုတော့)
 
-When you're inside a project, you can apply the formatting rule to it and all sub-projects via:
+Project အတွင်းမှ အခြားသော sub project အားလုံးကို formatting rule ကို apply ပြုလုပ်နိုင်သည်။
 
 ```
 go fmt ./...
 ```
 
-Give it a try. It does more than indent your code; it also aligns field declarations and alphabetically orders imports.
+စမ်းကြည့်ပါ။ ၎င်းသည် code ကို indent လုပ်ရုံတင်မက field delcaration များကိုပါ align လုပ်ပေးပြီး import များကို ပါ အက္ခရာအလိုက် စီပေးသွားသည်။
 
 ## Initialized If
 
-Go supports a slightly modified if-statement, one where a value can be initiated prior to the condition being evaluated:
+Go တွင် condition မစစ်ခင် value များ assign လုပ်နိုင်သော if-statement များကိုအထောက်အပံပေးသည်။
 
 ```go
 if x := 10; count > x {
@@ -1497,21 +1457,21 @@ if x := 10; count > x {
 }
 ```
 
-That's a pretty silly example. More realistically, you might do something like:
+အပေါ်ပုံစံ ဥပမာ ဖြစ်ပြီး လက်တွေ့တွင်မူ အောက်ပါအတိုင်း သုံးလေ့ရှိသည်။
 
 ```go
 if err := process(); err != nil {
   return err
 }
 ```
-
-Interestingly, while the values aren't available outside the if-statement, they are available inside any `else if` or `else`.
+သတိပြုရန်မှာ ထို value များသည် if statement ၏ အပြင်ဘက်တွင် အသုံးပြု၍မရနိုင်ပါ။ `else if` နှင့် `else` တို့ရှိပါက ၎င်းအတွင်းတွင် သုံးနိုင်သည်။
 
 ## Empty Interface and Conversions
 
-In most object-oriented languages, a built-in base class, often named `object`, is the superclass for all other classes. Go, having no inheritance, doesn't have such a superclass. What it does have is an empty interface with no methods: `interface{}`. Since every type implements all 0 of the empty interface's methods, and since interfaces are implicitly implemented, every type fulfills the contract of the empty interface.
+Object-oriented language အတော်များများတွင် `object` ဟုခေါ်လေ့ရှိသည့် class များအားလုံး၏ class ဖြစ်သော superclass တစ်ခုရှိသည်။ Go တွင် inheritance မပါရှိသဖြင့် ထိုသို့ superclass လည်းမရှိပါ။ သူမှာရှိသည်က method များတစ်ခုမှ မပါသည့် interface အလွတ်ကို `interface{}` ဟုခေါ်နိုင်သည်။  type တိုင်းသည် interface အလွတ်မှ ဆင်းသက် ခြင်းဖြစ်ပြီး type တိုင်းသည် empty interface ၏ contract ကိုလက်ခံနိုင်သည်။
 
- If we wanted to, we could write an `add` function with the following signature:
+အကယ်၍ `add` function ကိုအောက်ပါအတိုင်းရေးသားနိုင်သည်။
+
 
 ```go
 func add(a interface{}, b interface{}) interface{} {
@@ -1519,15 +1479,13 @@ func add(a interface{}, b interface{}) interface{} {
 }
 ```
 
-To convert an interface variable to an explicit type, you use `.(TYPE)`:
+Interface variable မှ type တစ်ခုခုကိုပြောင်းလဲလိုပါက  `.(TYPE)` ကိုအသုံးပြုနိုင်သည်။
 
 ```go
 return a.(int) + b.(int)
 ```
 
-Note that if the underlying type is not `int`, the above will result in an error.
-
-You also have access to a powerful type switch:
+မှတ်သားရန်မှာ ၎င်း၏ type သည် `int` မဟုတ်ပါက အပေါ်မှ code သည် error တက်ပါလိမ့်မည်။ switch ကို အသုံးပြု၍လည်း အောက်ပါအတိုင်း ရေးသားနိုင်ပါသေးသည်။
 
 ```go
 switch a.(type) {
@@ -1540,7 +1498,8 @@ switch a.(type) {
 }
 ```
 
-You'll see and probably use the empty interface more than you might first expect. Admittedly, it won't result in clean code. Converting values back and forth is ugly and dangerous but sometimes, in a static language, it's the only choice.
+နောက်ပိုင်းတွင် သင်ထင်ထားသည်ထက် empty interface ကို ပို၍ အသုံးပြုဖြစ်လိမ့်မည်။ သို့သော် clean code ဖြစ်လိမ့်မည် မဟုတ်ပေ။ Convert ခဏခဏ ပြန်လုပ်နေရခြင်းသည် အရုပ်ဆိုးပြီး အန္တရာယ်များသောလည်း static language ဖြစ်၍ တခါတရံ လုပ်ရသည့် အနေအထားရှိသည်။
+
 
 ## Strings and Byte Arrays
 
