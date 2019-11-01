@@ -1565,11 +1565,13 @@ Go နှင့် programming အသုံးပြုခြင်း၏ ရှ
 
 # Chapter 6 - Concurrency
 
-Go is often described as a concurrent-friendly language. The reason for this is that it provides a simple syntax over two powerful mechanisms: goroutines and channels.
+Go သည် concurrent-friendly ဖြစ်သည့် language ဟု မကြာခဏသတ်မှတ်ခြင်းခံရသည်။ အကြောင်းမှာ goroutine နဲ့ channels တို့ကဲ့သို့သော် အလွန်ရိုးရှင်းသော်လည်း အစွမ်းထက်သည့် mechanism ကို support ပေးသောကြောင့်ဖြစ်သည်။
+
 
 ## Goroutines
 
-A goroutine is similar to a thread, but it is scheduled by Go, not the OS. Code that runs in a goroutine can run concurrently with other code. Let's look at an example:
+
+Goroutine သည် thread နှင့်ဆင်တူသော်လည်း ကွာခြားသည်က OS မှ schedule လုပ်သည် မဟုတ်ပဲ Go ကပြုလုပ်ခြင်းဖြစ်သည်။ goroutine အတွင်းရှိ code အခြား code များနှင့် အပြိုင်အလုပ်လုပ်သည်။ အောက်က ဥပမာကို ကြည့်ပါ။
 
 ```go
 package main
@@ -1590,8 +1592,8 @@ func process() {
   fmt.Println("processing")
 }
 ```
-
-There are a few interesting things going on here, but the most important is how we start a goroutine. We simply use the `go` keyword followed by the function we want to execute. If we just want to run a bit of code, such as the above, we can use an anonymous function. Do note that anonymous functions aren't only used with goroutines, however.
+အချို့စိတ်ဝင်စားစရာ အချက်များပါရှိသော်လည်း အရေးအကြီးဆုံးမှာ goroutine တစ်ခုကို ဘယ်လိုစရမလည်း ဆိုက ကနဦးပါ။ ကိုယ်အသုံးပြုချင်သည့် function ၏ အရှေ့တွင် `go` keyword ကိုထည့်လိုက်သည်နိုင့် စ၍ သုံးနိုင်သည်။
+function တစ်ခုကို အမည်ပေးမကြေညာလိုပါက anonymous function အနေဖြင့် wrap လုပ်၍ သုံးနိုင်သည်။ မှတ်ထားရန်တစ်ခုမှာ anonymous function များသည် goroutine နှင့်သာ တွဲသုံးနိုင်သည်တော့ မဟုတ် ၊ သို့သော်
 
 ```go
 go func() {
@@ -1599,17 +1601,19 @@ go func() {
 }()
 ```
 
-Goroutines are easy to create and have little overhead. Multiple goroutines will end up running on the same underlying OS thread. This is often called an M:N threading model because we have M application threads (goroutines) running on N OS threads. The result is that a goroutine has a fraction of overhead (a few KB) than OS threads. On modern hardware, it's possible to have millions of goroutines.
+Goroutine များမှာ တည်ဆောက်ရန်လွယ်ကူပြီး overhead အနည်းငယ်မျှသာရှိသည်။ goroutine အမြောက်အမြားမှ OS thread တစ်ခုအတွင်းတွင် run နိုင်သည်။ ၎င်းကို အရေအတွက် M မျှရှိသော application thread (goroutine) များသည် အရေအတွက် N မျှရှိသော OS thread ပေါ်တွင် run သောကြောင့် M:N threading model ဟုခေါ်သည်။ 
+ရလဒ်အနေဖြင့် gorotuine များမှာ overhead အနေဖြင့် OS thread များနှင့်နှိုင်းစာလျှင် အနည်းငယ်မျှသာ (KB အနည်းငယ်) ရှိသည်။ ယနေ့ခေတ် စက်များအနေဖြင့် goroutine သန်းနဲ့ချီ run နိုင်သည်။
 
-Furthermore, the complexity of mapping and scheduling is hidden. We just say *this code should run concurrently* and let Go worry about making it happen.
+ထိုအပြင် mapping နှင့် scheduling ၏ ရှုပ်ထွေးမှုနှင့် တို့ကို ဖုံးကွယ်ထားသည်။ ထိုကြောင့်  *ထို code သည် concurrently run သည်*  ဆိုသည်ကိုသာ သိရန်လိုပြီး ကျန်သည်ကို Go ကဆောင်ရွက်ပေးသည်။
 
-If we go back to our example, you'll notice that we had to `Sleep` for a few milliseconds. That's because the main process exits before the goroutine gets a chance to execute (the process doesn't wait until all goroutines are finished before exiting). To solve this, we need to coordinate our code.
+အထက်က ဥပမာတွင် မီလီစက္ကန့် အနည်းငယ်မျှ  `Sleep`  ပြုလုပ်လိုက်သည်ကို တွေ့ရမည်ဖြစ်သည်။ ၎င်းမှာ goroutine လုပ်၍မပြီးခင် main process က ပြီးသွားပါက စောင့်မည်မဟုတ်ပဲ ပြီးသွားဖြစ်သညိ။ ထိုပြဿနာကို ဖြေရှင်းနိုင်ရန် Code ကိုပြင်ရန်လိုသည်။
 
 ## Synchronization
 
-Creating goroutines is trivial, and they are so cheap that we can start many; however, concurrent code needs to be coordinated. To help with this problem, Go provides `channels`. Before we look at `channels`, I think it's important to understand a little bit about the basics of concurrent programming.
 
-Writing concurrent code requires that you pay specific attention to where and how you read and write values. In some ways, it's like programming without a garbage collector -- it requires that you think about your data from a new angle, always watchful for possible danger. Consider:
+Goroutine များတည်ဆောက်ခြင်းသည် လွယ်ကူသည့်အပြင် ၎င်း၏ တန်ဖိုးမှာ ပေါလှသဖြင့် အမြောက်အမြား တည်ဆောက်နိုင်သည်။ သို့သော် concurrent code များသည် coordinate လုပ်ရန်လိုသည်။ ထိုပြဿနာကို ဖြေရှင်းနိုင်ရန် Go တွင် `channel` များကို ထည့်သွင်းထားသည်။ `channel` များမလေ့လာမှီ concurrent programming ၏ အခြေခံကို နားလည်ရန်လိုသည်။
+
+Concurrent Code များကိုရေးခြင်းဖြင့် value များကို မည်သို့ read & write လုပ်ရမည်ကို သတိထားရန်လိုသည်။ တနည်းအားဖြင့် garbage collector မပါပဲ program ရေးသကဲ့သို့ မိမိတို့၏ data ကိုရှုထောင့်အသစ်မှ မြင်တက်ရန်လိုသလို အန္တရာယ်များကိုလည်း ရှောင်ရှားရန်လိုသည်။
 
 ```go
 package main
@@ -1634,13 +1638,13 @@ func incr() {
 }
 ```
 
-What do you think the output will be?
+ဘာထွက်လာမည်ဟု ထင်သနည်း။
 
-If you think the output is `1, 2, ... 20` you're both right and wrong. It's true that if you run the above code, you'll sometimes get that output. However, the reality is that the behavior is undefined. Why? Because we potentially have multiple (two in this case) goroutines writing to the same variable, `counter`, at the same time. Or, just as bad, one goroutine would be reading `counter` while another writes to it.
+အဖြေမှာ `1, 2, ... 20` က မှန်လည်းမှန် မှားလည်းမှားမည်ဟု ဆိုရမည်။  အထက်ပါ code ကို run ပါက တခါတရံ အဆိုပါ output ကိုရလျင်ရလိမ့်မည်။ သို့သော် ထိုအခြေအနေသည် မကျိန်းသေ။ အဘယ်ကြောင့်ဆိုသော် သင့်အတွက် goroutine ပေါင်းများစွာကို တချိန်တည်းတွင် variable တစ်ခုတည်းဖြစ်သည့် `counter` သို့ access ပြုလုပ်နေခြင်း ကြောင့်ဖြစ်သည်။ goroutine တစ်ခုမှ write ပြုလုပ်ချိန်တွင် နောက်တစ်ခုက read လုပ်နေသည်က ဖြစ်နိုင်သည်။
 
-Is that really a danger? Yes, absolutely. `counter++` might seem like a simple line of code, but it actually gets broken down into multiple assembly statements -- the exact nature is dependent on the platform that you're running. If you run this example, you'll see that very often the numbers are printed in a weird order, and/or numbers are duplicated/missing. There are worse possibilities too, such as system crashes or accessing an arbitrary piece of data and incrementing it!
+ဒါကပြဿနာရှိနိုင်လား? လုံးဝအတိအကျပါပဲ။ `counter++` ဟာ ရိုးရိုး code ဖြစ်ပေမယ့် assembly statement အနေနဲ့ကြရင် သင် run တဲ့ platform ပေါ်မူတည်ပြီး အများကြီးဖြစ်နိုင်ပါတယ်။ ထိုဥပမာကို run ပါက number တွေအများကြီးက ထူးဆန်းတဲ့ order အတိုင်း print လုပ်တာ တချို့ number တွေက ထပ်တာ ၊ ပျောက်တာတွေ ဖြစ်နိုင်ပါတယ်။ ဒီထက်ပိုဆိုးတာက system crash ဖြစ်တာတွေ၊ တချို့ data တွေ increment ဖြစ်တာတွေ ဖြစ်နိုင်ပါသေးတယ်။
 
-The only concurrent thing you can safely do to a variable is to read from it. You can have as many readers as you want, but writes need to be synchronized. There are various ways to do this, including using some truly atomic operations that rely on special CPU instructions. However, the most common approach is to use a mutex:
+variable တစ်ခုကို concurrent လုပ်နိုင်တာက read တာတစ်ခုပါပဲ။ reader များကို ကြိုက်သလောက် ထားနိုင်သော်လည်း write များကတော့ အစီအစဉ်တကျဖြစ်မှရမှာပါ။ ၎င်းအတွက် နည်းလမ်းမျိုးစုံရှိသည်။ ဥပမာ အထူး CPU instruction များကိုမှီခိုသည့် atomic operation များကို အသုံးပြုနိုင်သည်။ သို့သော် များသောအားဖြင့် သုံးသည်က mutex ပါ။
 
 ```go
 package main
@@ -1671,13 +1675,14 @@ func incr() {
 }
 ```
 
-A mutex serializes access to the code under lock. The reason we simply define our lock as `lock sync.Mutex` is because the default value of a `sync.Mutex` is unlocked.
+mutex သည် lock ကိုအသုံးပြု၍ serialize လုပ်ပေးသည်။ `lock sync.Mutex` ဟု၍အလွယ်တကူ lock ကိုသတ်မှတ်၍ရခြင်းသည် `sync.Mutex` ၏ default value မှာ unlock ဖြစ်သောကြောင့်ဖြစ်သည်။
 
-Seems simple enough? The example above is deceptive. There's a whole class of serious bugs that can arise when doing concurrent programming. First of all, it isn't always so obvious what code needs to be protected. While it might be tempting to use coarse locks (locks that cover a large amount of code), that undermines the very reason we're doing concurrent programming in the first place. We generally want fine locks; else, we end up with a ten-lane highway that suddenly turns into a one-lane road.
+ရိုးရှင်းတယ်လို့ ထင်ရလား။ အပေါ်က ဥပမာ မှာ တကယ်သုံး၍ မရပါ။ concurrent programming ကိုအသုံးပြုရင်း ကြုံလာနိုင်သည့် bug များ ပြဿနာ မြောက်များစွာရှိသည်။ ပထမဆုံး အနေဖြင့် ဘယ် code ကို protect လုပ်ရမည်ကို မခွဲခြားနိုင်ပါ။ တခါတရံ coarse lock များ (Code အမြောက်အမြားကို lock ပြုလုပ်ထားခြင်း) ကိုသုံးဖို့ ကြံရွယ်ကြလေ့ရှိပြီး နောက်ဆုံးတွင် concurrent programming သုံးရသည့် ရည်ရွယ်ချက်ပါ ပျောက်သွားလေတော့သည်။ 
+ပုံမှန်အားဖြင့် ကောင်းမွန်သော lock များကို အလိုရှိသည်။ သို့မဟုတ်ပါက ဆယ်လမ်းသွားလမ်းမကြီးမှ ရုတ်တရက် လမ်းသွယ်လေးဆီသို့ ရောက်သွားသည့် အတိုင်းဖြစ်လိမ့်မည်။
 
-The other problem has to do with deadlocks. With a single lock, this isn't a problem, but if you're using two or more locks around the same code, it's dangerously easy to have situations where goroutineA holds lockA but needs access to lockB, while goroutineB holds lockB but needs access to lockA.
+နောက်ပြဿနာတစ်ခုကတော့ deadlock တွေပါ။ lock တစ်ခုတည်းဆိုရင်တော့ ပြဿနာမဟုတ်သော်လည်း ဒီ code အတွက်ကို နှစ်ခုထက်ပိုသော lock များကိုဖြေရှင်းရပါက goroutineA မှ lockA ကို ကိုင်ထားပြီး lockB မှ access လိုသော်လည်း goroutineB မှ lockB ကိုကိုင်ထားပြီး lockA မှ access လိုသော ပြဿနာများဖြစ်နိုင်သည်။
 
-It actually *is* possible to deadlock with a single lock, if we forget to release it. This isn't as dangerous as a multi-lock deadlock (because those are *really* tough to spot), but just so you can see what happens, try running:
+ထိုကဲ့သို့ ပြဿနာများသည် release မလုပ်မိပါက lock တစ်ခုတည်းနဲ့တင်ဖြစ်နိုင်သော်လည်း multi-lock deadlock လောက် (သိရှိနိုင်ရန်ခက်ခဲ့လှသဖြင့်) အန္တရာယ်မများပေ။ သို့သော် ဘာဖြစ်လဲသိနိုင်အောင် အောက်ပါအတိုင်း run နိုင်ပါသည်။
 
 ```go
 package main
