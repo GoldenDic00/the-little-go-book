@@ -13,7 +13,7 @@ PDF_BUILDER_FLAGS = \
 EPUB_BUILDER = pandoc
 EPUB_BUILDER_FLAGS = \
 	--epub-cover-image \
-	--fontsize 10
+
 
 MOBI_BUILDER = kindlegen
 
