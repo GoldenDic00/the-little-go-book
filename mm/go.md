@@ -1806,18 +1806,20 @@ for {
   time.Sleep(time.Millisecond * 500)
 }
 ```
+ကျွန်တော်တို့ ma
 
-What's happening is that our main code, the one that accepts the user's incoming data (which we just simulated with a random number generator) is blocking as it sends to the channel because no receiver is available.
+Main Code ဘက်မှကြည့်ပါက user ၏ data အဝင်ကို ( ကျွန်တော်တို့ random number generator ဖြင့်အင်ထုထားသော )
+ကို block ပြုလုပ်ထားသလို ဖြစ်နေသည်။ အဘယ်ကြောင့်ဆိုသော် လက်ခံရရှိသည့် channel မရှိသဖြင့်။ 
 
-In cases where you need high guarantees that the data is being processed, you probably will want to start blocking the client. In other cases, you might be willing to loosen those guarantees. There are a few popular strategies to do this. The first is to buffer the data. If no worker is available, we want to temporarily store the data in some sort of queue. Channels have this buffering capability built-in. When we created our channel with `make`, we can give our channel a length:
+data process ပြုလုပ်ထားသည်ကို အာမခံချက်ရှိရန်လိုသော အခါများတွင် သင့်အနေဖြင့် client ကို block ပြုလုပ်ရန်လိုသည်။ ၎င်းကို ပြုလုပ် နည်းလမ်းအများအပြားရှိသော်လည်း အများစု အသုံးပြုကြသည်မှာ data ကို buffer ပြုလုပ်ခြင်းဖြစ်သည်။ worker မအားပါက data ကို queue ထဲသို့ ခဏသိမ်းထားမည်။ Channels များသည် နဂိုကတည်းကပင် buffer ပြုလုပ်နိုင်သည်။ ကျွန်တော်တို့ `make` ကိုအသုံးပြု၍ channel တည်ဆောက်ကတည်းက channel ၏ length ကိုအောက်ပါအတိုင်းပေးထားခဲ့သည်။
 
 ```go
 c := make(chan int, 100)
 ```
 
-You can make this change, but you'll notice that the processing is still choppy. Buffered channels don't add more capacity; they merely provide a queue for pending work and a good way to deal with a sudden spike. In our example, we're continuously pushing more data than our workers can handle.
+ထိုသို့ပြောင်းလဲနိုင်သော်လည်း process ပြုလုပ်ခြင်းမှာ အကန့်အသတ်ရှိသလိုဖြစ်နေသည်။ Buffer ပြုလုပ်ထားသော channel မှာ ပို၍ထည့်၍မရချေ။ queue သဘောမျိုးဖြင့် work များကို ခဏစောင့်ဆိုင်းစေသဖြင့် ရုတ်တရက် ဆောင့်တက်လာသော အခါမျိုးတွင် ဖြေရှင်းနိုင်အောင်ဖြစ်သည်။  ကျွန်တော်တို့ ဥပမာတွင်မူ worker များ အလုပ်လုပ်နိုင်သည်ထက် ပို၍ data များကို အဆက်မပြတ် ပို့လွတ်နေသည်။
 
-Nevertheless, we can get a sense what the buffered channel is, in fact, buffering by looking at the channel's `len`:
+သို့သော်လည်း ကျွန်တော်တို့ buffer channel ၏ သဘောကို နားလည်လာမည်ဖြစ်သည်။ တနည်းအားဖြင့် buffer ကို channel ၏ အရှည်ကို `len` ဟု အသုံးပြု၍ ကြည့်နိုင်သည်။
 
 ```go
 for {
@@ -1827,13 +1829,13 @@ for {
 }
 ```
 
-You can see that it grows and grows until it fills up, at which point sending to our channel start to block again.
+တဖြည်းဖြည်း တိုးလာပြီး နောက်ဆုံးတွင် channel ကိုပို့သည့် နေရာမှာ ထပ်၍ block ဖြစ်လာမည်ဖြစ်သည်။
 
 ### Select
 
-Even with buffering, there comes a point where we need to start dropping messages. We can't use up an infinite amount of memory hoping a worker frees up. For this, we use Go's `select`.
+buffer ဖြင့်ပင် အခြေအနေတစ်ခုရောက်ပါက message များ မရောက်တော့သည် အနေအထားမျိုးရှိနိုင်သည်။ ကျွန်တော်တို့ အနေဖြင့် worker များပြီးသွားလျင် memory free ပြုလုပ်မည်ဟု ယူဆပြီး memory အကန့်အသတ်မရှိသုံး၍ မရပေ။ ထိုသို့သော အခြေအနေများတွင် Go ၏ `select` ကိုအသုံးပြုသည်။
 
-Syntactically, `select` looks a bit like a switch. With it, we can provide code for when the channel isn't available to send to. First, let's remove our channel's buffering so that we can clearly see how `select` works:
+`select` သည် အသုံးပြုပုံအားဖြင့် switch နှင့်အနည်းငယ်ဆင်သည်။ ၎င်းဖြင့် Channel အနေဖြင့် တာဝန်ယူနိုင်မယူနိုင်ကို ဆန်းစစ်သည့် code အပိုင်းကို ရေးသာနိုင်သည်။ ပထမဦးစွာ `select` ၏ အလုပ်လုပ်ပုံကို သေချာစွာ သိနိုင်ရန် channel ၏ buffering ကို အရင်ဆုံး ဖယ်ရှားလိုက်ပါ။
 
 ```go
 c := make(chan int)
@@ -1854,17 +1856,17 @@ for {
 }
 ```
 
-We're pushing out 20 messages per second, but our workers can only handle 10 per second; thus, half the messages get dropped.
+ကျွန်တော်တို့သည် တစ်စက္ကန့်ကို message အစောင် နှစ်ဆယ် စာပို့နေပြီး worker များသည် တစ်စက္ကန့်လျင် ဆယ်ခုသာ အလုပ်လုပ်နိုင်သည်။ ထို့ကြောင့် တဝက်မှာ ပျောက်သွားမည်ဖြစ်သည်။
 
-This is only the start of what we can accomplish with `select`. A main purpose of select is to manage multiple channels. Given multiple channels, `select` will block until the first one becomes available. If no channel is available, `default` is executed if one is provided. A channel is randomly picked when multiple are available.
+၎င်းမှာ `select` ကိုအသုံးပြုနိုင်ခြင်း၏ အစပင်ဖြစ်သည်။ select ၏ အဓိက ရည်ရွယ်ချက်မှာ channel ပေါင်းများစွာနှင့် တွဲဖက် အလုပ်လုပ်ရန်ဖြစ်သည်။ channel ပေါင်းများစွာဖြင့် `select` သည် ပထမဦဆုံး တစ်ခု avaialbe မဖြစ်မခြင်း block ဖြစ်နေမည် ဖြစ်သည်။ worker တစ်ခုမှ available မဖြစ်ပါက default ကို execute ပြုလုပ်မည်ဖြစ်သည်။ worker တစ်ခုထက်ပို၍ available ဖြစ်ပါက random အတိုင်း ရွေးချယ်ပေးပို့သွားမည်ဖြစ်သည်။
 
-It's hard to come up with a simple example that demonstrates this behavior as it's a fairly advanced feature. The next section might help illustrate this though.
+ထိုကဲ့သို့ advanced ဖြစ်သော feature များကို ရှင်းလင်းရန် ရိုးရှင်းသော ဥပမာဖြင့် ပြရန်ခက်သည်။ နောက်တစ်ပိုင်းတွင်တော့ ပို၍ ရှင်းလင်းလာမည်ဟု မျှော်လင့်ပါသည်။
 
 ### Timeout
 
-We've looked at buffering messages as well as simply dropping them. Another popular option is to timeout. We're willing to block for some time, but not forever. This is also something easy to achieve in Go. Admittedly, the syntax might be hard to follow but it's such a neat and useful feature that I couldn't leave it out.
+Buffering message များကိုကြည့်ပါက drop ပြုလုပ်ရင်းဖြင့် ဖြေရှင်းသည်ကိုတွေ့ရမယ်။ နောက်ထပ် အသုံးများသည့် နည်းလမ်းတစ်ခုမှာ timeout ဖြစ်သည်။ အချိန်တစ်ခုထိ block ဖြစ်သည်ကို လက်ခံနိုင်သော်လည်း အမြဲတမ်းတော့ မဖြစ်ရပါ။ ၎င်းသည်လည် Go တွင် အလွယ်တကူ စွမ်းဆောင်နိုင်သည်။ အမှန်အတိုင်းပြောရရင် ထို syntax သည် အနည်းငယ် ခက်ခဲမည်ဖြစ်သော်လည်း အလွန်သေသပ်ပြီး အသုံးဝင်သော feature ဖြစ်သဖြင့် ချန်ထားခဲ့၍မရပါ။
 
-To block for a maximum amount of time, we can use the `time.After` function. Let's look at it then try to peek beyond the magic. To use this, our sender becomes:
+block ပြုလုပ်နိုင်သည့် maximium amount ကိုသတ်မှတ်ထားနိုင်ရန် `time.After` ဟုသော function အသုံးပြုနိုင်သည်။ ၎င်းကို အသုံးပြုနိုင်ရန် ကျွန်တော်တို့ ၏ sender ကိုအောက်ပါအတိုင်း
 
 ```go
 for {
@@ -1877,7 +1879,9 @@ for {
 }
 ```
 
-`time.After` returns a channel, so we can `select` from it. The channel is written to after the specified time expires. That's it. There's nothing more magical than that. If you're curious, here's what an implementation of `after` could look like:
+
+
+`time.After` မှ channel ကို return ပြန်ပြီး ၎င်းကို `select` အတွင်း အသုံးပြုနိုင်သည်။ ၎င်း channel သည် အချိန်ကာလ ကျော်လွန်သွားပါက write ပြုလုပ်ပါသည်။ ထူးထူးဆန်းဆန်းတော့ မဟုတ်ပါ။ စိတ်ဝင်စားပါက `after` ဘယ်လို implement လုပ်ထားသနည်းကို အောက်ပါအတိုင်း ဖတ်ကြည့်နိုင်သည်။
 
 ```go
 func after(d time.Duration) chan bool {
@@ -1890,23 +1894,23 @@ func after(d time.Duration) chan bool {
 }
 ```
 
-Back to our `select`, there are a couple of things to play with. First, what happens if you add the `default` case back? Can you guess? Try it. If you aren't sure what's going on, remember that `default` fires immediately if no channel is available.
+`select` ကိုပြန်သွားပါက တခြား စမ်းစရာလေးများရှိသေးသည်။ ရှေးဦးစွာ `default` ကိုပြန်ထည့်ပါက ဘာဖြစ်မည်နည်း။ မှန်းလို့ရပါသလား။ စမ်းကြည့်ပါက။ ဘယ်လိုဖြစ်မလဲ မှန်းဆလို့မရပါက channel များ available မဖြစ်ပါက `default` ဆီသို့သွားမည်ဖြစ်သည်။
 
-Also, `time.After` is a channel of type `chan time.Time`. In the above example, we simply discard the value that was sent to the channel. If you want though, you can receive it:
+ထိုအပြင် `time.After` သည်  `chan time.Time` အမျိုးအစား channel ဖြစ်သည်။ အပေါ်မှ ဥပမာတွင် sent ထားသော value လို မသုံးသဖြင့် discard လုပ်ထားသော်လည်း အသုံးပြုခြင်းပါက လက်ခံနိုင်ပါသည်။
 
 ```go
 case t := <-time.After(time.Millisecond * 100):
   fmt.Println("timed out at", t)
 ```
 
-Pay close attention to our `select`. Notice that we're sending to `c` but receiving from `time.After`. `select` works the same regardless of whether we're receiving from, sending to, or any combination of channels:
+`select` ကို အာရုံစိုက်ကြည့်ပါက `c` ကိုပို့သော်လည်း `time.After` မှလက်ခံရရှိသည်ကို တွေ့ရမည်။ `select` သည် လက်ခံသည်ဖြစ်စေ ပို့သည်ဖြစ်စေ ၊ နှစ်ခုစလုံးပြုလုပ်သည်ဖြစ်စေ အလုပ်လုပ်သည့် ပုံစံက အတူတူပါ။
 
-* The first available channel is chosen.
-* If multiple channels are available, one is randomly picked.
-* If no channel is available, the default case is executed.
-* If there's no default, select blocks.
+* available ဖြစ်သော် channel ကိုရွေးချယ်သည်
+* channel တစ်ခုထက်ပို၍ရှိပါက randomly ရွေးချယ်သည်
+* channel မရှိပါက default case ကိုအလုပ်လုပ်သည်
+* default မရှိပါက select block များကိုအလုပ်လုပ်သည်
 
-Finally, it's common to see a `select` inside a `for`. Consider:
+နောက်ဆုံးတွင် အတွေ့များသည်က `for` အတွင်းတွင် `select` ကိုထည့်သုံးထားခြင်းဖြစ်သည်။ ဥပမာ
 
 ```go
 for {
@@ -1922,11 +1926,11 @@ for {
 
 ## နောက်အခန်း မဖတ်ခင်
 
-If you're new to the world of concurrent programming, it might all seem rather overwhelming. It categorically demands considerably more attention and care. Go aims to make it easier.
+concurrent programming ကိုအသစ်ဖြစ်နေပါက ၎င်းကို လန့်လျင်လန့်ပါလိမ့်မည်။ ပုံမှန်ထက်ပို၍ အာရုံစိုက် ဂရုစိုက်ရ အားထုတ်ရပြီး Go တွင် ထိုအချက်များကို ပိုမိုလွယ်ကူအောင်ဆောင်ရွက်ပေးသည်။
 
-Goroutines effectively abstract what's needed to run concurrent code. Channels help eliminate some serious bugs that can happen when data is shared by eliminating the sharing of data. This doesn't just eliminate bugs, but it changes how one approaches concurrent programming. You start to think about concurrency with respect to message passing, rather than dangerous areas of code.
+Goroutine များသည် concurrent code များအတွက် abstract ပြုလုပ်နိုင်ရန် အလွန်အသုံးဝင်သည်။ Channel များသည် မျှဝေသုံးစွဲသည့် data များနှင့်ပတ်သတ်သော bugs များကို ချေဖျက်ပေးသည်။ ထိုသို့ ချေဖျက်ပေးရုံသာမက concurrent programming နှင့်ပတ်သတ်သော approach ကိုပါ ပြောင်းလဲသွားစေနိုင်သည်။ သင့်အနေဖြင့် အန္တရာယ်များသော code များအစား message passing ကိုမျိုးကို အသုံးပြုရန်အားပေးသည်။
 
-Having said that, I still make extensive use of the various synchronization primitives found in the `sync` and `sync/atomic` packages. I think it's important to be comfortable with both. I encourage you to first focus on channels, but when you see a simple example that needs a short-lived lock, consider using a mutex or read-write mutex.
+ထိုသို့ပြောသော်လည်း တခါတရံ `sync` နှင့် `sync/atomic` package များမှ synchronization primitives များကို ပါပြောထားသည်။ နှစ်ခုစလုံးအရေးကြီးသည်ဟု ကျွန်တော်ထင်သည်။ ရှေဦးစွာ channel များကို အာရုံစိုက်သင့်သော်လည်း တခါတရံ  တိုတောင်းသောကာလအတွင်း lock တစ်ခုမှ အသုံးပြုရန်လိုသော ပုံစံများတွေ့ပါက mutext နှင့် read-write mutex များကို အသုံးပြုသင့်သည်။
 
 # နိဒါန်း
 
