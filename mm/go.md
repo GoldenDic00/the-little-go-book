@@ -888,10 +888,7 @@ fmt.Println(scores)
 ```
 အဖြေမှာ  `[1, 2, 999, 4, 5]` ဖြစ်မည်။
 
-ထိုပြောင်းလဲခြင်းက ကုဒ်ရေးသည့်ပုံစံပါ ပြောင်းလဲသွားသည်။ ဥပမာ function များသို့ parameter ပို့သောအခါ။ javascript တွင် string တစ်ခု၏ အက္ခရာ ငါးခု ကျော်ပြီး နေရာကို လိုပါက (slice သည် string များတွင်လည်း အလုပ်လုပ်သည်) 
-
-
-This changes how you code. For example, a number of functions take a position parameter. In JavaScript, if we want to find the first space in a string (yes, slices work on strings too!) after the first five characters, we'd write:
+ထိုပြောင်းလဲခြင်းက ကုဒ်ရေးသည့်ပုံစံပါ ပြောင်းလဲသွားသည်။ ဥပမာ function များသို့ parameter ပို့သောအခါ။ javascript တွင် string တစ်ခု၏ အက္ခရာ ငါးခု ကျော်ပြီးနောက် ပထမ နေရာကို လိုပါက (slice သည် string များတွင်လည်း အလုပ်လုပ်သည်) အောက်ပါအတိုင်းရေးနိုင်သည်။
 
 ```javascript
 haystack = "the spice must flow";
@@ -931,7 +928,6 @@ func removeAtIndex(source []int, index int) []int {
 နောက်ဆုံးတွင် slice များအကြောင်း သိရှိပြီး ဖြစ်၍ မူလကတည်းက ပါဝင်သော function တစ်ခုဖြစ်သည့် `copy` ကိုကြည့်ပါစို့။ `copy` သည် slice များကြောင့် ကုဒ်ရေးရပုံ အပြောင်းအလဲကို မီးမောင်းထိုးပြနိုင်သည့် ဥပမာ တစ်ခုဖြစ်သည်။ ပုံမှန်အားဖြင့် array တစ်ခုမှ နောက်တစ်ခုသို့ copy ပြုလုပ်ရန် parameter ငါးခုလိုအပ်သည်။ ၎င်းတို့မှာ `source` ၊ `sourceStart`၊ `count` ၊ `destination` နှင့် `destinationStart` တို့ဖြစ်သည်။
 Slice ကိုအသုံးပြုပါက နှစ်ခုသာလိုအပ်သည်။
 
-
 ```go
 import (
   "fmt"
@@ -952,7 +948,6 @@ func main() {
 }
 ```
 
-
 အချိန်ခဏယူ၍ အထက်ပါ code ကိုနားလည်အောင် ကြည့်ပါ။ တစ်ချို့ အပိုင်းများကို ပြောင်းလဲကြည့်ပါ။ copy ကို `copy(worst[2:4], scores[:5])` ပြောင်းကြည့်ပါက ဘာဖြစ်မည်နည်း။ value ငါးခုထက် နည်းသော တန်ဖိုးများကို `worst` သို့ ကူးကြည့်ပါက ဘာဖြစ်မည်နည်း။
 
 ## Maps
@@ -960,7 +955,6 @@ func main() {
 Go တွင်ပါရှိသော Map သည် အခြား language များတွင် hashtable သို့မဟုတ် dictionary ဟုခေါ်လေ့ရှိပြီး အလုပ်လုပ်ပုံမှာ အတူတူပင်ဖြစ်သည်။ key value မှာ သတ်မှတ် ၊ ခေါ်ဆို ၊ ဖျက်ပစ်ရာတွင် အသုံးပြုသည်။
 
 Maps များသည် slice ကဲ့သို့ပင် `make` function ကိုအသုံးပြုနိုင်သည်။ အောက်က ဥပမာကို ကြည့်ကြည့်ပါ။
-
 
 ```go
 func main() {
@@ -1077,10 +1071,10 @@ func LoadItem(id int) *Item {
   }
 }
 ```
+
 Folder ၏ အမည်သည် package ၏ အမည်နှင့် တူနေသည်ကို သတိထားမိပါလိမ့်မည်။ ဥပမာ အနေနဲ့ဖြစ်၍ database ကို access လုပ်သော code ကိုရေးမနေတော့ပါ။ Code ကို မည်သို့ organize လုပ်ရမည်နည်းဆိုသည့် ဥပမာကိုသာ ပြလိုသောကြောင့် ဖြစ်သည်။
 
 ထိုနောက် `shopping` ဟုသော folder အတွင်းတွင်  `pricecheck.go` ဟုသော file တစ်ခုဆောက်ပြီး အောက်ပါအတိုင်းရေးလိုက်ပါ။
-
 
 ```go
 package shopping
@@ -1097,7 +1091,6 @@ func PriceCheck(itemId int) (float64, bool) {
   return item.Price, true
 }
 ```
-
 
 `shopping` ဟုသော package/folder အတွင်းတွင်တည်ရှိနေသဖြင့်  `shopping/db` ကို import လုပ်ရမည့်ဟု ထင်ကောင်ထင်လိမ့်မည်။ လက်တွေ့တွင် သင်သည် `$GOPATH/src/shopping/db` ဟု import ပြုလုပ်လိုက်ခြင်းဖြစ်၍ 
 folder အမည် `src/test` ၏ အတွင်းတွင်ရှိသောcode ကို `test/db` ဟု import ဟုပြုလုပ်ရမည်။ 
@@ -1123,6 +1116,7 @@ func main() {
 ```
 go run main/main.go
 ```
+
 ### Cyclical Imports
 
 တဖြည်းဖြည်း ရှုပ်ထွေးလာသော စနစ်ကို ရေးသားလာသည်နှင့်အမျှ cyclical imports များနှင့်ကြုံတွေ့မည်ဖြစ်သည်။ Package A မှ Package B ကို Import လုပ်ရင်း Package B မှ Package A ကို Import လုပ်ပါက (တိုက်ရိုက်သော်လည်းကောင်း ၊ သွယ်ဝိုက်၍ နောက် package ပေါ်မှ တဆင့်သို့လည်းကောင်း) ကြုံတွေ့ရမည်ဖြစ်သည်။
@@ -1157,7 +1151,6 @@ func PriceCheck(itemId int) (float64, bool) {
 အဆိုပါ code ကို  run ပါက `db/db.go` မှ  `Item` ကို undefined ဖြစ်ကြောင်းပြပါမည်။ `Item` မှာ `db` package တွင်မရှိတော့ပဲ shopping package တွင် ရောက်သွားသောကြောင့် နည်းလမ်းကျသည် ဟု ဆိုရမည်။ ထိုနောက်
 `shopping/db/db.go` ကို အောက်ပါ အတိုင်းပြင်ရန်လိုသည်။
 
-
 ```go
 package db
 
@@ -1171,7 +1164,6 @@ func LoadItem(id int) *shopping.Item {
   }
 }
 ```
-
 
 အထက်ပါ code ကို run ပါက သင်မျှော်လင့်ထားသော *import cycle not allowed* ဟုသည့် error ရလာမည်။ 
 ထိုပြဿနာကို structure shared လုပ်ထားသော package နောက်တစ်ခုတည်ဆောက်ခြင်း ဖြင့် ဖြေရှင်းနိုင်သည်။ သင့်၏ directory structure သည် အောက်ပါ အတိုင်းဖြစ်မည်။ 
@@ -1242,7 +1234,6 @@ URL နှင့်ဆင်တူသော်လည်း လက်တွေ့
 
 ### Dependency Management
 
-
 `go get` တွင် အခြား အသုံးပြုနိုင်သည့်နည်းလမ်းများလည်းရှိသေးသည်။ project အတွင်းတွင် `go get` ဟုလှမ်းခေါ်ပါက files များအားလုံးကို scane ပြုလုပ်ပြီး `import` များကိုရှာဖွေပါ third-party library များကိုရှာဖွေပြီး download လုပ်ပေးသည်။ ထိုကြောင့်ဖြင့် `Gemfile` နှင့် `package.json` တို့၏ သဘောနှင့် ဆင်တူသည်ဟု ပြောနိုင်သည်။
 
 `go get -u` ဟုခေါ်ပါက packages များကို update ပြုလုပ်သွားနိုင်မည်ဖြစ်သည်။ (သို့မဟုတ်ပါက လိုချင်သည့် package တစ်ခုချင်းစီကို `go get -u FULL_PACKAGE_NAME` ဟု update ပြုလုပ်နိုင်သည်။)
@@ -1263,7 +1254,6 @@ type Logger interface {
 ```
 
 သင့်အနေဖြင့် ဘယ်လိုနေရာမှာ အသုံးပြုမလဲ စဉ်းစားနေမည်ဖြစ်သည်။ Interface များသည် implementation များမှ code များကို decouple ပြုလုပ်ရာတွင် အထောက်အကူပြုသည်။ ဥပမာ ကျွန်တော်တို့တွင် အမျိုးအစားစုံလင်သော logger များရှိသည်ဆိုပါစို့။
-
 
 ```go
 type SqlLogger struct { ... }
@@ -1330,7 +1320,6 @@ Go ၏ type visiiblity သည် ရိုးရှင်းပြီး အလ�
 Go တွင် အထူးပြုလိုသည် error handling မှာ exception များမဟုတ်ပဲ return value များဖြစ်သည်။
 string တစ်ခုကို interger သို့ကူးပြောင်းပေးသည့် `strconv.Atoi` ဆိုပါစို့။
 
-
 ```go
 package main
 
@@ -1361,8 +1350,8 @@ type error interface {
   Error() string
 }
 ```
-ပုံမှန်အားဖြင့် `errors` package ကို import ပြုလုပ်ပြီး function `အသစ်` ရေးသားခြင်းဖြင့် မိမိတို့ဖာသာ error များပြုလုပ်နိုင်သည်။
 
+ပုံမှန်အားဖြင့် `errors` package ကို import ပြုလုပ်ပြီး function `အသစ်` ရေးသားခြင်းဖြင့် မိမိတို့ဖာသာ error များပြုလုပ်နိုင်သည်။
 
 ```go
 import (
@@ -1386,7 +1375,6 @@ var EOF = errors.New("EOF")
 ```
 ၎င်းသည် function ၏ပြင်ပတွင် ဖန်တီးထားသော package variable ဖြစ်ပြီး ပထမစာလုံးသည် အကြီးဖြစ်သောကြောင့် အခြား package များမှလည်း access ပြုလုပ်နိုင်သည်။ အခြားသော function များမှ ၎င်း error ကို return ပြန်နိုင်သည်။ ဥပမာ ကျွန်တော်တို့ file တစ်ခုကို read သောအခါဖြစ်စေ STDIN ဖြစ်စေ ယခု error ကိုအသုံးပြုနိုင်သည်။ အသုံးပြုသူအနေဖြင့် ထို singleton ပုံစံကို အသုံးချနိုင်သည်။
 
-
 ```go
 package main
 
@@ -1405,7 +1393,6 @@ func main() {
 ```
 
 နောက်ဆုံးအနေဖြင့် Go တွင် `panic` နှင့် `recover` ကဲ့သို့သော function များလည်းရှိသည်။ `panic` သည် exception throw ပြုလုပ်ခြင်းဖြင့် ဆင်တူပြီး `recover` မှာ `catch` နှင့်ဆင်တူသည်။ သို့သော်လည်း အသုံးနည်းပါသည်။
-
 
 ## Defer
 
@@ -1500,7 +1487,6 @@ switch a.(type) {
 
 နောက်ပိုင်းတွင် သင်ထင်ထားသည်ထက် empty interface ကို ပို၍ အသုံးပြုဖြစ်လိမ့်မည်။ သို့သော် clean code ဖြစ်လိမ့်မည် မဟုတ်ပေ။ Convert ခဏခဏ ပြန်လုပ်နေရခြင်းသည် အရုပ်ဆိုးပြီး အန္တရာယ်များသောလည်း static language ဖြစ်၍ တခါတရံ လုပ်ရသည့် အနေအထားရှိသည်။
 
-
 ## Strings and Byte Arrays
 
 String နှင့် byte array များသည် ဆက်စပ်နေပြီး တစ်ခုနှင့်တစ်ခု convert ပြုလုပ်နိုင်သည်။
@@ -1567,9 +1553,7 @@ Go နှင့် programming အသုံးပြုခြင်း၏ ရှ
 
 Go သည် concurrent-friendly ဖြစ်သည့် language ဟု မကြာခဏသတ်မှတ်ခြင်းခံရသည်။ အကြောင်းမှာ goroutine နဲ့ channels တို့ကဲ့သို့သော် အလွန်ရိုးရှင်းသော်လည်း အစွမ်းထက်သည့် mechanism ကို support ပေးသောကြောင့်ဖြစ်သည်။
 
-
 ## Goroutines
-
 
 Goroutine သည် thread နှင့်ဆင်တူသော်လည်း ကွာခြားသည်က OS မှ schedule လုပ်သည် မဟုတ်ပဲ Go ကပြုလုပ်ခြင်းဖြစ်သည်။ goroutine အတွင်းရှိ code အခြား code များနှင့် အပြိုင်အလုပ်လုပ်သည်။ အောက်က ဥပမာကို ကြည့်ပါ။
 
@@ -1702,48 +1686,43 @@ func main() {
   lock.Lock()
 }
 ```
+Concurrent Programming အပေါ်မှ ဥပမာထက် တခြားဟာတွေ အများကြီးရှိပါသေးသည်။ နှစ်ခုစလုံးပြုလုပ်နိုင်သော read-write mutex ဆိုသည်လည်းရှိသေးသည်။ ၎င်းသည် reading အတွက်ရော writing အတွက်မှာ function နှစ်ခုကို expose ပြုလုပ်ပေးသည်။ ၎င်းသည် reader ပေါင်းများစွာ အလုပ်လုပ်နေချိန်တွင် writing သည်မထိခိုက်ပါ ဟု သေချာစေနိုင်သည်။ GO တွင် `sync.RWMutex` ထိုသို့သော lock ဖြစ်သည်။ `sync.Mutex` တွင်ပါဝင်သည့် `Lock` နှင့် `Unlock` method တို့အပြင် *Read* ပြုလုပ်ရန်အတွက် `RLock` နှင့် `RUnlock` ဟုသော method များလည်း ပါဝင်ပါသေးသည်။ read-write mutexes များသည် အများအားဖြင့် အသုံးပြုသော်လည်း ၎င်းသည် အသုံးပြုသော developer အတွက် ဘယ်အချိန် data ကို access ပြုလုပ်သည်သာမက ဘယ်လို data ကို access ပြုလုပ်သည်ကို တာဝန်ပိုလာသည်။
 
-There's more to concurrent programming than what we've seen so far. For one thing, there's another common mutex called a read-write mutex. This exposes two locking functions: one to lock for reading and one to lock for writing. This distinction allows multiple simultaneous readers while ensuring that writing is exclusive. In Go, `sync.RWMutex` is such a lock. In addition to the `Lock` and `Unlock` methods of a `sync.Mutex`, it also exposes `RLock` and `RUnlock` methods; where `R` stands for *Read*. While read-write mutexes are commonly used, they place an additional burden on developers: we must now pay attention to not only when we're accessing data, but also how.
+ထိုထက်ပို၍ concurrent programming ဆိုသည်မှာလည်း code ၏ အကျဉ်းအကျပ်အပိုင်းများကို serialize ပြုလုပ်ခြင်းမဟုတ်ပဲ goroutine ပေါင်းများစွာကို coodinate ပြုလုပ်ခြင်းဖြစ်သည်။ ဥပမာ ၁၀ မီလီစက္ကန့် ခန့် sleep ပြုလုပ်ခြင်းသည် လှပသော ဖြေရှင်းနည်း မဟုတ်ပေ။ အကယ့်၍ goroutine မှာ ၁၀ မီလီစက္ကန့်ထက် ပိုကြာနေပါက မည်သို့ ဆောင်ရွက်မည်နည်း။ သို့မဟုတ် ထိုထက်ပိုမြန်နေပြီး ကျန်တဲ့ ကာလများကို အချိန်ဖြုန်းနေသလို ဖြစ်နေပါက မည်သို့ဆောင်ရွက်မည်နည်း။ ထိုအပြင် ထို့သို့ စောင့်ဆိုင်းမည့်အစား *မင်းမှာ data အသစ်ကို လုပ်စရာကျန်သေးသည်* ဟု မည့်သို့ အသိပေးမည်နည်း။
 
-Furthermore, part of concurrent programming isn't so much about serializing access across the narrowest possible piece of code; it's also about coordinating multiple goroutines. For example, sleeping for 10 milliseconds isn't a particularly elegant solution. What if a goroutine takes more than 10 milliseconds? What if it takes less and we're just wasting cycles? Also, what if instead of just waiting for goroutines to finish, we want to tell one *hey, I have new data for you to process!*?
-
-These are all things that are doable without `channels`. Certainly for simpler cases, I believe you **should** use primitives such as `sync.Mutex` and `sync.RWMutex`, but as we'll see in the next section, `channels` aim at making concurrent programming cleaner and less error-prone.
+ထိုအချက်များကို `channels` များမပါပဲဆောင်ရွက်နိုင်သည်။ ရိုးရှင်းသော အခြေအနေများတွင် `sync.Mutex` နှင့် `syncRWMutex` တို့ကို *အသုံးပြုသင့်* သင်ဟုထင်သော်လည်း နောက်အပိုင်းတွင် `channel` များကိုအသုံးပြုပြီး concurrent prgoramming ကို ပို၍ error ကင်းစင် ပြီး သန့်ရှင်းသော Code များ မည်သို့ရေးရမည်နည်းကို အဓိကထား၍ လေ့လာသွားပါမည်။
 
 ## Channels
 
-The challenge with concurrent programming stems from sharing data. If your goroutines share no data, you needn't worry about synchronizing them. That isn't an option for all systems, however. In fact, many systems are built with the exact opposite goal in mind: to share data across multiple requests. An in-memory cache or a database, are good examples of this. This is becoming an increasingly common reality.
+Concurrent Programming ၏အဓိက အခက်အခဲမှာ data sharing ဖြစ်သည်။ သင့်၏ goroutine သည် share ရန် data မလိုပါက synchronize ပြုလုပ်ရန်အတွက် သိပ်စိတ်ပူစရာမလိုပေ။ သို့သော် စနစ်အားလုံးအတွက် ၎င်းသည် မဖြစ်နိုင်ပေ။ ထိုအပြင် ထို စနစ်တော်တော်များများ ပြောင်းပြန်ပုံစံဖြစ်သည့် Request များစွာကပင် တူညီသော data ကို ကိုင်တွယ်ရန် တည်ဆောက်ထားလေသည်။ In memory cache သို့မဟုတ် database တို့၏ ၎င်းတို့ကို ညွန်းဆိုနိုင်သည့် ဥပမာများဖြစ်သည်။ ၎င်းတို့သည် လက်တွေ့အခြေအနေအတွက် အသုံးပြုသည့် ပုံစံများဖြစ်သည်။
 
-Channels help make concurrent programming saner by taking shared data out of the picture. A channel is a communication pipe between goroutines which is used to pass data. In other words, a goroutine that has data can pass it to another goroutine via a channel. The result is that, at any point in time, only one goroutine has access to the data.
+Channel များသည် data များကို မျှဝေခြင်းဖြင့် concurrent programming အတွက် အထောက်အကူပြုပေးသည်။ Channel တစ်ခုသည် goroutine များအကြား data ပို့ပေးသည့် pipeline တစ်ခုဖြစ်လာသည်။ တနည်းအားဖြင့် goroutine တစ်ခုမှ နောက်တစ်ခုသို့ channel ကိုအသုံးပြု၍ ပို့ပေးနိုင်သည်။ ရလဒ်အနေဖြင့် အချိန်ကာလတစ်ခုအတွင်း goroutine တစ်ခုမှသာ ထို data ကို access ပြုလုပ်နိုင်သည်။
 
-A channel, like everything else, has a type. This is the type of data that we'll be passing through our channel. For example, to create a channel which can be used to pass an integer around, we'd do:
+Channel တစ်ခုသည် အခြားသော အရာများကဲ့သို့ type တည်ရှိသည်။ ၎င်း type အတိုင်း data သည် channel မှ တဆင့် စီးဆင်းသွားသည်။ ဥပမာ integer များကို pass နိုင်ရန် channel တစ်ခုကို အောက်ပါအတိုင်းတည်ဆောက်နိုင်သည်။
 
 ```go
 c := make(chan int)
 ```
-
-The type of this channel is `chan int`. Therefore, to pass this channel to a function, our signature looks like:
+အဆိုပါ channel အမျိုးအစားကို `chan int` ဟုခေါ်သည်။ ထို channel ကို function တစ်ခုသို့ pass ရန် အောက်ပါပုံစံကို အသုံးပြုရမည်။
 
 ```go
 func worker(c chan int) { ... }
 ```
-
-Channels support two operations: receiving and sending. We send to a channel by doing:
+Channel များသည် သယ်ယူခြင်းနှင့် လက်ခံခြင်းဟုသော တာဝန်နှစ်ခုကို ဆောင်ရွက်ပေးသည်။ channel တစ်ခုသို့ ပိုဆောင်ရန် အောက်ပါအတိုင်း
 
 ```
 CHANNEL <- DATA
 ```
-
-and receive from one by doing
+ဆောင်ရွက်နိုင်ပြီး လက်ခံပါက အောက်ပါအတိုင်း သုံးနိုင်သည်။
 
 ```
 VAR := <-CHANNEL
 ```
+မြှားပြသည့်ဘက်ကို data ကိုသယ်ယူမည်ဖြစ်သည်။ ပို့ဆောင်ပါက data သည် channel ထဲသို့ရောက်ရှိမည်ဖြစ်ပြီး လက်ခံပါက channel မှ data ထွက်လာမည်။
 
-The arrow points in the direction that data flows. When sending, the data flows into the channel. When receiving, the data flows out of the channel.
+နောက်ဆုံးအနေဖြင့် သိရန်မှာ data လက်ခံသည့်အချိန်နှင့် ပို့သည့်အချိန်တွင် blocking ဖြစ်မည်ဖြစ်သည်။ channel တစ်ခုမှ လက်ခံသည့်အချိန်တွင် data မရမချင်း goroutine သည် ဆက်လုပ်မည်မဟုတ်။ ထိုနည်းတူ ပို့ဆောင်သည့်အချိန်တွင်လည်း data လက်ခံမရရှိခြင်း အလုပ်လုပ်မည်ဖြစ်သည်။
 
-The final thing to know before we look at our first example is that receiving and sending to and from a channel is blocking. That is, when we receive from a channel, execution of the goroutine won't continue until data is available. Similarly, when we send to a channel, execution won't continue until the data is received.
-
-Consider a system with incoming data that we want to handle in separate goroutines. This is a common requirement. If we did our data-intensive processing on the goroutine which accepts the incoming data, we'd risk timing out clients. First, we'll write our worker. This could be a simple function, but I'll make it part of a structure since we haven't seen goroutines used like this before:
+goroutine များစွာမှ data များကို ရယူပြီး လုပ်ဆောင်သည့် စနစ်တစ်ခုကို မှန်းကြည့်ပါစို့။ ၎င်းသည် ပုံမှန်လိုအပ်ချက်တစ်ခုဖြစ်သည်။ အကယ်၍ goroutine များစွာကိုအသုံးပြု၍ data-intensive ဖြစ်သည့် အလုပ်များဆောင်ရွက်ပါက client များကို timing out ဖြစ်နိုင်သည့် risk တစ်ခုရှိသည်။ ထိုအတွက် ပထမဦးစွာ worker များကိုတည်ဆောင်ရန်လိုသည်။ ၎င်းသည် ရိုးရှင်းသော function တစ်ခုဖြစ်နိုင်သော်လည်း goroutine ဖြင့် မသုံးဖူးသည့် structure တစ်ခုအနေဖြင့် ရေးသားပြပါမည်။
 
 ```go
 type Worker struct {
@@ -1757,10 +1736,9 @@ func (w Worker) process(c chan int) {
   }
 }
 ```
+ကျွန်တော်တို့ တည်ဆောက်လိုက်သော worker သည် ရိုးရှင်းသည်။ data available ဖြစ်ချိန်ကိုစောင့်၍ process လုပ်မည်။ မပြီးဆုံးနိုင်သော loop တစ်ခုအတွင်းတွင်တည်ရှိ၍ အမြဲတမ်း process အတွက် data လာနေသည်ကို စောင့်ဆိုင်းနေမည်။
 
-Our worker is simple. It waits until data is available then "processes" it. Dutifully, it does this in a loop, forever waiting for more data to process.
-
-To use this, the first thing we'd do is start some workers:
+၎င်းကိုအသုံးပြုနိုင်ရန် ဦးစွာ worker များကိုစတင်ရန်လိုသည်။
 
 ```go
 c := make(chan int)
@@ -1769,8 +1747,7 @@ for i := 0; i < 5; i++ {
   go worker.process(c)
 }
 ```
-
-And then we can give them some work:
+ထိုနောက် အလုပ်များခိုင်းနိုင်သည်။
 
 ```go
 for {
@@ -1778,8 +1755,7 @@ for {
   time.Sleep(time.Millisecond * 50)
 }
 ```
-
-Here's the complete code to make it run:
+အောက်မှ စတင် run နိုင်ရန် အစအဆုံး code ဖြစ်သည်။
 
 ```go
 package main
@@ -1815,13 +1791,13 @@ func (w *Worker) process(c chan int) {
 }
 ```
 
-We don't know which worker is going to get what data. What we do know, what Go guarantees, is that the data we send to a channel will only be received by a single receiver.
+ဘယ် worker မှ ဘယ် data ကိုရမည်နည်းက မသိနိုင်ပေ။ သိနိုင်သည်က Go သည် channel မှ data ကို တစ်ဦးတည်းကိုသာ ပေးမည်ဟု အာမခံထားသည်။
 
-Notice that the only shared state is the channel, which we can safely receive from and send to concurrently. Channels provide all of the synchronization code we need and also ensure that, at any given time, only one goroutine has access to a specific piece of data.
+ထိုနေရာတွင် တစ်နေရာတည်းသော shard ထားသည့်နေရာမှာ channel ဖြစ်ပြီး လက်ခံသည်နှင့်ပိုဆောင်သည်ကို concurrent လုပ်ဆောင်နိုင်သည်။ channel များသည် synchronization ပြုလုပ်ရန်လိုသည့် code များကို အထောက်အပံပေးပြီး သတ်မှတ်ထားသော အချိန်တစ်ခုတွင် goroutine တစ်ခုမှသာ data တစ်ခုကိုဆောင်ရွက်ပေးသည်။
 
 ### Buffered Channels
 
-Given the above code, what happens if we have more data coming in than we can handle? You can simulate this by changing the worker to sleep after it has received data:
+အပေါ်မှ code တွင် ကျွန်တော်တို့ handle လုပ်နိုင်သော data ပမာဏထက် ပိုများလာလျှင် မည်သို့ဖြစ်မည်နည်း။ ထို ဥပမာကို worker တစ်ခုမှ data လက်ခံပြီးတိုင်း sleep လုပ်ကြည့်ပါက မြင်သာလာမည်ဖြစ်သည်
 
 ```go
 for {
@@ -1954,12 +1930,13 @@ Having said that, I still make extensive use of the various synchronization prim
 
 # နိဒါန်း
 
-I recently heard Go described as a *boring* language. Boring because it's easy to learn, easy to write and, most importantly, easy to read. Perhaps, I did this reality a disservice. We *did* spend three chapters talking about types and how to declare variables after all.
 
-If you have a background in a statically typed language, much of what we saw was probably, at best, a refresher. That Go makes pointers visible and that slices are thin wrappers around arrays probably isn't overwhelming to seasoned Java or C# developers.
+မကြာခဏကြားရသည်မှာ Go သည် *ပျင်းစရာကောင်းသည်* ဟုပြောသံများဖြစ်သည်။ သင်ရတာလွယ်၊ ရေးရတာလွယ်ပြီး အထူးသဖြင့် ဖတ်ရတာလွယ်သဖြင့် ပျင်းဖို့ကောင်းသည် ဟုထင်ကောင်းထင်နိုင်သည်။  ကျွန်တော်တို့ အခန်း ၃ ခန်းလောက် type များနှင့် variable တစ်ခုကို ဘယ်လို declare လုပ်ရမလဲ ဟု အချိန်ယူခဲ့သည်။
 
-If you've mostly been making use of dynamic languages, you might feel a little different. It *is* a fair bit to learn. Not least of which is the various syntax around declaration and initialization. Despite being a fan of Go, I find that for all the progress towards simplicity, there's something less than simple about it. Still, it comes down to some basic rules (like you can only declare variable once and `:=` does declare the variable) and fundamental understanding (like `new(X)` or `&X{}` only allocate memory, but slices, maps and channels require more initialization and thus, `make`).
+သင့်အနေဖြင့် static type language များနှင့်အတွေ့အကြုံရှိပါက အပေါ်မှ ကြုံတွေ့ခဲ့ရသည့် အတော်များများသည် သင့်အတွက် ပြန်နွေးစရာလိုပင် ဖြစ်နေလိမ့်မည်။ Go တွင် pointer များ အသုံးပြုခြင်း Array များအပေါ်မှ wrapper များအသုံးပြု၍ slice များကိုအသုံးပြုခြင်းသည် Java နှင့် C# developer များအတွက်မူ အထူးအဆန်းမဟုတ်ပေ။ 
 
-Beyond this, Go gives us a simple but effective way to organize our code. Interfaces, return-based error handling, `defer` for resource management and a simple way to achieve composition.
+သင့်အနေဖြင့် dynamic language များကို အသုံးပြုနေပါက အနည်းငယ်ကွဲပြားမှုကို ခံစားရမည်ဖြစ်သည်။ ၎င်းသည် အတော်လေး သင်ယူရန်လိုသည်။ declaration နှင့် initiation အတွက် အသုံးပြုရမည့် syntax ပေါင်းများစွာကို မှတ်သားရန်မှာ အနည်းငယ်တော့မဟုတ်။ Go ၏ ရိုးရှင်းမှု ကိုကြိုက်နှစ်သက်သော်လည်း ထိုအချက်များသည် ရိုးရှင်းမှုအတွက် ဦးတည်ရာတွင် သိပ်မရိုးရှင်းလှပေ။ သို့ပင်သော်ညား (ဥပမာ variable ကို တစ်ခါသာ ကြေညာ၍ရခြင်း နှင့် `:=` ကိုအသုံးပြု၍ ကြေညာခြင်း) နှင့် အခြေခံနားလည်မှုများ ( ဥပမာ `new(X)` နှင့် `&x{}` တို့သည် memory တွင် allocate ပြုလုပ်ခြင်း ဖြစ်ပြီး slice များ map များနှင့် channel များအတွက်မူ initialization အတွက်ပါလိုအပ်သဖြင့် `make` ပြုလုပ်ရန်ပါ လိုအပ်ခြင်း) ဟုသော အခြေခံဥပဒေသ များကို ကြေညက်ရန်လိုသည်။
 
-Last but not least is the built-in support for concurrency. There's little to say about goroutines other than they’re effective and simple (simple to use anyway). It's a good abstraction. Channels are more complicated. I always think it's important to understand basics before using high-level wrappers. I *do* think learning about concurrent programming without channels is useful. Still, channels are implemented in a way that, to me, doesn't feel quite like a simple abstraction. They are almost their own fundamental building block. I say this because they change how you write and think about concurrent programming. Given how hard concurrent programming can be, that is definitely a good thing.
+ထိုမှ ကျော်လွန်ပါက go သည် Code များ organize ပြုလုပ်ရန် ရိုးရှင်းပြီး အလုပ်ဖြစ်သော နည်းလမ်းများကို အားပေးသည်။ Interface များ၊ return အခြေပြု error handling၊ resource management အတွက် `defer` နှင့် composition ကို အလွယ်တကူဆောင်ရွက်နိုင်ခြင်း စသဖြင့်။
+
+နောက်ဆုံးတွင်မူ concurrency အတွက် built-in support ပါဝင်ခြင်းဖြစ်ပြီး ၎င်းမှာ အရေးပါလှသည်။ goroutine များသည် ရိုးရှင်း အသုံးပြုရလွယ်ကူပြီး အလုပ်ဖြစ်လှသည်။ ခွဲထုတ်ရန်လည်း လွယ်ကူသည်။ Channel မှာ အနည်းငယ်ရှုပ်ထွေးသည်။ အမြဲတမ်း အခြေခံကို နားလည်ရန်က နောက်တစ်ဆင့်ထက်ပို၍ အရေးကြီးသည့် ဟု ကျွန်တော်က ယူဆသည်။ Channel များမပါရှိသော Concurrent Programming မှာလည်း *အရေးကြီးသည်ဟု* ထင်သည်။ သို့သော်လည်း Channel များမှာ ကျွန်တော်အတွက်တော့ ရိုးရှင်စွာ abstrct ပြုလုပ်နိုင်ရန်မလွယ်လှဟုထင်သည်။ ၎င်းတို့ သူ့ဟာသူ အရေးပါလှသည့် အခြေခံ အုတ်မြစ် သက်သက် တစ်ခုဖြစ်သည်။ ၎င်းတို့သည် သင့်၏ Concurrent Programming ၏ ရေးသားမှုနှင့် တွေးခေါ်မှုကိုပါ ပြောင်းလဲသွားနိုင်သည်။ Concurrent Programming ကိုယ်တိုင်မှာ ခက်ခဲသည် ဖြစ်သဖြင့် ကောင်းသည်ဟု ဆိုရမည်။
